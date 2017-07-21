@@ -1,10 +1,4 @@
 <?php
-//echo("get superglobal check");
-//$_DELETE = file_get_contents('php://input');
-
-//print_r("delete: ". $_DELETE);
-//print_r("request: ". $_REQUEST);
-
 $query = sprintf("DELETE FROM accounts WHERE email='%s'", $_POST['delete_text']);
 echo($query);
 $result = mysqli_query($conn, $query);

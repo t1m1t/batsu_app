@@ -1,5 +1,4 @@
 <?php
-
     $query = "SELECT * FROM accounts";
     $result = null;
     $result = mysqli_query($conn, $query);
@@ -21,5 +20,4 @@
             $output['data'][] = $row;
         }
     }
-
 ?>
