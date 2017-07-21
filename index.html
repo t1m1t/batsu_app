@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .delete_button{
+            background-color: red;
+        }
+        .side_bar{
+            position: relative;
+            width: 100vw;
+            height: 20vh
+        }
+        .form_container{
+            position: absolute;
+            left: 70%;
+            top: 20%;
+            border: 1px solid blue;
+        }
+        #sign_up_form > * , #delete_form > *{
+            display: block;
+        }
+
+        th{
+            border: solid 1px red;
+        }
+        /*#delete_form_container{*/
+            /*top: 40%;*/
+        /*}*/
+    </style>
+    <title>bailout brian log in page</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+<div class="side_bar">
+    <div class="form_container">
+        <form id="sign_up_form">
+            First Name: <input type="text" name='fname' placeholder="first name" maxlength="25">
+            Last Name: <input type="text" name='lname' placeholder="last name" maxlength="25">
+            Email: <input type="text" name='email' placeholder="email" maxlength="25">
+            Phone Number: <input type="text" name='phone' placeholder="phone number" maxlength="15">
+            <button type="button" class="insert_button">submit</button>
+        </form>
+    </div>
+</div>
+<div class="side_bar">
+    <div class="form_container" id="delete_form_container">
+        <form id="delete_form">
+            <input type="text" value="testemail" name="delete_text">
+            <button type="button" class="delete_button">DELETE BY EMAIL</button>
+        </form>
+    </div>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th class="col-md-3">First Name</th>
+        <th class="col-md-3">Last Name</th>
+        <th class="col-md-3">Email</th>
+        <th class="col-md-3">Phone Number</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+</body>
+</html>
