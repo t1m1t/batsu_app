@@ -1,19 +1,18 @@
 $(document).ready(function(){
-   $("button").click(callBack);
+   $(".insert_button").click(callInsertAjax);
+    $(".delete_button").click(callDeleteAjax);
 });
 
-function callBack(){
-    console.log("hehe xd");
+function callInsertAjax(){
+    console.log("Inside callInsertAjax");
     var values = $("#sign_up_form").serialize();
     $.ajax({
-        url:"./form.php",
+        url:"./form.php?insert",
         method: "post",
         data: values,
         success: function(result){
             console.log("success: ", typeof(result));
             var Result = JSON.parse(result);
-
-
             if(Result.success === true){
                 console.log("js success: ", Result);
                 // console.log()
@@ -21,11 +20,35 @@ function callBack(){
             else{
                 console.log("js error: " , Result);
             }
-
-
         },
         error: function(e){
             console.log("ajax connection error: " + e);
         }
     });
+}
+
+
+function callReadAjax(){
+    console.log("Inside callReadAjax");
+    $.ajax({
+        url:"/form.php?readAll",
+        method:"get",
+        success:function(result){
+            console.log("success read function: ",result)
+        }
+    });
+}
+
+
+function callDeleteAjax(){
+    var value = $("#delete_form").serialize();
+    console.log("Inside callDeleteAjax");
+    $.ajax({
+        url: "./form.php?delete",
+        method: "post",
+        data: value,
+        success: function(result){
+            console.log("success jax delete: ", result);
+        }
+    })
 }
