@@ -1,5 +1,5 @@
 $(document).ready(function(){
-   $(".insert_button").click(callInsertAjax);
+   $(".insert_btn").click(callInsertAjax);
     // $(".delete_button").click(callDeleteAjax);
     $(".delete_button").click(callUpdateAjax);
 });
