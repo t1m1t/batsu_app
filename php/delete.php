@@ -1,4 +1,8 @@
 <?php
+
+
+
+
 $query = sprintf("DELETE FROM accounts WHERE email='%s'", $_POST['delete_text']);
 echo($query);
 $result = mysqli_query($conn, $query);
