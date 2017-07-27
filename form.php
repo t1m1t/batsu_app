@@ -27,16 +27,16 @@ $output = [
 
 
 if($_GET['operation'] === "insert"){
-    include("./php/insert.php");
+    include("./php/insert1.php");
 }
 else if($_GET['operation'] === "readAll"){
     include("./php/read.php");
 }
 else if($_GET['operation'] === "delete"){
-    include("./php/delete.php");
+    include("./php/delete1.php");
 }
 else if($_GET['operation'] === "update"){
-    include("./php/update.php");
+    include("./php/update1.php");
 }
 
 
