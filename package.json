@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "node dev_server.js",
-    "bundle": "node_modules/.bin/webpack --config webpack.deploy.config.js --progress --colors",
+    "bundle": "webpack --config webpack.deploy.config.js --progress --colors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Scott Bowler",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Learning-Fuze/react_starter.git"
+    "url": "git+https://github.com/Learning-Fuze/react_starter.git"
   },
   "dependencies": {
     "react": "^15.4.2",
@@ -34,5 +34,9 @@
     "style-loader": "^0.13.1",
     "webpack": "^2.1.0-beta.25",
     "webpack-dev-server": "^2.1.0-beta.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/Learning-Fuze/react_starter/issues"
+  },
+  "homepage": "https://github.com/Learning-Fuze/react_starter#readme"
 }
