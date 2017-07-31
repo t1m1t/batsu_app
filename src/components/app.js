@@ -5,6 +5,7 @@ import {BrowserRouter as Router,
 } from 'react-router-dom';
 import Home from './home';
 import Sign_Up from "./sign_up";
+import Event from './events';
 
 
 const App = () => (
@@ -12,7 +13,7 @@ const App = () => (
        <div className="topbar-menu">
            <Link className="topbar-links" to="/">Home</Link>
            <Link className="topbar-links" to="/sign_up">Sign Up</Link>
-
+           <Route path="/event" component={Event}/>
            <Route exact path="/" component={Home} />
            <Route exact path="/sign_up" component={Sign_Up} />
        </div>

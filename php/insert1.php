@@ -1,4 +1,5 @@
 <?php
+$encryped_pw = password_hash($_POST['password']);
 $email = $_POST['email'];
 $phone = $_POST['phone'];
 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -10,8 +11,8 @@ if(!preg_match("/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" ,$p
     exit("invalid phone");
 }
 $output['data'] = [];
-$stmt = $conn->prepare("INSERT INTO accounts (first_name, last_name, email, phone) VALUES (?,?,?,?)");
-$stmt->bind_param("ssss", $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone']);
+$stmt = $conn->prepare("INSERT INTO accounts (first_name, last_name, email, phone, password, DOB) VALUES (?,?,?,?,?,?)");
+$stmt->bind_param("ssssss", $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], $encryped_pw, $_POST['dob']);
 $stmt->execute();
 
     if(mysqli_affected_rows($conn) === 1){
@@ -21,6 +22,7 @@ $stmt->execute();
             'lname' => $_POST['lname'],
             'email' => $_POST['email'],
             'phone' => $_POST['phone']
+
         ];
     }
     else{
