@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './home';
-import Events from './events';
+import Event from './events';
 import {
     BrowserRouter as Router,
     Route,
@@ -8,12 +8,14 @@ import {
 } from 'react-router-dom';
 
 const App = () => (
-    <div className="container">
-        <div className="row">
-            <Route path="/" component={Home}/>
-            <Route path="/events" component={Events}/>
+    <Router>
+        <div className="container">
+            <div className="row">
+                <Route path="/" component={Home}/>
+                <Route path="/event" component={Event}/>
+            </div>
         </div>
-    </div>
+    </Router>
 );
 
 export default App;
