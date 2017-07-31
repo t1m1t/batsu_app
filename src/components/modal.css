@@ -1,0 +1,23 @@
+.event-modal{
+    position: fixed;
+    display:flex;
+    height: 100vh;
+    width:100vw;
+    top: 0;
+    left: 0;
+    background-color:rgba(0,0,0,.7);
+    z-index:1000;
+}
+.event-modal-content {
+    margin: auto;
+    padding: 20px;
+    background-color:white;
+    border-radius:10px;
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+
+}
+
+.event-modal-content button {
+    float:right;
+}

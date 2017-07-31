@@ -76,7 +76,7 @@ class Sign_Up extends Component {
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Date of Birth</h6>
-                        <input name="date_of_birth" value={date_of_birth} onChange={(event) => this.handleChange(event)}/>
+                        <input name="date_of_birth" type="date" value={date_of_birth} onChange={(event) => this.handleChange(event)}/>
                     </div>
                     <button className="submit-signup-button">Submit</button>
                 </form>

@@ -90,6 +90,7 @@
 }
 
 input{
+    width: 185px;
     border: 2px solid black;
     border-radius: 5px;
     margin: 0;
@@ -178,7 +179,7 @@ input{
 .login_trouble-signup{
     font-size: 13px;
     text-align: center;
-    margin: 23px 0 5px;
+    margin: 55px 0 5px;
     color: red;
 }
 
