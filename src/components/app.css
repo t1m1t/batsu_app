@@ -1,0 +1,324 @@
+.batsu-app{
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.topbar-menu{
+    text-align: center;
+}
+
+.topbar-links{
+    margin: 0 15px;
+}
+
+.batsu-title{
+    text-align: center;
+    font-family: BarleyScript;
+    color: red;
+    font-style: oblique;
+    font-size: 100px;
+    margin: 50px 0 20px;
+    text-shadow:
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 6px black;
+}
+
+.batsu-title-signup{
+    text-align: center;
+    font-family: BarleyScript;
+    color: red;
+    font-style: oblique;
+    font-size: 100px;
+    margin: 50px 0 50px;
+    text-shadow:
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 6px black;
+}
+
+.login_page {
+    color: black;
+    text-align: center;
+    padding: 20px;
+}
+
+.title_img {
+    text-align: center;
+    margin-top: 75px;
+}
+
+.homer{
+    display: inline-block;
+    width: 150px;
+    border: 2px solid black;
+}
+
+.login-subtitles{
+    margin: 10px 0 10px;
+
+}
+
+.signin-subtitles{
+    margin: 10px 0;
+}
+
+.login-button{
+    width: 100px;
+    background-color: greenyellow;
+    color: black;
+    font-size: 15px;
+    margin: 20px 0 0;
+    padding: 5px 15px;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow:
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 10px black;
+}
+
+.signup-top-div{
+    text-align: center;
+}
+
+input{
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 0;
+    font-size: 20px;
+    box-shadow:
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 10px black;
+}
+
+.signup-button{
+    background-color: greenyellow;
+    color: black;
+    width: 100px;
+    font-size: 15px;
+    margin: 0px 10px 25px;
+    padding: 5px 15px;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow:
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 10px black;
+}
+
+.signup-button:visited {
+    color: black;
+}
+
+.submit-signup-button{
+    color: black;
+    background-color: greenyellow;
+    width: 100px;
+    font-size: 15px;
+    margin: 18px 10px 25px;
+    padding: 5px 15px;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow:
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 10px black;
+}
+
+.line_space{
+    border: 1px solid black;
+    width: 90%;
+    height: 0;
+    margin: 0 auto;
+}
+
+.dropdown{
+    text-align: center;
+    margin: 30px 0 0;
+}
+
+.drop_menu_button{
+    box-shadow:
+            3px 3px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 10px black;
+}
+
+.dropdown-menu{
+    left: 50%;
+    right: auto;
+    text-align: center;
+    transform: translate(-50%, 0);
+}
+
+.login_trouble{
+    font-size: 13px;
+    text-align: center;
+    margin: 83px 0 5px;
+    color: red;
+}
+
+.login_trouble-signup{
+    font-size: 13px;
+    text-align: center;
+    margin: 23px 0 5px;
+    color: red;
+}
+
+.title_bottom_links{
+    text-align: center;
+}
+
+.title_bottom_links-signup{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.title_routes{
+    margin:0 25px;
+}
+
+.fb_button{
+    margin: 20px 0 0;
+    width: 250px;
+    height: auto;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+}
+
+/*@media screen and (min-width: 700px) {*/
+    /*.batsu-app{*/
+        /*font-family: Arial;*/
+        /*width: 750px;*/
+        /*margin: 0 auto;*/
+        /*height: auto;*/
+    /*}*/
+
+    /*.batsu-title{*/
+        /*font-family: kidzone;*/
+        /*font-size: 85px;*/
+        /*margin-top: 0;*/
+        /*text-shadow:*/
+                /*3px 3px 0 black,*/
+                /*2px 2px 0 black,*/
+                /*2px 2px 0 black,*/
+                /*2px 2px 0 black,*/
+                /*2px 2px 10px black;*/
+    /*}*/
+
+    /*.login_page {*/
+        /*color: black;*/
+        /*text-align: center;*/
+        /*padding: 20px;*/
+    /*}*/
+
+    /*.title_img {*/
+        /*text-align: center;*/
+        /*margin-top: 120px;*/
+    /*}*/
+
+    /*.homer{*/
+        /*display: inline-block;*/
+        /*width: 300px;*/
+        /*border: 2px solid black;*/
+    /*}*/
+
+    /*.login-subtitles{*/
+        /*margin: 10px 0 0;*/
+        /*font-size: 30px;*/
+    /*}*/
+
+    /*input{*/
+        /*border: 1px solid black;*/
+        /*border-radius: 5px;*/
+        /*margin: 0;*/
+        /*font-size: 30px;*/
+    /*}*/
+
+    /*.input-button{*/
+        /*font-size: 25px;*/
+        /*margin: 40px 0;*/
+        /*padding: 5px 15px;*/
+        /*border: 1px solid black;*/
+        /*border-radius: 5px;*/
+    /*}*/
+/*}*/
+
+
+
+/*@media screen and (min-width: 1000px) {*/
+    /*.batsu-app{*/
+        /*font-family: Arial;*/
+        /*width: 100%;*/
+        /*margin: 0 auto;*/
+        /*height: 100%;*/
+    /*}*/
+
+    /*.batsu-title{*/
+        /*font-family: kidzone;*/
+        /*font-size: 120px;*/
+        /*margin-top: 20px;*/
+        /*text-shadow:*/
+                /*3px 3px 0 black,*/
+                /*2px 2px 0 black,*/
+                /*2px 2px 0 black,*/
+                /*2px 2px 0 black,*/
+                /*2px 2px 10px black;*/
+    /*}*/
+
+    /*.login_page {*/
+        /*color: black;*/
+        /*text-align: center;*/
+        /*padding: 20px;*/
+    /*}*/
+
+    /*.title_img {*/
+        /*text-align: center;*/
+        /*margin-top: 120px;*/
+    /*}*/
+
+    /*.homer{*/
+        /*display: inline-block;*/
+        /*width: 400px;*/
+        /*border: 2px solid black;*/
+    /*}*/
+
+    /*.login-subtitles{*/
+        /*margin: 10px 0 0;*/
+        /*font-size: 40px;*/
+    /*}*/
+
+    /*input{*/
+        /*border: 1px solid black;*/
+        /*border-radius: 5px;*/
+        /*margin: 0;*/
+        /*font-size: 40px;*/
+    /*}*/
+
+    /*.input-button{*/
+        /*font-size: 35px;*/
+        /*margin: 40px 0;*/
+        /*padding: 5px 15px;*/
+        /*border: 1px solid black;*/
+        /*border-radius: 5px;*/
+    /*}*/
+/*}*/
