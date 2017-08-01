@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Events extends Component {
     constructor(props){
@@ -12,7 +14,6 @@ class Events extends Component {
                 date: '',
                 location: '',
                 description: '',
-                showModal:false
             }
         }
     }
@@ -27,11 +28,10 @@ class Events extends Component {
         });
 
     }
-    addItem(e){
+    addEvent(e){
         e.preventDefault();
         const { eventForm } = this.state;
         console.log("Form submitted", eventForm);
-        this.props.add({...eventForm});
         this.setState({ //resetting form to blank
             eventForm: {
                 name: '',
@@ -40,9 +40,16 @@ class Events extends Component {
                 date: '',
                 location: '',
                 description: '',
-                showModal:false
             }
         });
+        this.handleAxiosEvent();
+    }
+    handleAxiosEvent(){
+        const {eventForm} = this.state;
+        console.log("event form:",eventForm);
+        axios.post(``, eventForm).then((resp) => {
+            console.log('this is the response of event from insert:', resp);
+        })
     }
     render(){
         const { eventForm } = this.state;
@@ -74,8 +81,8 @@ class Events extends Component {
                     <input placeholder="description" name="description" value={eventForm.description} maxLength={140} onChange={(e) => this.handleChange(e)} type="text" className="form-control"/>
                 </div>
             </form>
-            <button type="button" className="btn btn-outline-danger ml-2">Cancel</button>
-            <button onClick={(e) => this.addItem(e)} className="btn btn-outline-success">Confirm</button>
+            <Link to="/"><button type="button" className="btn btn-outline-danger ml-2">Cancel</button></Link>
+            <button type="button" onClick={(e) => this.addEvent(e)} className="btn btn-outline-success">Confirm</button>
         </div>
             // <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             //     <div className="event-modal-content">
