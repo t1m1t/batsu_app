@@ -13,8 +13,8 @@ class Sign_Up extends Component {
                 lname: 'kl',
                 phone: '7142323333',
                 email: 'kelsey@gmail.com',
-                password: 'asdfjklasdfjkl',
-                password_conf: 'asdfjklasdfjkl',
+                password: 'asdF5jklasdfjkl',
+                password_conf: 'asdF5jklasdfjkl',
                 dob: ''
             }
         }
