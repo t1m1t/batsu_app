@@ -37,6 +37,41 @@
     <script src="script.js"></script>
 </head>
 <body>
+<script>
+window.fbAsyncInit = function() {
+FB.init({
+appId      : '565648337158951',
+cookie     : true,
+xfbml      : true,
+version    : 'v2.8'
+});
+FB.AppEvents.logPageView();
+};
+
+(function(d, s, id){
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) {return;}
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_US/sdk.js";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+    });
+}
+
+function statusChangeCallback(response){
+    console.log("response: ", response);
+}
+
+</script>
+
+<fb:login-button
+        scope="public_profile,email"
+        onlogin="checkLoginState();">
+</fb:login-button>
 
 <div class="">
     <div class="col-md-offset-1 col-md-11 panel">
@@ -75,9 +110,28 @@
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-education"></span>
             </span>
-                <input type="text" class="form-control" name="phone" id="phone"
-                       placeholder="Phone">
+                <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone">
             </div>
+            <div class="input-group form-group form-inline">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-education"></span>
+            </span>
+                <input type="text" class="form-control" name="phone" id="password1" placeholder="Password">
+            </div>
+            <div class="input-group form-group form-inline">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-education"></span>
+            </span>
+                <input type="text" class="form-control" name="phone" id="password1" placeholder="Confirm your Password">
+            </div>
+            <!--<div class="input-group form-group form-inline">-->
+            <!--<span class="input-group-addon">-->
+                <!--<span class="glyphicon glyphicon-education"></span>-->
+            <!--</span>-->
+                <!--<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone">-->
+            <!--</div>-->
+
+
         </form>
         <button type="button" class="btn btn-success insert_button" onclick="">Add</button>
         <button type="button" class="btn btn-default" onclick="">Cancel</button>
