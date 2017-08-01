@@ -9,6 +9,14 @@ $output = [
     'errors'=>[]
 ];
 
+$_POST = json_decode(file_get_contents('php://input'), true);
+//
+//echo '<pre>';
+//print_r($_POST);
+//echo '</pre>';
+//
+//exit;
+
 
 //echo("get superglobal check");
 //$query = sprintf("INSERT INTO accounts SET first_name='%s', last_name='%s', email='%s', phone='%s'", $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone']);
@@ -26,20 +34,20 @@ $output = [
 //        array_push($output["errors"], 'insert error');
 //    }
 //}
-
-echo('sdjfksdlf');
+//print("inside php file");
+//echo('sdjfksdlf');
 
 if($_GET['operation'] === "insert"){
-    include("localhost:8888/php/insert1.php");
+    include("./php/insert1.php");
 }
 else if($_GET['operation'] === "readAll"){
-    include("localhost:8888/php/read.php");
+    include("http://localhost/Website/accountability_db/c5.17_accountability/php/read.php");
 }
 else if($_GET['operation'] === "delete"){
-    include("localhost:8888/php/delete1.php");
+    include("http://localhost/Website/accountability_db/c5.17_accountability/php/delete1.php");
 }
 else if($_GET['operation'] === "update"){
-    include("localhost:8888/php/update1.php");
+    include("http://localhost/Website/accountability_db/c5.17_accountability/php/update1.php");
 }
 
 
