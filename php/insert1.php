@@ -1,4 +1,5 @@
 <?php
+
 $encryped_pw = password_hash($_POST['password']);
 $email = $_POST['email'];
 $phone = $_POST['phone'];
@@ -28,6 +29,7 @@ $stmt->execute();
     else{
         array_push($output["errors"], 'insert error');
     }
+    echo($output);
     $stmt->close();
 
 ?>
