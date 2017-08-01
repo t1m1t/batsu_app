@@ -1,6 +1,13 @@
 <?php
+//
+//foreach ($_POST as $key => $value){
+//    echo($key . " : " . $value." ");
+//}
+//gettype($_POST);
 
-$encryped_pw = password_hash($_POST['password']);
+//echo(count($_POST));
+
+$encryped_pw = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $email = $_POST['email'];
 $phone = $_POST['phone'];
 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -29,7 +36,7 @@ $stmt->execute();
     else{
         array_push($output["errors"], 'insert error');
     }
-    echo($output);
+    print_r($output);
     $stmt->close();
 
 ?>
