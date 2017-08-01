@@ -9,12 +9,12 @@ class Sign_Up extends Component {
         super(props);
         this.state = {
             form: {
-                fname: 'bob',
-                lname: 'kl',
-                phone: '7142323333',
-                email: 'kelsey@gmail.com',
-                password: 'asdF5jklasdfjkl',
-                password_conf: 'asdF5jklasdfjkl',
+                fname: '',
+                lname: '',
+                phone: '',
+                email: '',
+                password: '',
+                password_conf: '',
                 dob: ''
             }
         }
