@@ -33,14 +33,18 @@ class Sign_Up extends Component {
                 password_conf: '',
                 dob: ''
             }
+
         }
         this.setState(newState);
         this.handleAxios();
     }
 
-    handleAxios(form){
-        console.log("before axios call");
-        axios.post(`http://localhost:8888/form.php?operation=insert`, form).then((resp) => {
+
+    handleAxios(){
+        const {form} = this.state;
+        // console.log("before axios call");
+        console.log(form);
+        axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insert`, form).then((resp) => {
             console.log('this is the response from insert:', resp);
         })
     }
