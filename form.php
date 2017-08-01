@@ -1,4 +1,7 @@
 <?php
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 require("mysql_connect.php");
 
 $output = [
@@ -24,19 +27,19 @@ $output = [
 //    }
 //}
 
-
+echo('sdjfksdlf');
 
 if($_GET['operation'] === "insert"){
-    include("./php/insert1.php");
+    include("localhost:8888/php/insert1.php");
 }
 else if($_GET['operation'] === "readAll"){
-    include("./php/read.php");
+    include("localhost:8888/php/read.php");
 }
 else if($_GET['operation'] === "delete"){
-    include("./php/delete1.php");
+    include("localhost:8888/php/delete1.php");
 }
 else if($_GET['operation'] === "update"){
-    include("./php/update1.php");
+    include("localhost:8888/php/update1.php");
 }
 
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import axios from 'axios';
 import './app.css';
 
 
@@ -8,12 +9,13 @@ class Sign_Up extends Component {
         super(props);
         this.state = {
             form: {
-                first_name: '',
-                last_name: '',
-                email: '',
-                password: '',
-                password_conf: '',
-                date_of_birth: ''
+                fname: 'bob',
+                lname: 'kl',
+                phone: '7142323333',
+                email: 'kelsey@gmail.com',
+                password: 'asdfjklasdfjkl',
+                password_conf: 'asdfjklasdfjkl',
+                dob: ''
             }
         }
     }
@@ -23,16 +25,24 @@ class Sign_Up extends Component {
         console.log('Called handleFormSubmit', this.state.form);
         const newState = {
             form: {
-                first_name: '',
-                last_name: '',
-                tel: '',
+                fname: '',
+                lname: '',
+                phone: '',
                 email: '',
                 password: '',
                 password_conf: '',
-                date_of_birth: ''
+                dob: ''
             }
         }
         this.setState(newState);
+        this.handleAxios();
+    }
+
+    handleAxios(){
+        const {form} = this.state;
+        axios.post(`http://localhost:8888/form.php?operation=insert`, form).then((resp) => {
+            console.log('this is the response from insert:'. resp);
+        })
     }
 
     handleChange(event) {
@@ -43,7 +53,7 @@ class Sign_Up extends Component {
     }
 
     render() {
-        const {first_name, last_name, tel, email, password, password_conf, date_of_birth} = this.state.form;
+        const {fname, lname, phone, email, password, password_conf, dob} = this.state.form;
         return (
             <div className="signup-page">
                 <h1 className="batsu-title-signup">_Batsu</h1>
@@ -52,15 +62,15 @@ class Sign_Up extends Component {
                 }}>
                     <div>
                         <h6 className="signin-subtitles">First Name</h6>
-                        <input name="first_name" value={first_name} onChange={(event) => this.handleChange(event)}/>
+                        <input name="fname" value={fname} onChange={(event) => this.handleChange(event)}/>
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Last Name</h6>
-                        <input name="last_name" value={last_name} onChange={(event) => this.handleChange(event)}/>
+                        <input name="lname" value={lname} onChange={(event) => this.handleChange(event)}/>
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Phone Number</h6>
-                        <input name="tel" type="number" value={tel} onChange={(event) => this.handleChange(event)}/>
+                        <input name="phone" type="number" value={phone} onChange={(event) => this.handleChange(event)}/>
                     </div>
                     <div>
                         <h6 className="signin-subtitles">E-mail Address</h6>
@@ -76,9 +86,9 @@ class Sign_Up extends Component {
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Date of Birth</h6>
-                        <input name="date_of_birth" type="date" value={date_of_birth} onChange={(event) => this.handleChange(event)}/>
+                        <input name="dob" type="date" value={dob} onChange={(event) => this.handleChange(event)}/>
                     </div>
-                    <button className="submit-signup-button">Submit</button>
+                    <button className="submit-signup-button" type="submit">Submit</button>
                 </form>
                 <h4 className="login_trouble-signup">Having Trouble Logging In?</h4>
                 <div className="title_bottom_links-signup">
