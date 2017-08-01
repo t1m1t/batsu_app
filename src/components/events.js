@@ -25,7 +25,6 @@ class Events extends Component {
         this.setState({
             eventForm: {...eventForm}
         });
-
     }
     addItem(e){
         e.preventDefault();
