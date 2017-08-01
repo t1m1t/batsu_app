@@ -39,7 +39,6 @@ class Sign_Up extends Component {
         this.handleAxios();
     }
 
-
     handleAxios(){
         const {form} = this.state;
         // console.log("before axios call");
@@ -49,21 +48,24 @@ class Sign_Up extends Component {
         })
     }
 
-    handleChange(event) {
+    handleChange(event){
         const {name, value} = event.target;
         const {form} = this.state;
         form[name] = value;
         this.setState({form: {...form}});
     }
 
+    // findMatch(string){
+    //     const passwordRegex = (/^[a-z|A-Z](?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{7,31}$/g);
+    //     return string.match(passwordRegex);
+    // }
+
     render() {
         const {fname, lname, phone, email, password, password_conf, dob} = this.state.form;
         return (
             <div className="signup-page">
                 <h1 className="batsu-title-signup">_Batsu</h1>
-                <form onSubmit={(event) => {
-                    this.handleFormSubmit(event)
-                }}>
+                <form onSubmit={(event) => {this.handleFormSubmit(event)}} >
                     <div>
                         <h6 className="signin-subtitles">First Name</h6>
                         <input name="fname" value={fname} onChange={(event) => this.handleChange(event)}/>
@@ -86,7 +88,7 @@ class Sign_Up extends Component {
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Re-enter Password</h6>
-                        <input name="password_conf" type="password" value={password_conf} onChange={(event) => this.handleChange(event)}/>
+                        <input name="password_conf" type="password" value={password_conf} onChange={(event) => this.handleChange(event)} />
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Date of Birth</h6>
