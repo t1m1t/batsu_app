@@ -6,7 +6,7 @@ import {BrowserRouter as Router,
 import Home from './home';
 import Sign_Up from './sign_up';
 import Events from './events';
-
+import Modal from './event_modal';
 
 const App = () => (
    <Router>
@@ -17,7 +17,7 @@ const App = () => (
 
            <Route exact path="/" component={Home} />
            <Route exact path="/sign_up" component={Sign_Up} />
-           <Route exact path="/events" component={Events}/>
+           <Route exact path="/events" component={Modal}/>
        </div>
    </Router >
 )
