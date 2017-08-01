@@ -38,10 +38,10 @@ class Sign_Up extends Component {
         this.handleAxios();
     }
 
-    handleAxios(){
-        const {form} = this.state;
+    handleAxios(form){
+        console.log("before axios call");
         axios.post(`http://localhost:8888/form.php?operation=insert`, form).then((resp) => {
-            console.log('this is the response from insert:'. resp);
+            console.log('this is the response from insert:', resp);
         })
     }
 
