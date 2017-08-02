@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {reduxForm} from 'redux-form';
 import axios from 'axios';
 import './app.css';
 
@@ -59,6 +60,7 @@ class Sign_Up extends Component {
     //     const passwordRegex = (/^[a-z|A-Z](?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{7,31}$/g);
     //     return string.match(passwordRegex);
     // }
+
 
     render() {
         const {fname, lname, phone, email, password, password_conf, dob} = this.state.form;
