@@ -22,7 +22,7 @@ class Sign_Up extends Component {
 
     handleFormSubmit(event) {
         event.preventDefault();
-        console.log('Called handleFormSubmit', this.state.form);
+        // console.log('Called handleFormSubmit', this.state.form);
         const newState = {
             form: {
                 fname: '',
@@ -43,9 +43,10 @@ class Sign_Up extends Component {
         const {form} = this.state;
 
         // console.log("before axios call");
-        console.log(form);
-        axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insert`, form).then((resp) => {
+        // console.log(form);
+        axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertUser`, form).then((resp) => {
             console.log('this is the response from insert:', resp);
+            //
         })
     }
 

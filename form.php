@@ -37,8 +37,11 @@ $_POST = json_decode(file_get_contents('php://input'), true);
 //print("inside php file");
 //echo('sdjfksdlf');
 
-if($_GET['operation'] === "insert"){
-    include("./php/insert1.php");
+if($_GET['operation'] === "insertUser"){
+    include("./php/insertAccount.php");
+}
+else if($_GET['operation'] === "insertEvent"){
+    include("./php/insertEvent.php");
 }
 else if($_GET['operation'] === "readAll"){
     include("http://localhost/Website/accountability_db/c5.17_accountability/php/read.php");
@@ -54,8 +57,9 @@ else if($_GET['operation'] === "update"){
 
 
 if($output['success'] === false){
-    $output['errors'] = mysqli_error($conn);
+    array_push($output['errors'], mysqli_error($conn));
 }
+
 $outputJSON = json_encode($output);
 echo($outputJSON);
 exit();
