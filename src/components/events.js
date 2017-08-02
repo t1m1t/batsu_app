@@ -26,7 +26,6 @@ class Events extends Component {
         this.setState({
             eventForm: {...eventForm}
         });
-
     }
     addEvent(e){
         e.preventDefault();
@@ -47,7 +46,7 @@ class Events extends Component {
     handleAxiosEvent(){
         const {eventForm} = this.state;
         console.log("event form:",eventForm);
-        axios.post(``, eventForm).then((resp) => {
+        axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent`, eventForm).then((resp) => {
             console.log('this is the response of event from insert:', resp);
         })
     }
