@@ -103,6 +103,20 @@ input{
             2px 2px 10px black;
 }
 
+.form-control{
+    box-shadow:
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 10px black;
+}
+
+#option_menu,
+#option_menu option{
+    width: 185px;
+}
+
 .signup-button{
     background-color: greenyellow;
     color: black;

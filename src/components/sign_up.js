@@ -10,12 +10,12 @@ class Sign_Up extends Component {
         super(props);
         this.state = {
             form: {
-                fname: '',
-                lname: '',
-                phone: '',
-                email: '',
-                password: '',
-                password_conf: '',
+                fname: 'bob',
+                lname: 'kl',
+                phone: '7142323333',
+                email: 'kelsey@gmail.com',
+                password: 'asdF5jklasdfjkl',
+                password_conf: 'asdF5jklasdfjkl',
                 dob: ''
             }
         }
@@ -44,9 +44,16 @@ class Sign_Up extends Component {
         const {form} = this.state;
         // console.log("before axios call");
         // console.log(form);
-        axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertUser`, form).then((resp) => {
+        axios.post(`http://localhost:8888/form.php?operation=insertUser`, form).then((resp) => {
             console.log('this is the response from insert:', resp);
-            //
+            if (resp.data.success === false){
+                let message = "";
+
+                for (let i = 0; i < (resp.data.errors).length; i++){
+                    message += (resp.data.errors)[i] + ". ";
+                }
+                alert(message);
+            }
         })
     }
 
@@ -71,31 +78,31 @@ class Sign_Up extends Component {
                 <form onSubmit={(event) => {this.handleFormSubmit(event)}} >
                     <div>
                         <h6 className="signin-subtitles">First Name</h6>
-                        <input name="fname" value={fname} onChange={(event) => this.handleChange(event)}/>
+                        <input className="signup_info" name="fname" value={fname} onChange={(event) => this.handleChange(event)}/>
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Last Name</h6>
-                        <input name="lname" value={lname} onChange={(event) => this.handleChange(event)}/>
+                        <input className="signup_info" name="lname" value={lname} onChange={(event) => this.handleChange(event)}/>
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Phone Number</h6>
-                        <input name="phone" type="number" value={phone} onChange={(event) => this.handleChange(event)}/>
+                        <input className="signup_info" name="phone" type="number" value={phone} onChange={(event) => this.handleChange(event)}/>
                     </div>
                     <div>
                         <h6 className="signin-subtitles">E-mail Address</h6>
-                        <input name="email" value={email} onChange={(event) => this.handleChange(event)}/>
+                        <input className="signup_info" name="email" value={email} onChange={(event) => this.handleChange(event)}/>
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Password</h6>
-                        <input name="password" type="password" value={password} onChange={(event) => this.handleChange(event)}/>
+                        <input className="signup_info" name="password" type="password" value={password} onChange={(event) => this.handleChange(event)}/>
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Re-enter Password</h6>
-                        <input name="password_conf" type="password" value={password_conf} onChange={(event) => this.handleChange(event)} />
+                        <input className="signup_info" name="password_conf" type="password" value={password_conf} onChange={(event) => this.handleChange(event)} />
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Date of Birth</h6>
-                        <input name="dob" type="date" value={dob} onChange={(event) => this.handleChange(event)}/>
+                        <input className="signup_info" name="dob" type="date" value={dob} onChange={(event) => this.handleChange(event)}/>
                     </div>
                     <button className="submit-signup-button" type="submit">Submit</button>
                 </form>

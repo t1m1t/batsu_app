@@ -79,6 +79,17 @@ class Events extends Component {
                     <label>Description</label>
                     <input placeholder="description" name="description" value={eventForm.description} maxLength={140} onChange={(e) => this.handleChange(e)} type="text" className="form-control"/>
                 </div>
+                <div className="form-group row">
+                    <label>Punishments</label>
+                    <select classID="option_menu" className="form-control">
+                    {/*<input placeholder="punishment" name="punishment" value={eventForm.punishment} maxLength={140} onChange={(e) => this.handleChange(e)} type="text" className="form-control"/>*/}
+                        <option className="options_choices" value="punishment_1">Punishment 1</option>
+                        <option className="options_choices" value="punishment_2">Punishment 2</option>
+                        <option className="options_choices" value="punishment_3">Punishment 3</option>
+                        <option className="options_choices" value="punishment_4">Punishment 4</option>
+                        <option className="options_choices" value="punishment_5">Punishment 5</option>
+                    </select>
+                </div>
             </form>
             <Link to="/"><button type="button" className="btn btn-outline-danger ml-2">Cancel</button></Link>
             <button type="button" onClick={(e) => this.addEvent(e)} className="btn btn-outline-success">Confirm</button>
