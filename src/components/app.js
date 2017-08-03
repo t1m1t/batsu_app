@@ -11,9 +11,6 @@ import Events from './events';
 const App = () => (
    <Router>
        <div className="topbar-menu">
-           <Link className="topbar-links" to="/">Home</Link>
-           <Link className="topbar-links" to="/sign_up">Sign Up</Link>
-           <Link className="topbar-links" to="/events">Events</Link>
            <Route exact path="/" component={Home} />
            <Route exact path="/sign_up" component={Sign_Up} />
            <Route exact path="/events" component={Events}/>
