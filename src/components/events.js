@@ -13,8 +13,7 @@ class Events extends Component {
                 date: '',
                 location: '',
                 description: '',
-            },
-            modalIsOpen: false
+            }
         }
     }
     handleChange(e){
@@ -39,8 +38,7 @@ class Events extends Component {
                 date: '',
                 location: '',
                 description: '',
-            },
-            modalIsOpen: !this.state.modalIsOpen
+            }
         });
         this.handleAxiosEvent();
     }
@@ -59,33 +57,27 @@ class Events extends Component {
                 <div className="modal-body">
                     <form>
                         <div className="form-group row">
-                            <label>Name</label>
                             <input placeholder="name" name="name" value={eventForm.name}
                                    onChange={(e) => this.handleChange(e)} maxLength={25} type="text"
                                    className="form-control"/>
                         </div>
                         <div className="form-group row">
-                            <label>People to Invite</label>
                             <input placeholder="invite people" name="invitee" value={eventForm.invitee}
                                    onChange={(e) => this.handleChange(e)} type="text" className="form-control"/>
                         </div>
                         <div className="form-group row">
-                            <label>Time</label>
                             <input name="time" value={eventForm.time} onChange={(e) => this.handleChange(e)}
                                    type="time" className="form-control"/>
                         </div>
                         <div className="form-group row">
-                            <label>Date</label>
                             <input placeholder="date" name="date" value={eventForm.date}
                                    onChange={(e) => this.handleChange(e)} type="date" className="form-control"/>
                         </div>
                         <div className="form-group row">
-                            <label>Location</label>
-                            <input placeholder="location" name="location" value={eventForm.location}
+                            <input placeholder="Search for a place or address" name="location" value={eventForm.location}
                                    onChange={(e) => this.handleChange(e)} type="text" className="form-control"/>
                         </div>
                         <div className="form-group row">
-                            <label>Description</label>
                             <input placeholder="description" name="description" value={eventForm.description}
                                    maxLength={140} onChange={(e) => this.handleChange(e)} type="text"
                                    className="form-control"/>
