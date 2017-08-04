@@ -1,9 +1,11 @@
-import React from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import React, {Component} from 'react';
+import { Route, Link} from 'react-router-dom';
 import LogInForm from './title_input';
 import DropDownForm from './dropdown_title';
-import Sign_Up from "./sign_up";
+import Event from './events';
+import Modal from 'react-modal';
 import './app.css';
+
 
 
 const Home = () => (
@@ -26,8 +28,8 @@ const Home = () => (
                 <Link className="title_routes" to="/">Legal</Link>
                 <Link className="title_routes" to="/">Privacy</Link>
             </div>
-        </div>
-    </div>
-);
+        )
+    }
+};
 
 export default Home;
