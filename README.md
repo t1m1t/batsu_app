@@ -52,11 +52,14 @@ B. Account Creation
    Future versions will include: instructions for password(include 1 capital case, 1 lower case, 1 number, and between 8-32 characters) and age requirements(10+ years). 
 
 C. Account Creation with Facebook
+
+D. Login Authentication
+    Requires database connect file
         
 
-D. Event Creation
+E. Event Creation
     
 
-E. 
+F. 
 
 
