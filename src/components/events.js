@@ -8,11 +8,13 @@ class Events extends Component {
 
         this.state = {
             eventForm: {
-                name: '',
+                creator_name:'',
+                event_name: '',
                 invitee: '',
                 time: '',
                 date: '',
                 location: '',
+                address: '',
                 description: '',
             }
         }
@@ -22,7 +24,6 @@ class Events extends Component {
         const { value,name } = e.target;
         const { eventForm }  = this.state; //this changed from {form} to form
         eventForm[name] = value;
-
         this.setState({
             eventForm: {...eventForm}
         });
@@ -33,11 +34,13 @@ class Events extends Component {
         console.log("Form submitted", eventForm);
         this.setState({ //resetting form to blank
             eventForm: {
-                name: '',
+                creator_name: '',
+                event_name: '',
                 invitee: '',
                 time: '',
                 date: '',
                 location: '',
+                address: '',
                 description: '',
             }
         });
@@ -57,7 +60,7 @@ class Events extends Component {
             <form>
                 <div className="form-group row">
                     <label>Name</label>
-                    <input placeholder="name" name="name" value={eventForm.name} onChange={(e) => this.handleChange(e)} maxLength={25} type="text" className="form-control"/>
+                    <input placeholder="name" name="name" value={eventForm.event_name} onChange={(e) => this.handleChange(e)} maxLength={25} type="text" className="form-control"/>
                 </div>
                 <div className="form-group row">
                     <label>People to Invite</label>

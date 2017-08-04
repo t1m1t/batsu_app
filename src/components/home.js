@@ -18,7 +18,8 @@ const Home = () => (
                 <Route path="/sign_up" component={Sign_Up} />
             </div>
             <div className="line_space"></div>
-            <DropDownForm />
+            {/*<DropDownForm />*/}
+            <div className="fb-login-button" data-button-type="continue_with" data-size="medium" scope="public_profile,email" data-onlogin="checkLoginState();"></div>
             <h4 className="login_trouble">Having Trouble Logging In?</h4>
             <div className="title_bottom_links">
                 <Link className="title_routes" to="/">Contact</Link>
