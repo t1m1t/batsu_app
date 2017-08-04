@@ -38,18 +38,24 @@ Week 10 To Do List:
 Prototype Instructions:
 
 A. Prerequisite: 
-    All prototypes require npm to be installed on your local machine because our project is using React. 
-Please take following steps to set up the project environment: 
+    All prototypes require npm to be installed on your local machine because our project is using React. Please take following steps to set up the project environment: 
 
+   The prototypes also require a LAMP/MAMP stack. Rename "mysql_connect.php.config" to "mysql_connect.php" and fill out your MySQL username and password credentials. 
 
-   The prototypes also require a LAMP/MAMP stack. Rename "mysql_connect.php.config" to "mysql_connect.php" and fill out your MySQL username and password credentials.
 _________________________________________________________________
 
-B. Account Creation
+B. Account Creation  
+   Update the axios call on src/components/sign_up.js within handleAxios() function with the correct file path for your local machine.
    
+   Features for this prototype include: Input Validation(email validation, phone validation, password validation, password check, and an age requirement).
+   
+   Future versions will include: instructions for password(include 1 capital case, 1 lower case, 1 number, and between 8-32 characters) and age requirements(10+ years). 
+
 C. Account Creation with Facebook
+        
 
 D. Event Creation
+    
 
 E. 
 
