@@ -197,7 +197,7 @@ input{
 }
 
 .fb_button_outer{
-    background: url("./imgs/fb_login.png");
+    /*background: url("./imgs/fb_login.png");*/
     background-size: contain;
     height: 44px;
     width: 229px;
