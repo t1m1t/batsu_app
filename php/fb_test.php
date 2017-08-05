@@ -53,8 +53,25 @@ else{
     $user_dob = null;
 }
 
+$result = mysqli_query($conn, "SELECT COUNT(ID) FROM accounts WHERE email='$user_email'");
+//print_r($result);
+if($result->num_rows > 0){
+    echo("user has account with database");
+}
+else{
+    $stmt = $conn->prepare("INSERT INTO accounts (first_name, last_name, email, DOB) VALUES (?,?,?,?)");
+    $stmt->bind_param("ssss", $user_fname, $user_lname, $user_email, $user_dob);
+    $stmt->execute();
 
+    if (mysqli_affected_rows($conn) === 1) {
+        $output['success'] = true;
+    } else {
+        $output["errors"] = mysqli_error($conn);
+    }
+    $stmt->close();
 
+    print_r($output);
+}
 //echo 'Last Name: ' . $user->getLastName();
 //echo "Email: ". $user->getEmail();
 //echo "DOB: ". $user->getBirthday();
@@ -64,17 +81,6 @@ else{
 
 //insert sql statement
 
-$stmt = $conn->prepare("INSERT INTO accounts (first_name, last_name, email, DOB) VALUES (?,?,?,?)");
-$stmt->bind_param("ssss", $user_fname, $user_lname, $user_email, $user_dob);
-$stmt->execute();
 
-if (mysqli_affected_rows($conn) === 1) {
-    $output['success'] = true;
-} else {
-    $output["errors"] = mysqli_error($conn);
-}
-$stmt->close();
-
-print_r($output);
 
 ?>
