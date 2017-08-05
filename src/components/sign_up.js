@@ -106,12 +106,6 @@ class Sign_Up extends Component {
                     </div>
                     <button className="submit-signup-button" type="submit">Submit</button>
                 </form>
-                <h4 className="login_trouble-signup">Having Trouble Logging In?</h4>
-                <div className="title_bottom_links-signup">
-                    <Link className="title_routes" to="/">Contact</Link>
-                    <Link className="title_routes" to="/">Legal</Link>
-                    <Link className="title_routes" to="/">Privacy</Link>
-                </div>
             </div>
         )
     }
