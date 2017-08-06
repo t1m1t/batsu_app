@@ -1,47 +1,40 @@
 import React, { Component } from 'react';
 
-class Profile extends Component{
-    componentWillMount(){
+const profileStyle = {
+    height: "18em"
+};
+const imgStyle ={
+    height: "18em"
+};
+
+class Profile extends Component {
+    componentWillMount() {
 
     }
 
-    handleEdit(id){
+    handleEdit(id) {
 
     }
-    render(){
-        return(
-            <div className="container">
-                <h1>Profile</h1>
-                <div className="profile_pic">
 
-                </div>
-                <div className="container">
-                    <div className="fname">
-                        {}
+    render() {
+        return (
+            <div>
+                <h1 className="card-title">Profile</h1>
+                <div className="card" style={profileStyle}>
+                    <img className="card-img-top" style={imgStyle} src="http://www.tippanii.com/images/noprofile.png" alt="./imgs/example_profile.png"/>
+                    <div className="card-block">
+                        <ul className="list-group list-group-flush container">
+                            <li className="list-group-item">mail@mail.com</li>
+                            <li className="list-group-item">LastN FirstN</li>
+                            <li className="list-group-item">123-123-1234</li>
+                        </ul>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        {/*<button className="btn btn-info" onClick={this.handleEdit}>Edit</button>*/}
                     </div>
-                    <div className="lname">
-                        {}
-                    </div>
-                    <div className="email">
-                        {}
-                    </div>
-                    <div className="phone">
-                        {}
-                    </div>
-                    <div className="bio">
-                        {}
-                    </div>
-                </div>
-                <div className="row">
-                    <button className="edit btn btn-info">Edit</button>
                 </div>
             </div>
         )
     }
 }
-function mapStateToProps(state){
-    return{
 
-    }
-}
-export default connect(mapStateToProps, {getTodos, deleteTodo})();
+export default Profile;
