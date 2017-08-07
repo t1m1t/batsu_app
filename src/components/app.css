@@ -90,7 +90,7 @@
     text-align: center;
 }
 
-input{
+input, select{
     width: 185px;
     border: 2px solid black;
     border-radius: 5px;

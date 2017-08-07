@@ -86,8 +86,8 @@ class Events extends Component {
                                    className="form-control"/>
                         </div>
                         <div className="form-group row">
-                            <label>Punishment</label>
                             <select className="form-control">
+                                <option value=""selected disabled>please select</option>
                                 <option value="1">punishment1</option>
                                 <option value="2">punishment2</option>
                                 <option value="3">punishment3</option>
