@@ -15,7 +15,7 @@ class Events extends Component {
                 location: 'test location',
                 address: 'test address',
                 description: 'descriptionnnnn',
-                punishment: ''
+                punishment: 'profile_doodle'
             }
         }
     }

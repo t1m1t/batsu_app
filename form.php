@@ -55,7 +55,7 @@ else if($_GET['operation'] === "update"){
 
 
 if($output['success'] === false){
-    array_push($output['errors'] = mysqli_error($conn));
+    array_push($output['errors'], mysqli_error($conn));
 }
 
 $outputJSON = json_encode($output);
