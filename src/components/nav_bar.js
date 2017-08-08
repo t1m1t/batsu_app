@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { bubble as Menu } from 'react-burger-menu'
+import { slide as Menu } from 'react-burger-menu'
 import { BrowserRouter as Router, Route, NavLink, withRouter } from 'react-router-dom';
 import Home from './home';
 import Sign_Up from './sign_up';

@@ -7,6 +7,7 @@ import './app.css';
 class Sign_Up extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             form: {
                 fname: 'test',
@@ -22,7 +23,7 @@ class Sign_Up extends Component {
 
     handleFormSubmit(event) {
         event.preventDefault();
-        // console.log('Called handleFormSubmit', this.state.form);
+        console.log('Called handleFormSubmit', this.state.form);
         const newState = {
             form: {
                 fname: '',
@@ -41,8 +42,6 @@ class Sign_Up extends Component {
 
     handleAxios(){
         const {form} = this.state;
-        // console.log("before axios call");
-        // console.log(form);
         axios.post(`http://localhost:8888/form.php?operation=insertUser`, form).then((resp) => {
             console.log('this is the response from insert:', resp);
             if (resp.data.success === false){
@@ -62,12 +61,6 @@ class Sign_Up extends Component {
         form[name] = value;
         this.setState({form: {...form}});
     }
-
-    // findMatch(string){
-    //     const passwordRegex = (/^[a-z|A-Z](?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{7,31}$/g);
-    //     return string.match(passwordRegex);
-    // }
-
 
     render() {
         const {fname, lname, phone, email, password, password_conf, dob} = this.state.form;
