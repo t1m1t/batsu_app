@@ -1,5 +1,4 @@
 <?php
-
 //$encryped_pw = password_hash($_POST['password'], PASSWORD_DEFAULT);
 //$email = $_POST['email'];
 //$phone = $_POST['phone'];
@@ -27,30 +26,57 @@
 //if(time() < $min){
 //    exit("must be older than 10 years old");
 //}
-
+//require_once("insertAccount.php");
+session_id('mq5ahmjq95jr5nsjbb4fhvcv52');
+session_start();
+if(isset($_SESSION['user'])){
+//    echo $_SESSION['user'];
+//    echo "haha hehe hoho";
+};
+//echo session_id();
 
 $output['data'] = [];
 
-$stmt = $conn->prepare("INSERT INTO events (Creator_ID, Event_Name, Event_DateTime, Event_Location, Event_Address, Event_Description) VALUES (?,?,?,?,?,?)");
-$stmt->bind_param("ssssss", $_POST[], $_POST["event_name"], $_POST["event_date"] + $_POST["event_time"], $_POST["location"], $_POST["address"], $_POST["description"]);
-$stmt = $conn->prepare("INSERT INTO accounts (first_name, last_name, email, phone, password, DOB) VALUES (?,?,?,?,?,?)");
-$stmt->bind_param("ssssss", $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], $encryped_pw, $_POST['dob']);
+$date = $_POST['date'];
+$time = $_POST['time'];
+$attending = 'Attending';
+$pending = 'Pending';
 
+//$combinedDT = date('Y-m-d H:i:s', strtotime("$date $time"));
+$combinedDT = date('Y-m-d H:i:s');
+
+//echo $combinedDT;
+
+$stmt = $conn->prepare("INSERT INTO events (Creator_ID, Event_Name, Event_DateTime, Event_Location, Event_Address, Event_Description) VALUES (?,?,?,?,?,?)");
+$stmt->bind_param("ssssss", $_SESSION['user'], $_POST["event_name"], $combinedDT, $_POST["location"], $_POST["address"], $_POST["description"]);
 $stmt->execute();
 
 if(mysqli_affected_rows($conn) === 1){
-    $output['success'] = true;
-    $output['data']=[
-        'fname'=>$_POST['fname'],
-        'lname' => $_POST['lname'],
-        'email' => $_POST['email'],
-        'phone' => $_POST['phone']
-    ];
+    $event_table_id = mysqli_stmt_insert_id($stmt);
+
+    $stmt = $conn->prepare("INSERT INTO event_attendees (Event_ID, Attendee_ID, Attendee_Status, Punishment) VALUES (?,?,?,?)");
+    $stmt->bind_param("ssss", $event_table_id, $_SESSION['user'], $attending, $_POST['punishment']);
+    $stmt->execute();
+    if(mysqli_affected_rows($conn) === 1) {
+        if(isset($_POST['invitee'])){
+            $event_invitee_list = explode(", ", $_POST['invitee']);
+            foreach ($event_invitee_list as $invited_person){
+                $stmt = $conn->prepare("INSERT INTO event_attendees (Event_ID, Attendee_ID, Attendee_Status, Punishment) VALUES (?,?,?,?)");
+                $stmt->bind_param("ssss", $event_table_id, $invited_person, $pending, $_POST['punishment']);
+                $stmt->execute();
+            }
+        }
+        $output['success'] = true;
+    }
+
+    else{
+        array_push($output['errors'], mysqli_error($conn));
+    }
 }
 else{
     array_push($output["errors"], 'insert error');
 }
-print_r($output);
+//print_r($output);
 $stmt->close();
 
 ?>

@@ -30,19 +30,28 @@ Week 10 To Do List:
 3. Three prototypes due: 
 
     Enable Facebook log-in ✔ 
-    
-    Make Event Creation fully functional 
-    
+
     Map displaying location of input location ✔
+    
+    Make Event Creation fully functional (Modal)
+    
+    
 
 Prototype Instructions:
 
 A. Prerequisite: 
+<<<<<<< HEAD
 
    All prototypes require npm to be installed on your local machine because our project is using React. Please take following steps to set up the project environment (enter without quotation marks): 
         * npm install
         * npm install --save react-router-dom
         * npm install --save axios
+=======
+    All prototypes require npm to be installed on your local machine because our project is using React. Please take following steps to set up the project environment:
+     1. npm install
+     2. npm install --save react-router-dom
+     3. npm install --save axios
+>>>>>>> 7fc544e99ff8bc0020aad85c65df78d16ef88dc5
 
    The prototypes also require a LAMP/MAMP stack. Rename "mysql_connect.php.config" to "mysql_connect.php" and fill out your MySQL username and password credentials. 
 

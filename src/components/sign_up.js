@@ -42,16 +42,14 @@ class Sign_Up extends Component {
 
     handleAxios(){
         const {form} = this.state;
+
+        // console.log("before axios call");
+        console.log(form);
+        //http://localhost:3000/../../
         axios.post(`http://localhost:8888/form.php?operation=insertUser`, form).then((resp) => {
             console.log('this is the response from insert:', resp);
-            if (resp.data.success === false){
-                let message = "";
+            //start user's session
 
-                for (let i = 0; i < (resp.data.errors).length; i++){
-                    message += (resp.data.errors)[i] + ". ";
-                }
-                alert(message);
-            }
         })
     }
 
