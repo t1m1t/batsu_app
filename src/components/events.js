@@ -6,8 +6,8 @@ class Events extends Component {
         super(props);
 
         this.state = {
-            eventForm: {
-                creator_name:'',
+            form: {
+                name:'',
                 event_name: 'event nameu',
                 invitee: '1, 2, 3, 4',
                 time: '',
@@ -32,7 +32,7 @@ class Events extends Component {
         console.log('Called handleFormSubmit', this.state.form);
         const newState = {
             form: {
-                name: '',
+                event_name: '',
                 invitee: '',
                 time: '',
                 date: '',
@@ -54,14 +54,14 @@ class Events extends Component {
     };
 
     render() {
-        const {name, invitee, time, date, location, address, description, punishment} = this.state.form;
+        const {event_name, invitee, time, date, location, address, description, punishment} = this.state.form;
         return (
             <div className="event_modal container">
                 <h1>Event</h1>
                 <div className="modal-body">
                     <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
                         <div className="form-group row">
-                            <input placeholder="name" name="name" value={name}
+                            <input placeholder="name" name="name" value={event_name}
                                    onChange={(event) => this.handleChange(event)} maxLength={25} type="text" className="form-control"/>
                         </div>
                         <div className="form-group row">
