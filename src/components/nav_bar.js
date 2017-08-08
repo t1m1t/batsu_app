@@ -1,31 +1,28 @@
 import React, { Component } from 'react';
 import { slide as Menu } from 'react-burger-menu'
-import { BrowserRouter as Router, Route, NavLink, withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Home from './home';
 import Sign_Up from './sign_up';
 import Events from './events';
+import './app.css';
  
 
-const NavBar = props=> {
-    return(
-        <ul className="nav my-3">
-            <li className="nav-item">
-                <NavLink className="menu-item" exact to="/">Home</NavLink>
-            </li>
-            <li className="nav-item">
-                <NavLink className="menu-item" to="/profile">Profile</NavLink>
-            </li>
-            <li className="nav-item">
-                <NavLink className="menu-item" to="/events">Create Event</NavLink>
-            </li>
-            <li className="nav-item">   
-                <NavLink className="menu-item" to="/about">About</NavLink>
-            </li>
-            <li className="nav-item">  
-                <NavLink className="menu-item" to="/">Log Off</NavLink>
-            </li>
-        </ul>
-    );
+class NavBar extends Component {
+    showSettings(event){
+        event.preventDefault();
+    }
+
+    render() {
+        return(
+            <Menu className="bm-menu">
+                <a id="home" className="menu-item" href="/">Home</a>
+                <a id="profile" className="menu-item" href="/profile">Profile</a>
+                <a id="events" className="menu-item" href="/events">Create Event</a>
+                <a id="about" className="menu-item" href="/about">About</a>
+                <a id="logoff" className="menu-item" href="/">Log Off</a>
+            </Menu>
+        );
+    }
 }
 
 export default NavBar;
