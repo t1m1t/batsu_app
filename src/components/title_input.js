@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './app.css';
+import axios from 'axios';
 
 
 class LogInForm extends Component {
@@ -23,6 +24,7 @@ class LogInForm extends Component {
             }
         }
         this.setState(newState);
+        this.handleAxios();
     }
 
     handleChange(event){
@@ -32,26 +34,27 @@ class LogInForm extends Component {
         this.setState({form: {...form}});
     }
 
+    handleAxios(){
+        const {form} = this.state;
+        axios.post(`http://localhost:8888/form.php?operation=insertUser`, form).then((resp) => {
+            console.log('this is the response: ', resp);
+        })
+    }
+    
     render(){
         const {email, password} = this.state.form;
         return(
             <div className="login_page">
-                <form onSubmit={ (event) => {this.handleFormSubmit(event)} }>
+                <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
                     <div>
                         <h6 className="login-subtitles">E-mail</h6>
-                        <input name="email" value={email} onChange={ (event) => this.handleChange(event) } />
+                        <input name="email" type="email" value={email} onChange={ (event) => this.handleChange(event) } />
                     </div>
                     <div>
                         <h6 className="login-subtitles">Password</h6>
-                        <input name="password" value={password} onChange={ (event) => this.handleChange(event) } />
+                        <input name="password" type="password" value={password} onChange={ (event) => this.handleChange(event) } />
                     </div>
-                    <button className="login-button">Log In</button>
-                    {/*/!*<div className="signup-top-div">*!/*/}
-                        {/*<button className="signup-button">*/}
-                            {/*<Link to="/sign_up">Sign Up</Link>*/}
-                        {/*</button>*/}
-                        {/*<Route path="/sign_up" component={Sign_Up} />*/}
-                    {/*/!*</div>*!/*/}
+                    <button type="submit" className="login-button">Log In</button>
                 </form>
             </div>
         )

@@ -13,7 +13,7 @@ const customStyles = {
     }
 };
 
-class Maps extends React.Component {
+class Map extends React.Component {
     constructor(props){
         super(props);
 
@@ -32,15 +32,11 @@ class Maps extends React.Component {
         this.setState({modalIsOpen: false});
     }
 
-
     render(){
         return(
             <div>
-                <button>Home</button>
-                <button>Profile</button>
-                <button>Logout</button>
-                <button onClick={this.openModal}>Event</button>
-                <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} style={customStyles} contentLabel="Example Modal">
+                <button className="btn btn-default btn-circle" onClick={this.openModal}>+</button>
+                <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} style={customStyles} contentLabel="Event Modal">
                     <Event onCancel={(e)=>this.closeModal(e)} />
                 </Modal>
             </div>
@@ -48,4 +44,4 @@ class Maps extends React.Component {
     }
 }
 
-export default Maps;
+export default Map;
