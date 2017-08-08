@@ -30,29 +30,37 @@
 session_id('mq5ahmjq95jr5nsjbb4fhvcv52');
 session_start();
 if(isset($_SESSION['user'])){
-    echo $_SESSION['user'];
+//    echo $_SESSION['user'];
 //    echo "haha hehe hoho";
 };
 //echo session_id();
 
 $output['data'] = [];
 
+$date = $_POST['date'];
+$time = $_POST['time'];
+$attending = 'Attending';
+$pending = 'Pending';
+
+$combinedDT = date('Y-m-d H:i:s', strtotime("$date $time"));
+
+
 $stmt = $conn->prepare("INSERT INTO events (Creator_ID, Event_Name, Event_DateTime, Event_Location, Event_Address, Event_Description) VALUES (?,?,?,?,?,?)");
-$stmt->bind_param("ssssss", $_SESSION['user'], $_POST["event_name"], $_POST["event_date"] + $_POST["event_time"], $_POST["event_location"], $_POST["event_address"], $_POST["event_description"]);
+$stmt->bind_param("ssssss", $_SESSION['user'], $_POST["name"], $combinedDT, $_POST["location"], $_POST["address"], $_POST["description"]);
 $stmt->execute();
 
 $event_table_id = mysqli_stmt_insert_id($stmt);
 
 $stmt = $conn->prepare("INSERT INTO event_attendees (Event_ID, Attendee_ID, Attendee_Status, Punishment) VALUES (?,?,?,?)");
-$stmt->bind_param("ssss", $event_table_id, $_SESSION['user'], 'Attending', $_POST['punishment']);
+$stmt->bind_param("ssss", $event_table_id, $_SESSION['user'], $attending, $_POST['punishment']);
 $stmt->execute();
 
 //parse invitee list
-if(issset($_POST['invitee'])){
+if(isset($_POST['invitee'])){
     $event_invitee_list = explode(", ", $_POST['invitee']);
     foreach ($event_invitee_list as $invited_person){
         $stmt = $conn->prepare("INSERT INTO event_attendees (Event_ID, Attendee_ID, Attendee_Status, Punishment) VALUES (?,?,?,?)");
-        $stmt->bind_param("ssss", $event_table_id, $event_invitee_list, 'Pending', $_POST['punishment']);
+        $stmt->bind_param("ssss", $event_table_id, $invited_person, $pending, $_POST['punishment']);
         $stmt->execute();
     }
 }
