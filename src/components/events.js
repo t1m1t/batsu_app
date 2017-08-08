@@ -86,11 +86,11 @@ class Events extends Component {
                                    className="form-control"/>
                         </div>
                         <div className="form-group row">
-                            <label>Punishment</label>
                             <select className="form-control" name="punishment">
-                                <option value="profile_doodle">punishment1</option>
-                                <option value="facebook_post">punishment2</option>
-                                <option value="No Punishment">punishment3</option>
+                                <option value=""selected disabled>please select</option>
+                                <option value="profile_doodle">Doodle on Profile Pic</option>
+                                <option value="facebook_post">Facebook Post</option>
+                                <option value="No Punishment">No Punishment</option>
                             </select>
                         </div>
                     </form>

@@ -7,6 +7,7 @@ import Home from './home';
 import Sign_Up from './sign_up';
 import Events from './events';
 import Profile from './profile';
+
 const App = () => (
     <Router>
         <div className="topbar-menu">
