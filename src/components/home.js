@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import LogInForm from './title_input';
 // import DropDownForm from './dropdown_title';
-import Event from './events';
-// import Modal from 'react-modal';
 import './app.css';
 import Sign_Up from './sign_up.js';
 
