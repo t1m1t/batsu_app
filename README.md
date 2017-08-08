@@ -39,7 +39,10 @@ Prototype Instructions:
 
 A. Prerequisite: 
 
-   All prototypes require npm to be installed on your local machine because our project is using React. Please take following steps to set up the project environment: 
+   All prototypes require npm to be installed on your local machine because our project is using React. Please take following steps to set up the project environment (enter without quotation marks): 
+        * npm install
+        * npm install --save react-router-dom
+        * npm install --save axios
 
    The prototypes also require a LAMP/MAMP stack. Rename "mysql_connect.php.config" to "mysql_connect.php" and fill out your MySQL username and password credentials. 
 

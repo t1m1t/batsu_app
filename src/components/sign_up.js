@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import {reduxForm} from 'redux-form';
 import axios from 'axios';
 import './app.css';
 

@@ -1,35 +1,31 @@
 import React, { Component } from 'react';
-import { bubble as Menu } from 'react-burger-menu'
+// import { bubble as Menu } from 'react-burger-menu'
+import { BrowserRouter as Router, Route, NavLink, withRouter } from 'react-router-dom';
+import Home from './home';
+import Sign_Up from './sign_up';
+import Events from './events';
  
-class BurgerMenu extends Component {
-  
- 
-render () {
-    return (
-    <Menu>
-        <NavLink className="menu-item" to="/">Home</NavLink>
-        <NavLink className="menu-item" to="/about">Profile</NavLink>
-        <NavLink className="menu-item" to="/contact">Map</NavLink>
-        <NavLink className="menu-item" to="/contact">About</NavLink>
-        <NavLink onClick={ this.showSettings } className="menu-item" to="">About</NavLink>
-    </Menu>
+
+const NavBar = props=> {
+    return(
+        <ul className="nav my-3">
+            <li className="nav-item">
+                <NavLink className="menu-item" exact to="/">Home</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="menu-item" to="/profile">Profile</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="menu-item" to="/events">Create Event</NavLink>
+            </li>
+            <li className="nav-item">   
+                <NavLink className="menu-item" to="/about">About</NavLink>
+            </li>
+            <li className="nav-item">  
+                <NavLink className="menu-item" to="/">Log Off</NavLink>
+            </li>
+        </ul>
     );
-  }
 }
 
-
-// export default props => (
-//     <div className="nav_container">
-
-//     <ul className="nav my-3">
-//         <li className="nav-item">
-//             <NavLink to="/" exact className="nav-link">Home</NavLink>
-//         </li>
-//          <li className="nav-item">
-//             <NavLink to="/" className="nav-link">Profile</NavLink>
-//         </li>
-//         <li className="nav-item">
-//             <NavLink to="/log_off" className="nav-link">Log-off</NavLink>
-//         </li>
-//     </ul> 
-// )
+export default NavBar;
