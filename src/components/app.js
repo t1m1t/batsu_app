@@ -8,7 +8,6 @@ import Sign_Up from './sign_up';
 import Events from './events';
 import Profile from './profile';
 
-
 const App = () => (
     <Router>
         <div className="topbar-menu">
@@ -17,8 +16,8 @@ const App = () => (
             <Link className="topbar-links" to="/events">Events</Link>
             <Link className="topbar-links" to="/profile">Profile</Link>
             <Route exact path="/" component={Home} />
-            <Route exact path="/sign_up" component={Sign_Up} />
-            <Route exact path="/events" component={Events}/>
+            <Route path="/sign_up" component={Sign_Up} />
+            <Route path="/events" component={Events}/>
             <Route path="/profile" component={Profile}/>
         </div>
     </Router >

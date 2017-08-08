@@ -8,13 +8,14 @@ class Events extends Component {
         this.state = {
             eventForm: {
                 creator_name:'',
-                event_name: '',
-                invitee: '',
+                event_name: 'event nameu',
+                invitee: '1, 2, 3, 4',
                 time: '',
                 date: '',
-                location: '',
-                address: '',
-                description: '',
+                location: 'test location',
+                address: 'test address',
+                description: 'descriptionnnnn',
+                punishment: 'profile_doodle'
             }
         }
     }
@@ -41,6 +42,7 @@ class Events extends Component {
                 location: '',
                 address: '',
                 description: '',
+                punishment: ''
             }
         });
         this.handleAxiosEvent();
@@ -60,7 +62,7 @@ class Events extends Component {
                 <div className="modal-body">
                     <form>
                         <div className="form-group row">
-                            <input placeholder="name" name="name" value={eventForm.name}
+                            <input placeholder="name" name="event_name" value={eventForm.event_name}
                                    onChange={(e) => this.handleChange(e)} maxLength={25} type="text"
                                    className="form-control"/>
                         </div>
@@ -77,7 +79,11 @@ class Events extends Component {
                                    onChange={(e) => this.handleChange(e)} type="date" className="form-control"/>
                         </div>
                         <div className="form-group row">
-                            <input placeholder="Search for a place or address" name="location" value={eventForm.location}
+                            <input placeholder="Search for a place" name="location" value={eventForm.location}
+                                   onChange={(e) => this.handleChange(e)} type="text" className="form-control"/>
+                        </div>
+                        <div className="form-group row">
+                            <input placeholder="Input address" name="address" value={eventForm.address}
                                    onChange={(e) => this.handleChange(e)} type="text" className="form-control"/>
                         </div>
                         <div className="form-group row">
@@ -86,11 +92,10 @@ class Events extends Component {
                                    className="form-control"/>
                         </div>
                         <div className="form-group row">
-                            <select className="form-control">
-                                <option value=""selected disabled>please select</option>
-                                <option value="1">punishment1</option>
-                                <option value="2">punishment2</option>
-                                <option value="3">punishment3</option>
+                            <select className="form-control" name="punishment" value={eventForm.punishment} onChange={(e) => this.handleChange(e)}>
+                                <option value="profile_doodle">Doodle on Profile Pic</option>
+                                <option value="facebook_post">Facebook Post</option>
+                                <option value="No Punishment">No Punishment</option>
                             </select>
                         </div>
                     </form>

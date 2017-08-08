@@ -1,5 +1,6 @@
 <?php
-
+session_id('mq5ahmjq95jr5nsjbb4fhvcv52');
+session_start();
 require("mysql_connect.php");
 
 $output = [
@@ -47,6 +48,10 @@ if(count($output['errors']) === 0 ){
     } else {
         $output["errors"] = 'insert error';
     }
+
+    $_SESSION['user']=mysqli_stmt_insert_id($stmt);
+    ///$id = session_id();
+
     $stmt->close();
 }
 ?>

@@ -43,11 +43,12 @@ class Sign_Up extends Component {
         const {form} = this.state;
 
         // console.log("before axios call");
-        // console.log(form);
+        console.log(form);
         //http://localhost:3000/../../
         axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertUser`, form).then((resp) => {
             console.log('this is the response from insert:', resp);
-            //
+            //start user's session
+
         })
     }
 
