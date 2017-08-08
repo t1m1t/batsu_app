@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {BrowserRouter as Router,
     Route,
     Link
@@ -8,18 +8,14 @@ import Sign_Up from './sign_up';
 import Events from './events';
 import Profile from './profile';
 
+
 const App = () => (
-    <Router>
-        <div className="topbar-menu">
-            <Link className="topbar-links" to="/">Home</Link>
-            <Link className="topbar-links" to="/sign_up">Sign Up</Link>
-            <Link className="topbar-links" to="/events">Events</Link>
-            <Link className="topbar-links" to="/profile">Profile</Link>
-            <Route exact path="/" component={Home} />
-            <Route path="/sign_up" component={Sign_Up} />
-            <Route path="/events" component={Events}/>
-            <Route path="/profile" component={Profile}/>
-        </div>
-    </Router >
+    <div className="topbar-menu">
+        <Route exact path="/" component={Home} />
+        <Route path="/sign_up" component={Sign_Up} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/events" component={Events}/>
+    </div>
 )
+
 export default App;
