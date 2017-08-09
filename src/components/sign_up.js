@@ -39,17 +39,20 @@ class Sign_Up extends Component {
         this.setState(newState);
         this.handleAxios();
     }
-
+    const 
     handleAxios(){
         const {form} = this.state;
 
         // console.log("before axios call");
         console.log(form);
         //http://localhost:3000/../../
-        axios.post(`http://localhost:8888/form.php?operation=insertUser`, form).then((resp) => {
+        axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertUser`, form).then((resp) => {
             console.log('this is the response from insert:', resp);
             //start user's session
-
+            //define session id
+            document.cookie = resp.data.sesh_id;
+            //this.props.callbackFromParent(resp.data.sesh_id);
+            // x = resp.data.sesh_id;
         })
     }
 

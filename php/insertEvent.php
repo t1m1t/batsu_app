@@ -27,7 +27,9 @@
 //    exit("must be older than 10 years old");
 //}
 //require_once("insertAccount.php");
-session_id('mq5ahmjq95jr5nsjbb4fhvcv52');
+
+session_id($_POST['session_id']);
+//session_id('mq5ahmjq95jr5nsjbb4fhvcv52');
 session_start();
 if(isset($_SESSION['user'])){
 //    echo $_SESSION['user'];
