@@ -42,17 +42,14 @@ class Sign_Up extends Component {
     const 
     handleAxios(){
         const {form} = this.state;
-
-        // console.log("before axios call");
         console.log(form);
-        //http://localhost:3000/../../
         axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertUser`, form).then((resp) => {
             console.log('this is the response from insert:', resp);
-            //start user's session
-            //define session id
             document.cookie = resp.data.sesh_id;
-            //this.props.callbackFromParent(resp.data.sesh_id);
-            // x = resp.data.sesh_id;
+// =======
+//         axios.post(`http://localhost:8888/form.php?operation=insertUser`, form).then((resp) => {
+//             console.log('this is the response from insert:', resp);
+// >>>>>>> bd130c47530652b17e3b8bc48ac4aa7a0bdfc04c
         })
     }
 
@@ -67,7 +64,7 @@ class Sign_Up extends Component {
         const {fname, lname, phone, email, password, password_conf, dob} = this.state.form;
         return (
             <div className="signup-page">
-                <h1 className="batsu-title-signup">_Batsu</h1>
+                <h1 className="batsu-title-signup">_Sign-Up</h1>
                 <form onSubmit={(event) => {this.handleFormSubmit(event)}} >
                     <div>
                         <h6 className="signin-subtitles">First Name</h6>

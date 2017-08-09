@@ -7,7 +7,7 @@ import NavBar from './components/nav_bar';
 
 ReactDOM.render(
     <div>
-        <NavBar />
+        <NavBar /> 
         <Router>
             <App />
         </Router>
