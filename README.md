@@ -45,6 +45,8 @@ A. Prerequisite:
    1. npm install
    2. npm install --save react-router-dom
    3. npm install --save axios
+   4. npm install --save react-modal
+   5. npm install --save react-burger-menu
 
 
    The prototypes also require a LAMP/MAMP stack. Rename "mysql_connect.php.config" to "mysql_connect.php" and fill out your MySQL username and password credentials. 
