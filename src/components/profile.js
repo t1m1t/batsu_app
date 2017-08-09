@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 const profileStyle = {
+    marginTop: "4em",
     height: "18em"
 };
 const imgStyle ={

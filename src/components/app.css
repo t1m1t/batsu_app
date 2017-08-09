@@ -270,8 +270,27 @@ input, select{
   background: rgba(0, 0, 0, 0.3);
 }
 
+/************friends list(brian)************/
+.friends_picture_container {
+    overflow: auto;
+    white-space: nowrap;
 
+}
+.friends_picture_container img {
+    height:100px;
+    display: inline-block;
+    text-align: center;
+    padding: 14px;
 
+}
+.msg_container {
+    border:1px solid black;
+    display:inline-block;
+}
+.msg_container > p {
+    border-bottom: 1px solid black;
+}
+/************************************/
 /*@media screen and (min-width: 700px) {*/
     /*.batsu-app{*/
         /*font-family: Arial;*/

@@ -47,6 +47,7 @@ A. Prerequisite:
    3. npm install --save axios
    4. npm install --save react-modal
    5. npm install --save react-burger-menu
+   6. npm install --save react-image-slider
 
 
    The prototypes also require a LAMP/MAMP stack. Rename "mysql_connect.php.config" to "mysql_connect.php" and fill out your MySQL username and password credentials. 
