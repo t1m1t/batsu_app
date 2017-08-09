@@ -4,7 +4,7 @@ import Home from './home';
 import Sign_Up from './sign_up';
 import Events from './events';
 import './app.css';
- 
+
 
 class NavBar extends Component {
     showSettings(event){

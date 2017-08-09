@@ -57,7 +57,7 @@ class Events extends Component {
     };
 
     render() {
-        const {creator_name, event_name, invitee, time, date, location, address, description, punishment} = this.state.form;
+        const {name, event_name, invitee, time, date, location, address, description, punishment} = this.state.form;
         return (
             <div>
                 {/* <NavBar />  */}
@@ -95,10 +95,10 @@ class Events extends Component {
                             </div>
                             <div className="form-group row">
                                 <input placeholder="description" name="description" value={description}
-                                   maxLength={140} onChange={(e) => this.handleChange(e)} type="text" className="form-control"/>
+                                   maxLength={140} onChange={(event) => this.handleChange(event)} type="text" className="form-control"/>
                             </div>
                             <div className="form-group row">
-                                <select className="form-control" name="punishment" value={punishment} onChange={(e) => this.handleChange(e)}>
+                                <select className="form-control" name="punishment" value={punishment} onChange={(event) => this.handleChange(event)}>
                                     <option value="profile_doodle">Doodle on Profile Pic</option>
                                     <option value="facebook_post">Facebook Post</option>
                                     <option value="No Punishment">No Punishment</option>
