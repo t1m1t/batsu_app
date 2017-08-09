@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './app.css'
+// import NavBar from './nav_bar';
 
 class Events extends Component {
     constructor(props){
@@ -32,6 +34,7 @@ class Events extends Component {
         console.log('Called handleFormSubmit', this.state.form);
         const newState = {
             form: {
+                name: '',
                 event_name: '',
                 invitee: '',
                 time: '',
@@ -54,49 +57,57 @@ class Events extends Component {
     };
 
     render() {
-        const {event_name, invitee, time, date, location, address, description, punishment} = this.state.form;
+        const {name, event_name, invitee, time, date, location, address, description, punishment} = this.state.form;
         return (
-            <div className="event_modal container">
-                <h1>Event</h1>
-                <div className="modal-body">
-                    <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
-                        <div className="form-group row">
-                            <input placeholder="name" name="name" value={event_name}
+            <div>
+                {/* <NavBar />  */}
+                <div className="event_modal container">
+                    <h1 className="event_title">Event</h1>
+                    <div className="modal-body">
+                        <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
+                            <div className="form-group row">
+                                <input placeholder="name" name="name" value={name}
                                    onChange={(event) => this.handleChange(event)} maxLength={25} type="text" className="form-control"/>
-                        </div>
-                        <div className="form-group row">
-                            <input placeholder="invite people" name="invitee" value={invitee}
+                            </div>
+                            <div className="form-group row">
+                                <input placeholder="event_name" name="event_name" value={event_name}
+                                   onChange={(event) => this.handleChange(event)} maxLength={25} type="text" className="form-control"/>
+                            </div>
+                            <div className="form-group row">
+                                <input placeholder="invite people" name="invitee" value={invitee}
                                    onChange={(event) => this.handleChange(event)} type="text" className="form-control"/>
-                        </div>
-                        <div className="form-group row">
-                            <input name="time" value={time} onChange={(event) => this.handleChange(event)}
+                            </div>
+                            <div className="form-group row">
+                                <input name="time" value={time} onChange={(event) => this.handleChange(event)}
                                    type="time" className="form-control"/>
-                        </div>
-                        <div className="form-group row">
-                            <input placeholder="date" name="date" value={date}
+                            </div>
+                            <div className="form-group row">
+                                <input placeholder="date" name="date" value={date}
                                    onChange={(event) => this.handleChange(event)} type="date" className="form-control"/>
-                        </div>
-                        <div className="form-group row">
-                            <input placeholder="location" name="location" value={location}
+                            </div>
+                            <div className="form-group row">
+                                <input placeholder="location" name="location" value={location}
                                    onChange={(event) => this.handleChange(event)} type="text" className="form-control"/>
-                        </div>
-                        <div className="form-group row">
-                            <input placeholder="address" name="address" value={address}
+                            </div>
+                            <div className="form-group row">
+                                <input placeholder="address" name="address" value={address}
                                    onChange={(event) => this.handleChange(event)} type="text" className="form-control"/>
-                        </div>
-                        <div className="form-group row">
-                            <input placeholder="description" name="description" value={description} maxLength={140} onChange={(e) => this.handleChange(e)} type="text" className="form-control"/>
-                        </div>
-                        <div className="form-group row">
-                            <select className="form-control" name="punishment" value={punishment} onChange={(e) => this.handleChange(e)}>
-                                <option value="profile_doodle">Doodle on Profile Pic</option>
-                                <option value="facebook_post">Facebook Post</option>
-                                <option value="No Punishment">No Punishment</option>
-                            </select>
-                        </div>
-                        <button type="submit" className="btn btn-outline-success">Confirm</button>
-                        <button type="button" className="btn btn-outline-danger mr-2">Cancel</button>
-                    </form>
+                            </div>
+                            <div className="form-group row">
+                                <input placeholder="description" name="description" value={description}
+                                   maxLength={140} onChange={(event) => this.handleChange(event)} type="text" className="form-control"/>
+                            </div>
+                            <div className="form-group row">
+                                <select className="form-control" name="punishment" value={punishment} onChange={(event) => this.handleChange(event)}>
+                                    <option value="profile_doodle">Doodle on Profile Pic</option>
+                                    <option value="facebook_post">Facebook Post</option>
+                                    <option value="No Punishment">No Punishment</option>
+                                </select>
+                            </div>
+                            <button type="submit" className="btn btn-outline-success">Confirm</button>
+                            <button type="button" className="btn btn-outline-danger mr-2">Cancel</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         )
