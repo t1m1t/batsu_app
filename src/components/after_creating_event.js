@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-
-const msgStyle = {
-    marginTop: "4em",
-}
+// import List from './list_of_events';
 
 class CreatedEvent extends Component{
+    constructor(props){
+        super(props);
 
+        this.state = {
+            list:'nothing'
+        }
+    }
     handleCheckIn(e){
         e.preventDefault();
     }
@@ -13,15 +16,11 @@ class CreatedEvent extends Component{
         return (
             <form className="after_creating_event" onSubmit={(e) => this.handleCheckIn(e)}>
                 <h1>Gym time</h1>
-                <h3>Time Left</h3>
-                <div className="msg_container" style={msgStyle}>
-                    <p>I'm going to be late</p>
-                    <p>punishment will be upon you</p>
-                    <p>no I won't take the punishment</p>
-                    <p>fine we are not friends anymore</p>
-                </div>
-                <div>
-                    </div>
+                <h3>10-20-2014</h3>
+                <h3>12:32:22</h3>
+                <h5>1234 irvine center blvd, irvine, CA 28932</h5>
+                <div className="line_space"></div>
+                <div>list of invitee</div>
                 <div className="friends_picture_container">
                     <img src="http://www.tippanii.com/images/noprofile.png" alt=""/>
                     <img src="http://www.tippanii.com/images/noprofile.png" alt=""/>
@@ -36,10 +35,9 @@ class CreatedEvent extends Component{
                     <img src="http://www.tippanii.com/images/noprofile.png" alt=""/>
                     <img src="http://www.tippanii.com/images/noprofile.png" alt=""/>
                 </div>
-                <div className="punishment_div">
-                    Punishment
-                    <span>: pushups 100 times</span>
-                </div>
+                <div className="line_space"></div>
+                <div className="punishment_div">Punishment</div>
+                <div>pushups 100 times</div>
                 <button className="btn">Check-In</button>
             </form>
         )

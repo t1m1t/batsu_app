@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
 
 class Events extends Component {
@@ -13,11 +14,12 @@ class Events extends Component {
                 time: '',
                 date: '',
                 location: 'test location',
-                address: 'test address',
+                address: '',
                 description: 'descriptionnnnn',
                 punishment: 'profile_doodle'
             }
-        }
+        };
+        this.onChange = (address) => this.setState({address})
     }
 
     handleChange(event){
@@ -42,6 +44,10 @@ class Events extends Component {
                 punishment: ''
             }
         };
+        geocodeByAddress(this.state.address)
+            .then(results => getLatLng(results[0]))
+            .then(latLng => console.log('Success', latLng))
+            .catch(error => console.error('Error', error));
         this.setState(newState);
         this.handleAxios();
     };
@@ -54,7 +60,11 @@ class Events extends Component {
     };
 
     render() {
-        const {event_name, invitee, time, date, location, address, description, punishment} = this.state.form;
+        const inputProps = {
+            value: this.state.address,
+            onChange:this.onChange
+        };
+        const {event_name, invitee, time, date, location, description, punishment} = this.state.form;
         return (
             <div className="event_modal container">
                 <h1>Event</h1>
@@ -66,7 +76,7 @@ class Events extends Component {
                                    onChange={(event) => this.handleChange(event)} maxLength={25} type="text" className="form-control"/>
                         </div>
                         <div className="form-group row">
-                            <label>Invite People</label>
+                            <label>Invite Poeple</label>
                             <input placeholder="invite people" name="invitee" value={invitee}
                                    onChange={(event) => this.handleChange(event)} type="text" className="form-control"/>
                         </div>
@@ -85,17 +95,13 @@ class Events extends Component {
                             <input placeholder="location" name="location" value={location}
                                    onChange={(event) => this.handleChange(event)} type="text" className="form-control"/>
                         </div>
+                        <PlacesAutocomplete inputProps={inputProps} />
                         <div className="form-group row">
-                            <label>Address</label>
-                            <input placeholder="address" name="address" value={address}
-                                   onChange={(event) => this.handleChange(event)} type="text" className="form-control"/>
-                        </div>
-                        <div className="form-group row">
-                            <label>Description</label>
+                            <label>description</label>
                             <input placeholder="description" name="description" value={description} maxLength={140} onChange={(e) => this.handleChange(e)} type="text" className="form-control"/>
                         </div>
                         <div className="form-group row">
-                            <label>Punishments</label>
+                            <label>Punishment</label>
                             <select className="form-control" name="punishment" value={punishment} onChange={(e) => this.handleChange(e)}>
                                 <option value="profile_doodle">Doodle on Profile Pic</option>
                                 <option value="facebook_post">Facebook Post</option>
