@@ -57,14 +57,18 @@ class Events extends Component {
         const {form} = this.state;
         axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent`, form).then((resp) => {
             console.log('this is the response:', resp);
-
+            if(resp.data.success === true){
+                //to go home page
+            }
+            else{
+                //stay at log in page
+            }
         });
     };
 
     render() {
         const {name, event_name, invitee, time, date, location, address, description, punishment} = this.state.form;
         return (
-                {/* <NavBar />  */}
                 <div className="event_modal container">
                     <h1 className="event_title">Event</h1>
                     <div className="modal-body">
@@ -113,7 +117,6 @@ class Events extends Component {
                         </form>
                     </div>
                 </div>
-            </div>
         )
     }
 }

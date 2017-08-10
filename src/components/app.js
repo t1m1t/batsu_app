@@ -24,12 +24,6 @@ class App extends React.Component{
                 <Route path="/sign_up" component={Sign_Up} />
                 <Route path="/profile" component={Profile} />
                 <Route path="/map" component={Map} />
-                {/*<Route path="/sign_up" component={Sign_Up} callbackFromParent={this.myCallback}/>*/}
-                {/*<Route path="/profile" render={() => {*/}
-                    {/*<Profile userData={this.state.listDataFromChild}/>*/}
-                {/*}  />*/}
-
-                    {/*<Route path="/map" component={Map} listNameFromParent={this.state.listDataFromChild}/>*/}
             </div>
 
         );
