@@ -17,7 +17,8 @@ class Events extends Component {
                 address: '',
                 location:'',
                 description: 'descriptionnnnn',
-                punishment: 'profile_doodle'
+                punishment: 'profile_doodle',
+                session_id: document.cookie
             }
         };
 
@@ -67,14 +68,24 @@ class Events extends Component {
                 date: '',
                 address: '',
                 description: '',
-                punishment: ''
+                punishment: '',
+                session_id: document.cookie
             }
         };
         this.setState(newState);
 
+// <<<<<<< bk_branch
         console.log('Data to send:', sendData);
         axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent`, sendData).then((resp) => {
+// =======
+//     handleAxios(){
+//         //use session id
+//         var x = document.cookie;
+//         const {form} = this.state;
+//         axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent`, form).then((resp) => {
+// >>>>>>> master
             console.log('this is the response:', resp);
+
         });
     };
 
@@ -85,19 +96,37 @@ class Events extends Component {
         };
         const {event_name, invitee, time, date, description, punishment} = this.state.form;
         return (
-            <div className="event_modal container">
-                <h1>Event</h1>
-                <div className="modal-body">
-                    <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
-                        <div className="form-group row">
-                            <label>Event Name</label>
-                            <input placeholder="name" name="name" value={event_name}
-                                   onChange={(event) => this.handleChange(event)} maxLength={25} type="text"
-                                   className="form-control"/>
-                        </div>
-                        <div className="form-group row">
-                            <label>Invite Poeple</label>
-                            <input placeholder="invite people" name="invitee" value={invitee}
+// <<<<<<< bk_branch
+//             <div className="event_modal container">
+//                 <h1>Event</h1>
+//                 <div className="modal-body">
+//                     <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
+//                         <div className="form-group row">
+//                             <label>Event Name</label>
+//                             <input placeholder="name" name="name" value={event_name}
+//                                    onChange={(event) => this.handleChange(event)} maxLength={25} type="text"
+//                                    className="form-control"/>
+//                         </div>
+//                         <div className="form-group row">
+//                             <label>Invite Poeple</label>
+//                             <input placeholder="invite people" name="invitee" value={invitee}
+// =======
+//                 {/* <NavBar />  */}
+                <div className="event_modal container">
+                    <h1 className="event_title">Event</h1>
+                    <div className="modal-body">
+                        <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
+                            <div className="form-group row">
+                                <input placeholder="name" name="event_name" value={event_name}
+                                   onChange={(event) => this.handleChange(event)} maxLength={25} type="text" className="form-control"/>
+                            </div>
+//                             <div className="form-group row">
+//                                 <input placeholder="event_name" name="event_name" value={event_name}
+//                                    onChange={(event) => this.handleChange(event)} maxLength={25} type="text" className="form-control"/>
+//                             </div>
+                            <div className="form-group row">
+                                <input placeholder="invite people" name="invitee" value={invitee}
+// >>>>>>> master
                                    onChange={(event) => this.handleChange(event)} type="text" className="form-control"/>
                         </div>
                         <div className="form-group row">
