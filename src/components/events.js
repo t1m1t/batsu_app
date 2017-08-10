@@ -17,8 +17,7 @@ class Events extends Component {
                 address: '',
                 location:'',
                 description: 'descriptionnnnn',
-                punishment: 'profile_doodle',
-                session_id: document.cookie
+                punishment: 'profile_doodle'
             }
         };
 
@@ -68,29 +67,14 @@ class Events extends Component {
                 date: '',
                 address: '',
                 description: '',
-                punishment: '',
-                session_id: document.cookie
+                punishment: ''
             }
         };
         this.setState(newState);
 
-// <<<<<<< bk_branch
         console.log('Data to send:', sendData);
         axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent`, sendData).then((resp) => {
-// =======
-//     handleAxios(){
-//         //use session id
-//         var x = document.cookie;
-//         const {form} = this.state;
-//         axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent`, form).then((resp) => {
-// >>>>>>> master
             console.log('this is the response:', resp);
-            if(resp.data.success === true){
-                //to go home page
-            }
-            else{
-                //stay at log in page
-            }
         });
     };
 
@@ -101,20 +85,19 @@ class Events extends Component {
         };
         const {event_name, invitee, time, date, description, punishment} = this.state.form;
         return (
-<<<<<<< HEAD
-=======
-                
->>>>>>> ee4e7f45ec96669e2523bb28285d6256bcfe6ced
-                <div className="event_modal container">
-                    <h1 className="event_title">Event</h1>
-                    <div className="modal-body">
-                        <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
-                            <div className="form-group row">
-                                <input placeholder="name" name="name" value={name}
-                                   onChange={(event) => this.handleChange(event)} maxLength={25} type="text" className="form-control"/>
-                            </div>
-                            <div className="form-group row">
-                                <input placeholder="invite people" name="invitee" value={invitee}
+            <div className="event_modal container">
+                <h1>Event</h1>
+                <div className="modal-body">
+                    <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
+                        <div className="form-group row">
+                            <label>Event Name</label>
+                            <input placeholder="name" name="name" value={event_name}
+                                   onChange={(event) => this.handleChange(event)} maxLength={25} type="text"
+                                   className="form-control"/>
+                        </div>
+                        <div className="form-group row">
+                            <label>Invite Poeple</label>
+                            <input placeholder="invite people" name="invitee" value={invitee}
                                    onChange={(event) => this.handleChange(event)} type="text" className="form-control"/>
                         </div>
                         <div className="form-group row">
@@ -150,13 +133,9 @@ class Events extends Component {
                         <button type="button" className="btn btn-outline-danger mr-2" onClick={this.props.onCancel}>
                             Cancel
                         </button>
-                        </form>
-                    </div>
+                    </form>
                 </div>
-<<<<<<< HEAD
-=======
-           
->>>>>>> ee4e7f45ec96669e2523bb28285d6256bcfe6ced
+            </div>
         )
     }
 }

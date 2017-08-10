@@ -12,8 +12,8 @@ class Profile extends Component {
                         <img className="card-img-top" src="http://www.tippanii.com/images/noprofile.png"/>
                         <form enctype="multipart/form-data">
                             Select image to upload:
-                            <input type="file" name="fileToUpload" id="fileToUpload" />
-                            <input type="submit" value="Upload File" name="submit"></input>
+                            <input type="file" id="file" />
+                            <input type="submit" value="Upload"/>
                         </form>
                         <div className="card-block">
                             <ul className="list-group list-group-flush container">
