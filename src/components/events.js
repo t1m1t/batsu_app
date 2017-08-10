@@ -85,7 +85,12 @@ class Events extends Component {
 //         axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent`, form).then((resp) => {
 // >>>>>>> master
             console.log('this is the response:', resp);
-
+            if(resp.data.success === true){
+                //to go home page
+            }
+            else{
+                //stay at log in page
+            }
         });
     };
 
@@ -96,22 +101,6 @@ class Events extends Component {
         };
         const {event_name, invitee, time, date, description, punishment} = this.state.form;
         return (
-// <<<<<<< bk_branch
-//             <div className="event_modal container">
-//                 <h1>Event</h1>
-//                 <div className="modal-body">
-//                     <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
-//                         <div className="form-group row">
-//                             <label>Event Name</label>
-//                             <input placeholder="name" name="name" value={event_name}
-//                                    onChange={(event) => this.handleChange(event)} maxLength={25} type="text"
-//                                    className="form-control"/>
-//                         </div>
-//                         <div className="form-group row">
-//                             <label>Invite Poeple</label>
-//                             <input placeholder="invite people" name="invitee" value={invitee}
-// =======
-//                 {/* <NavBar />  */}
                 <div className="event_modal container">
                     <h1 className="event_title">Event</h1>
                     <div className="modal-body">
@@ -120,13 +109,8 @@ class Events extends Component {
                                 <input placeholder="name" name="event_name" value={event_name}
                                    onChange={(event) => this.handleChange(event)} maxLength={25} type="text" className="form-control"/>
                             </div>
-//                             <div className="form-group row">
-//                                 <input placeholder="event_name" name="event_name" value={event_name}
-//                                    onChange={(event) => this.handleChange(event)} maxLength={25} type="text" className="form-control"/>
-//                             </div>
                             <div className="form-group row">
                                 <input placeholder="invite people" name="invitee" value={invitee}
-// >>>>>>> master
                                    onChange={(event) => this.handleChange(event)} type="text" className="form-control"/>
                         </div>
                         <div className="form-group row">
@@ -162,9 +146,9 @@ class Events extends Component {
                         <button type="button" className="btn btn-outline-danger mr-2" onClick={this.props.onCancel}>
                             Cancel
                         </button>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
         )
     }
 }
