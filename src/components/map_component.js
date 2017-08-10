@@ -51,9 +51,6 @@ class Maps extends Component {
                       strokeWeight: 1,
                       }}
               />
-
-              }
-              }
           </GoogleMap>
 
       )
