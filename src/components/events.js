@@ -64,13 +64,13 @@ class Events extends Component {
     render() {
         const {name, event_name, invitee, time, date, location, address, description, punishment} = this.state.form;
         return (
-                {/* <NavBar />  */}
+                
                 <div className="event_modal container">
                     <h1 className="event_title">Event</h1>
                     <div className="modal-body">
                         <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
                             <div className="form-group row">
-                                <input placeholder="name" name="event_name" value={event_name}
+                                <input placeholder="name" name="name" value={name}
                                    onChange={(event) => this.handleChange(event)} maxLength={25} type="text" className="form-control"/>
                             </div>
                             <div className="form-group row">
@@ -113,7 +113,7 @@ class Events extends Component {
                         </form>
                     </div>
                 </div>
-            </div>
+           
         )
     }
 }

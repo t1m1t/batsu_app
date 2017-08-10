@@ -1,17 +1,9 @@
 import React from 'react';
 import Event from './events';
 import Modal from 'react-modal';
+import Maps  from './map_component';
 
-const customStyles = {
-    content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)'
-    }
-};
+
 
 class Map extends React.Component {
     constructor(props){
@@ -35,8 +27,20 @@ class Map extends React.Component {
     render(){
         return(
             <div>
-                <button className="btn btn-default btn-circle" onClick={this.openModal}>+</button>
-                <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} style={customStyles} contentLabel="Event Modal">
+                      <Maps 
+                center={{lat:33.6363665, lng:-117.7458193}}
+                containerElement={<div style={{ height: `82vh` , width: `100vw`}} />}
+                mapElement={<div style={{ height: `82vh` , width: `100vw`}} />}
+                markers={[{
+                    position: {
+                        lat:33.6904288,
+                        lng:-117.8330699
+                      },
+                
+                         }]}
+                      />
+                <button className="btn btn-default btn-circle" onClick={this.openModal} >Create Event!</button>
+                <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal}  contentLabel="Event Modal">
                     <Event onCancel={(e)=>this.closeModal(e)} />
                 </Modal>
             </div>
