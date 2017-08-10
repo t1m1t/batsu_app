@@ -18,7 +18,11 @@ class NavBar extends Component {
                 <Menu width={'175px'} className="bm-menu">
                     <a className="menu-item" href="/">Home</a>
                     <a className="menu-item" href="/profile">Profile</a>
+<<<<<<< HEAD
                     <a className="menu-item" href="/map">Map</a>
+=======
+                    <a className="menu-item" href="/map">Events</a>
+>>>>>>> ee4e7f45ec96669e2523bb28285d6256bcfe6ced
                     <a className="menu-item" href="/about">About</a>
                     <a className="menu-item" href="/">Log Off</a>
                     <a className="menu-item" href="/after_event_creation">AfterEventCreation</a>

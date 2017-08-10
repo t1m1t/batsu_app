@@ -22,10 +22,14 @@
     "react-component": "0.0.0",
     "react-dom": "^15.4.2",
     "react-facebook-login": "file:react-facebook-login",
+<<<<<<< HEAD
     "react-google-autocomplete": "^1.0.13",
     "react-google-maps-loader": "^3.0.1",
     "react-google-places-suggest": "^2.1.1",
     "react-image-slider": "^0.1.0",
+=======
+    "react-google-maps": "^7.2.0",
+>>>>>>> ee4e7f45ec96669e2523bb28285d6256bcfe6ced
     "react-modal": "^2.2.2",
     "react-places-autocomplete": "^5.4.2",
     "react-redux": "^5.0.5",

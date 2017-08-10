@@ -1,6 +1,8 @@
 import React from 'react';
 import Event from './events';
 import Modal from 'react-modal';
+import Maps  from './map_component';
+
 
 class Map extends React.Component {
     constructor(props){
@@ -25,9 +27,10 @@ class Map extends React.Component {
         return(
             <div>
                 <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} contentLabel="Event Modal">
+                    <Maps center={{lat:33.6363665, lng:-117.7458193}} containerElement={<div style={{ height: `82vh` , width: `100vw`}} />} mapElement={<div style={{ height: `82vh` , width: `100vw`}} />} markers={[{position: {lat:33.6904288, lng:-117.8330699},}]}/>
                     <Event onCancel={(e)=>this.closeModal(e)} />
+                    <button className="btn btn-default btn-circle" onClick={this.openModal} >Create Event!</button>
                 </Modal>
-                <button className="btn btn-default btn-circle" onClick={this.openModal}>+</button>
             </div>
         )
     }
