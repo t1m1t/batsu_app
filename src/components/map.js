@@ -24,10 +24,10 @@ class Map extends React.Component {
     render(){
         return(
             <div>
-                <button className="btn btn-default btn-circle" onClick={this.openModal}>+</button>
                 <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} contentLabel="Event Modal">
                     <Event onCancel={(e)=>this.closeModal(e)} />
                 </Modal>
+                <button className="btn btn-default btn-circle" onClick={this.openModal}>+</button>
             </div>
         )
     }

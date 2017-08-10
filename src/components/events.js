@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
-
+import './app.css'
+// import NavBar from './nav_bar';
 
 class Events extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -13,58 +14,76 @@ class Events extends Component {
                 invitee: '1, 2, 3, 4',
                 time: '',
                 date: '',
-                location: 'test location',
                 address: '',
+                location:'',
                 description: 'descriptionnnnn',
                 punishment: 'profile_doodle'
             }
         };
-        this.onChange = (address) => this.setState({address})
+
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(event){
-        const {name, value} = event.target;
-        const {form}  = this.state;
+    handleChange(event) {
+        let name = '';
+        let value = '';
+
+        if(typeof event === 'string') {
+            name = 'address';
+            value = event;
+        } else {
+            name = event.target.name;
+            value = event.target.value;
+        }
+
+        const {form} = this.state;
         form[name] = value;
         this.setState({form: {...form}});
     }
 
-    handleFormSubmit(event){
+    handleFormSubmit(event) {
         event.preventDefault();
         console.log('Called handleFormSubmit', this.state.form);
+        geocodeByAddress(this.state.form.address)
+            .then(results => getLatLng(results[0]))
+            .then(latLng => {
+                this.handleAxios(latLng)
+            })
+            .catch(error => console.error('what is Error', error));
+    };
+    handleAxios(latLong) {
+        console.log("Handle axios latLong:", latLong);
+
+        const {form} = this.state;
+
+        const sendData = {...form, location: latLong};
+
         const newState = {
             form: {
+                name: '',
                 event_name: '',
                 invitee: '',
                 time: '',
                 date: '',
-                location: '',
                 address: '',
                 description: '',
                 punishment: ''
             }
         };
-        geocodeByAddress(this.state.address)
-            .then(results => getLatLng(results[0]))
-            .then(latLng => console.log('Success', latLng))
-            .catch(error => console.error('Error', error));
         this.setState(newState);
-        this.handleAxios();
-    };
 
-    handleAxios(){
-        const {form} = this.state;
-        axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent`, form).then((resp) => {
+        console.log('Data to send:', sendData);
+        axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent`, sendData).then((resp) => {
             console.log('this is the response:', resp);
         });
     };
 
     render() {
         const inputProps = {
-            value: this.state.address,
-            onChange:this.onChange
+            value: this.state.form.address,
+            onChange: this.handleChange
         };
-        const {event_name, invitee, time, date, location, description, punishment} = this.state.form;
+        const {event_name, invitee, time, date, description, punishment} = this.state.form;
         return (
             <div className="event_modal container">
                 <h1>Event</h1>
@@ -73,7 +92,8 @@ class Events extends Component {
                         <div className="form-group row">
                             <label>Event Name</label>
                             <input placeholder="name" name="name" value={event_name}
-                                   onChange={(event) => this.handleChange(event)} maxLength={25} type="text" className="form-control"/>
+                                   onChange={(event) => this.handleChange(event)} maxLength={25} type="text"
+                                   className="form-control"/>
                         </div>
                         <div className="form-group row">
                             <label>Invite Poeple</label>
@@ -92,24 +112,27 @@ class Events extends Component {
                         </div>
                         <div className="form-group row">
                             <label>Location</label>
-                            <input placeholder="location" name="location" value={location}
-                                   onChange={(event) => this.handleChange(event)} type="text" className="form-control"/>
+                            <PlacesAutocomplete
+                                inputProps={inputProps}/>
                         </div>
-                        <PlacesAutocomplete inputProps={inputProps} />
                         <div className="form-group row">
                             <label>description</label>
-                            <input placeholder="description" name="description" value={description} maxLength={140} onChange={(e) => this.handleChange(e)} type="text" className="form-control"/>
+                            <input placeholder="description" name="description" value={description} maxLength={140}
+                                   onChange={(e) => this.handleChange(e)} type="text" className="form-control"/>
                         </div>
                         <div className="form-group row">
                             <label>Punishment</label>
-                            <select className="form-control" name="punishment" value={punishment} onChange={(e) => this.handleChange(e)}>
+                            <select className="form-control" name="punishment" value={punishment}
+                                    onChange={(e) => this.handleChange(e)}>
                                 <option value="profile_doodle">Doodle on Profile Pic</option>
                                 <option value="facebook_post">Facebook Post</option>
                                 <option value="No Punishment">No Punishment</option>
                             </select>
                         </div>
                         <button type="submit" className="btn btn-outline-success">Confirm</button>
-                        <button type="button" className="btn btn-outline-danger mr-2" onClick={this.props.onCancel}>Cancel</button>
+                        <button type="button" className="btn btn-outline-danger mr-2" onClick={this.props.onCancel}>
+                            Cancel
+                        </button>
                     </form>
                 </div>
             </div>

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Home from './home';
 import Sign_Up from './sign_up';
 import Profile from './profile';
 import Map from './map';
-import AfterEventCreation from './after_creating_event';
+import AfterEventCreation from './preview_event';
 
 
 const App = () => (

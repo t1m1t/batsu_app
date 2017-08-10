@@ -43,13 +43,8 @@ class Sign_Up extends Component {
     handleAxios(){
         const {form} = this.state;
 
-        // console.log("before axios call");
-        console.log(form);
-        //http://localhost:3000/../../
         axios.post(`http://localhost:8888/form.php?operation=insertUser`, form).then((resp) => {
             console.log('this is the response from insert:', resp);
-            //start user's session
-
         })
     }
 
@@ -64,7 +59,7 @@ class Sign_Up extends Component {
         const {fname, lname, phone, email, password, password_conf, dob} = this.state.form;
         return (
             <div className="signup-page">
-                <h1 className="batsu-title-signup">_Batsu</h1>
+                <h1 className="batsu-title-signup">_Sign-Up</h1>
                 <form onSubmit={(event) => {this.handleFormSubmit(event)}} >
                     <div>
                         <h6 className="signin-subtitles">First Name</h6>
