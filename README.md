@@ -55,6 +55,7 @@ A. Prerequisite:
    3. npm install --save axios
    4. npm install --save react-modal
    5. npm install --save react-burger-menu
+   6. npm install --save react-image-slider
 
 >>>>>>> 5dfad545c73db7ec5b959ae2deb32d963030565f
 
