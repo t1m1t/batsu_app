@@ -334,11 +334,14 @@ div.bm-menu{
 
 }
 .msg_container {
+    height:200px;
     border:1px solid black;
     display:inline-block;
+    overflow-y: scroll;
 }
 .msg_container > p {
     border-bottom: 1px solid black;
+
 }
 /************************************/
 /*@media screen and (min-width: 700px) {*/

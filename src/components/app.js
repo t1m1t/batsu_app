@@ -5,7 +5,7 @@ import Sign_Up from './sign_up';
 import Profile from './profile';
 import Map from './map';
 import AfterEventCreation from './preview_event';
-
+import AcceptEvent from './accepting_event'
 
 
 class App extends React.Component{
@@ -28,6 +28,7 @@ class App extends React.Component{
                 <Route path="/profile" component={Profile} />
                 <Route path="/map" component={Map} />
                 <Route path="/after_event_creation" component={AfterEventCreation} />
+                <Route path="/accept_event" component={AcceptEvent}/>
             </div>
 
         );

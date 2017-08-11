@@ -21,6 +21,7 @@ class NavBar extends Component {
                     <a className="menu-item" href="/map">Map</a>
                     <a className="menu-item" href="/about">About</a>
                     <a className="menu-item" href="/">Log Off</a>
+                    <a className="menu-item" href="/accept_event">Acceptance</a>
                 </Menu>
             </div>
         );
