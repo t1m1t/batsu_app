@@ -4,6 +4,9 @@ const style = {
     border: "1px solid black"
 };
 
+
+/*** this is going to be the modal after logging in ***/
+
 class AcceptEvent extends Component {
     handleAccept(){
 
