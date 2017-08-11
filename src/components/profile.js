@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import NavBar from './nav_bar';
 import './app.css';
+
 class Profile extends Component {
     render() {
         return (

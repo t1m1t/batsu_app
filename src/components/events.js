@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 import './app.css'
 // import NavBar from './nav_bar';
@@ -129,8 +130,8 @@ class Events extends Component {
                                 <option value="No Punishment">No Punishment</option>
                             </select>
                         </div>
-                        <button type="submit" className="btn btn-outline-success">Confirm</button>
-                        <button type="button" className="btn btn-outline-danger mr-2" onClick={this.props.onCancel}>
+                        <Link to="./after_event_creation" type="submit" className="btn btn-outline-success">Confirm</Link>
+                        <button type="button"className="btn btn-outline-danger mr-2" onClick={this.props.onCancel}>
                             Cancel
                         </button>
                     </form>
