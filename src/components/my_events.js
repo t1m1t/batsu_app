@@ -4,8 +4,9 @@ import List from './list';
 import './app.css';
 
 
-// const BASE_URL = 'http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent';
+//const BASE_URL = 'http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent';
 const BASE_URL = 'http://api.reactprototypes.com';
+//will change based on server database
 const API_KEY = '?key=hellotim123';
 
 class MyEvents extends Component {
@@ -14,6 +15,7 @@ class MyEvents extends Component {
 
         this.state = {
             list: []
+            //will change based on server database
         }
     }
 
@@ -23,6 +25,7 @@ class MyEvents extends Component {
 
     getData(){
         axios.get(`${BASE_URL}/todos${API_KEY}`).then((resp) => {
+            //will change based on server database
             console.log('this is the response:', resp);
             this.setState({
                 list: resp.data.todos
@@ -39,10 +42,12 @@ class MyEvents extends Component {
                 <h4 className="events_box_title">My Created Events</h4>
                 <div className="my_created_events_box"> 
                     <List className="list_info" list={this.state.list} />
+                    {/* //will change based on server database */}
                 </div> 
                 <h4 className="events_box_title">Other Created Events</h4>
                 <div className="other_created_events_box">
                     <List className="list_info" list={this.state.list} />
+                    {/* //will change based on server database */}
                 </div>
             </div>
         )
