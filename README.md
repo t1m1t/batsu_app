@@ -50,6 +50,7 @@ A. Prerequisite:
    6. npm install --save react-image-slider
    7. npm install --save react-places-autocomplete
 
+
    The prototypes also require a LAMP/MAMP stack. Rename "mysql_connect.php.config" to "mysql_connect.php" and fill out your MySQL username and password credentials. 
 
 _________________________________________________________________
