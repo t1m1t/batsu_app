@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './app.css'
-// import NavBar from './nav_bar';
+
 
 class Events extends Component {
     constructor(props){
@@ -60,7 +60,6 @@ class Events extends Component {
         const {name, event_name, invitee, time, date, location, address, description, punishment} = this.state.form;
         return (
             <div>
-                {/* <NavBar />  */}
                 <div className="event_modal container">
                     <h1 className="event_title">Event</h1>
                     <div className="modal-body">
