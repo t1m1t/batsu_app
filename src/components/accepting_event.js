@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './app.css';
 
 
-/*** this is going to be the modal after logging in ***/
-
 class AcceptEvent extends Component {
     constructor(props){
         super(props);
@@ -15,14 +13,10 @@ class AcceptEvent extends Component {
     handleMessageSubmit(e){
         e.preventDefault();
         const { message } = this.state;
-        console.log("Form submitted", form);
-        this.props.add({...form});
+        console.log("Message submitted", message);
 
         this.setState({ //resetting form to blank
-            form: {
-                title: '',
-                details: ''
-            }
+            message:''
         });
     }
     handleMessageChange(e){
@@ -37,7 +31,7 @@ class AcceptEvent extends Component {
 
     }
     handleAccept(){
-
+        console.log("event accepted");
     }
 
     render(){
