@@ -31,12 +31,12 @@
 session_id($_POST['session_id']);
 //session_id('mq5ahmjq95jr5nsjbb4fhvcv52');
 session_start();
-if(isset($_SESSION['user'])){
-//    echo $_SESSION['user'];
-//    echo "haha hehe hoho";
-};
-//echo session_id();
 
+//echo session_id();
+if(!isset($_SESSION['user'])){
+    array_push($output['errors'], 'php session not defined. Please enable javascript cooooookies');
+    exit();
+};
 $output['data'] = [];
 
 $date = $_POST['date'];
@@ -47,10 +47,11 @@ $pending = 'Pending';
 //$combinedDT = date('Y-m-d H:i:s', strtotime("$date $time"));
 $combinedDT = date('Y-m-d H:i:s');
 
-//echo $combinedDT;
+//echo $_POST["location"]["lat"];
+//echo $_POST["location"]["lng"];
 
-$stmt = $conn->prepare("INSERT INTO events (Creator_ID, Event_Name, Event_DateTime, Event_Location, Event_Address, Event_Description) VALUES (?,?,?,?,?,?)");
-$stmt->bind_param("ssssss", $_SESSION['user'], $_POST["event_name"], $combinedDT, $_POST["location"], $_POST["address"], $_POST["description"]);
+$stmt = $conn->prepare("INSERT INTO events (Creator_ID, Event_Name, Event_DateTime, Event_Latitude, Event_Longitude, Event_Address, Event_Description) VALUES (?,?,?,?,?,?,?)");
+$stmt->bind_param("sssssss", $_SESSION['user'], $_POST["event_name"], $combinedDT, $_POST["location"]["lat"], $_POST["location"]["lng"], $_POST["address"], $_POST["description"]);
 $stmt->execute();
 
 if(mysqli_affected_rows($conn) === 1){
@@ -63,6 +64,10 @@ if(mysqli_affected_rows($conn) === 1){
         if(isset($_POST['invitee'])){
             $event_invitee_list = explode(", ", $_POST['invitee']);
             foreach ($event_invitee_list as $invited_person){
+                $stmt = $conn->prepare("SELECT ID FROM accounts WHERE (email) VALUES (?)");
+                $stmt->bind_param("s", $invited_person);
+
+
                 $stmt = $conn->prepare("INSERT INTO event_attendees (Event_ID, Attendee_ID, Attendee_Status, Punishment) VALUES (?,?,?,?)");
                 $stmt->bind_param("ssss", $event_table_id, $invited_person, $pending, $_POST['punishment']);
                 $stmt->execute();
@@ -77,6 +82,7 @@ if(mysqli_affected_rows($conn) === 1){
 }
 else{
     array_push($output["errors"], 'insert error');
+    array_push($output['errors'], mysqli_error($conn));
 }
 //print_r($output);
 $stmt->close();

@@ -11,6 +11,11 @@ class NavBar extends Component {
         event.preventDefault();
     }
 
+    logOut(){
+        console.log("~log out~");
+        document.cookie = ";"+ new Date(0);
+    }
+
     render() {
         return(
             <div className="topHeader">
@@ -20,7 +25,7 @@ class NavBar extends Component {
                     <a className="menu-item" href="/profile">Profile</a>
                     <a className="menu-item" href="/map">Map</a>
                     <a className="menu-item" href="/about">About</a>
-                    <a className="menu-item" href="/">Log Off</a>
+                    <a className="menu-item" onClick={this.logOut} href="/">Log Off</a>
                     <a className="menu-item" href="/after_event_creation">AfterEventCreation</a>
                 </Menu>
             </div>
