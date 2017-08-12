@@ -1,24 +1,46 @@
 import React, { Component } from 'react';
-// import List from './list_of_events';
+import ListThree from './listThree';
+
+
+const BASE_URL = '';
+//url from backend
 
 class CreatedEvent extends Component{
     constructor(props){
         super(props);
 
         this.state = {
-            list:'nothing'
+            form:{
+                event_name:'',
+                dateTime:'',
+                invitee:'',
+                punishment:''
+            }
         }
     }
+
+    componentWillMount(){
+        this.handleAxios();
+    }
+
+    handleAxios(){
+        axios.get(`${BASE_URL}`).then((resp) => {
+            console.log('this is the response:', resp);
+            this.setState({
+                form: resp.data
+                //this needs to be based from backend
+            })
+        });
+    }
+
     handleCheckIn(e){
         e.preventDefault();
     }
+
     render(){
         return (
             <form className="after_creating_event" onSubmit={(e) => this.handleCheckIn(e)}>
-                <h1>Gym time</h1>
-                <h3>10-20-2014</h3>
-                <h3>12:32:22</h3>
-                <h5>1234 irvine center blvd, irvine, CA 28932</h5>
+               <ListThree />
                 <div className="line_space"></div>
                 <div>list of invitee</div>
                 <div className="friends_picture_container">
