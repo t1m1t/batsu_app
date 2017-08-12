@@ -6,7 +6,9 @@ import Profile from './profile';
 import MyEvents from './my_events';
 import HowTo from './how_to';
 import AboutUs from './about_us';
+import CreatedEvent from './preview_event';
 import Map from './map';
+
 
 const App = () => (
     <div className="topbar-menu">
@@ -16,6 +18,7 @@ const App = () => (
         <Route path="/my_events" component={MyEvents} />
         <Route path="/how_to" component={HowTo} />
         <Route path="/about_us" component={AboutUs} />
+        <Route path="/preview_event" component={CreatedEvent} />
         <Route path="/map" component={Map} />
     </div>
 )

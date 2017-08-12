@@ -1,15 +1,15 @@
 import React from 'react';
 
 
-const List = (props) => {
+const ListThree = (props) => {
 
-    const list = props.createdEventsList.map((item, index) => {
+    const list = props.list.map((item, index) => {
         return (
             <li className="list-group-item" key={index}>
                 <span className="col-2">{item.title}</span>
             </li>
         )
-    })
+    });
 
     return(
         <div>
@@ -18,5 +18,6 @@ const List = (props) => {
             </ul>
         </div>
     )
-}
-export default List;
+};
+
+export default ListThree;

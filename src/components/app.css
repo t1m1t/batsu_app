@@ -524,6 +524,15 @@ div.bm-menu{
             2px 2px 6px black;
 }
 
+.friends_picture_container {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.bk_image{
+    height: 100px;
+}
+
 /*@media screen and (min-width: 700px) {*/
     /*.batsu-app{*/
         /*font-family: Arial;*/

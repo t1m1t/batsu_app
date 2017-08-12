@@ -4,6 +4,7 @@ import Home from './home';
 import Sign_Up from './sign_up';
 import MyEvents from './my_events';
 import HowTo from './how_to';
+import CreatedEvent from './preview_event';
 import './app.css';
 
 
@@ -23,6 +24,7 @@ class NavBar extends Component {
                     <a className="menu-item" href="/my_events">My Events</a>
                     <a className="menu-item" href="/how_to">How To</a>
                     <a className="menu-item" href="/about_us">About Us</a>
+                    <a className="menu-item" href="/preview_event">Created Event</a>
                     <a className="menu-item" href="/">Log Off</a>
                 </Menu>
             </div>
