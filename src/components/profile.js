@@ -1,25 +1,58 @@
+// import React, { Component } from 'react';
 import React, { Component } from 'react';
-// import NavBar from './nav_bar';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import axios from 'axios';
 import './app.css';
 class Profile extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            userData:{
+                fname: '',
+                lname: '',
+                phone: '',
+                email: '',
+            }
+        }
+        // this.handleAxios();
+    }
+
+
+
+    handleAxios(){
+        // const {form} = this.state;
+        // console.log(form);
+        console.log(this.state);
+        axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=profile&session='+document.cookie).then((resp) => {
+            console.log(resp);
+            this.setState({userData: resp.data.data});
+        })
+    }
+
+
+    componentWillMount(){
+        this.handleAxios();
+    }
+
+
     render() {
         return (
             <div>
-                {/* <NavBar /> */}
                 <div>
                     <h1 className="card-title">Profile</h1>
                     <div className="card">
                         <img className="card-img-top" src="http://www.tippanii.com/images/noprofile.png"/>
-                        <form enctype="multipart/form-data">
+                        <form encType="multipart/form-data">
                             Select image to upload:
                             <input type="file" name="fileToUpload" id="fileToUpload" />
                             <input type="submit" value="Upload File" name="submit"></input>
                         </form>
                         <div className="card-block">
                             <ul className="list-group list-group-flush container">
-                                <li className="list-group-item">mail@mail.com</li>
-                                <li className="list-group-item">FName LName</li>
-                                <li className="list-group-item">123-123-1234</li>
+                                <li className="list-group-item">Email: {this.state.userData.email}</li>
+                                <li className="list-group-item">Name: {this.state.userData.fname.concat(" ").concat(this.state.userData.lname)}</li>
+                                <li className="list-group-item">Phone: {this.state.userData.phone}</li>
                             </ul>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         </div>

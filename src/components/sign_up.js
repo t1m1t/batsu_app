@@ -34,12 +34,11 @@ class Sign_Up extends Component {
                 password_conf: '',
                 dob: ''
             }
-
         }
         this.setState(newState);
         this.handleAxios();
     }
-    const 
+
     handleAxios(){
         const {form} = this.state;
         console.log(form);
