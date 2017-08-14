@@ -48,6 +48,7 @@ if(count($output['errors']) === 0 ){
         $output['sesh_id'] = session_id();
     } else {
         array_push($output["errors"], 'insert error');
+        array_push($output['errors'], mysqli_error($conn));
     }
 
     $_SESSION['user']=mysqli_stmt_insert_id($stmt);

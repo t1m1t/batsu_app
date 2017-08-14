@@ -12,7 +12,7 @@ class Events extends Component {
         this.state = {
             form: {
                 event_name: 'event nameu',
-                invitee: '1, 2, 3, 4',
+                invitee: 'test_email1@gmail.com, test_email2@gmail.com, test_email4@gmail.com, kelsey1@gmail.com',
                 time: '',
                 date: '',
                 address: '',
@@ -76,6 +76,12 @@ class Events extends Component {
         console.log('Data to send:', sendData);
         axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent`, sendData).then((resp) => {
             console.log('this is the response:', resp);
+            if(resp.data.success === true){
+                //trigger axios call to the map
+            }
+            else{
+                //w/e error msg is
+            }
         });
     };
 
