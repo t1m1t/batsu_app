@@ -119,8 +119,7 @@ class Events extends Component {
                         </div>
                         <div className="form-group row">
                             <label>Location</label>
-                            <PlacesAutocomplete
-                                inputProps={inputProps}/>
+                            <PlacesAutocomplete inputProps={inputProps}/>
                         </div>
                         <div className="form-group row">
                             <label>description</label>
@@ -136,8 +135,8 @@ class Events extends Component {
                                 <option value="No Punishment">No Punishment</option>
                             </select>
                         </div>
-                        <Link to="./after_event_creation" type="submit" className="btn btn-outline-success">Confirm</Link>
-                        <button type="button"className="btn btn-outline-danger mr-2" onClick={this.props.onCancel}>
+                        <Link to="./after_event_creation"><button className="btn btn-outline-success">Confirm</button></Link>
+                        <button type="button" className="btn btn-outline-danger mr-2" onClick={this.props.onCancel}>
                             Cancel
                         </button>
                     </form>
