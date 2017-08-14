@@ -10,7 +10,7 @@ ReactDOM.render(
         <NavBar /> 
         <Router>
             <App />
-        </Router>
+        </Router> 
     </div>,
     document.getElementById('root')
 );

@@ -17,8 +17,8 @@ const App = () => (
         <Route path="/my_events" component={MyEvents} />
         <Route path="/how_to" component={HowTo} />
         <Route path="/about_us" component={AboutUs} />
-            <Route path="/preview_event" component={CreatedEvent} />
-        <Route path="/map" component={Map} />
+        <Route path="/preview_event" component={CreatedEvent} />
+        <Route path="/map" component={Map} /> 
     </div>
 )
 export default App;
