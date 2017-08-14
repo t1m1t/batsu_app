@@ -7,6 +7,7 @@ import './app.css';
 
 //const BASE_URL = 'http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent';
 const BASE_URL = 'http://api.reactprototypes.com';
+//will change based on server database
 const API_KEY = '?key=hellotim123';
 
 class MyEvents extends Component {

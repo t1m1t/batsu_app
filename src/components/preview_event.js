@@ -5,6 +5,7 @@ import './app.css';
 
 
 const BASE_URL = 'http://api.reactprototypes.com';
+const API_KEY = '?key=hellotim123';
 //url from backend
 
 class CreatedEvent extends Component{
@@ -12,23 +13,36 @@ class CreatedEvent extends Component{
         super(props);
 
         this.state = {
+            eventID: 30,
             list: {
-                event_name: '',
-                event_creator: '',
-                dateTime: '',
-                invitee: '',
-                punishment: ''
+                eventName: '',
+                eventDateTime: '',
+                eventinvitees: [{
+                    isCreator: false,
+                    fName: '',
+                    lName: '',
+                    account_ID: ''
+                },{
+                    isCreator: false,
+                    fName: '',
+                    lName: '',
+                    account_ID: ''
+                },],
+                eventAddress: "",
+                eventDescription: "",
+                eventLat: "",
+                eventLong: ""
             }
         }
     }
-    
+
 
     componentWillMount(){
         this.handleAxios();
     }
 
     handleAxios(){
-        axios.get(`${BASE_URL}`).then((resp) => {
+        axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=eventinfo&eventID='+this.state.eventID).then((resp) => {
             console.log('this is the response:', resp);
             this.setState({
                 list: resp.data

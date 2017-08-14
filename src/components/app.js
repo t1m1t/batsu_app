@@ -5,8 +5,8 @@ import Sign_Up from './sign_up';
 import Profile from './profile';
 import MyEvents from './my_events';
 import HowTo from './how_to';
-import AboutUs from './about_us';
 import CreatedEvent from './preview_event';
+import AboutUs from './about_us';
 import Map from './map';
 
 

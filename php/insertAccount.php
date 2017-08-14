@@ -1,12 +1,12 @@
 <?php
-session_id('mq5ahmjq95jr5nsjbb4fhvcv52');
+//session_id('mq5ahmjq95jr5nsjbb4fhvcv52');
 session_start();
 require("mysql_connect.php");
 
-$output = [
-    'success'=> false, //we assume we will fail
-    'errors'=>[]
-];
+//$output = [
+//    'success'=> false, //we assume we will fail
+//    'errors'=>[]
+//];
 
 $encryped_pw = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $email = $_POST['email'];
@@ -45,8 +45,10 @@ if(count($output['errors']) === 0 ){
 
     if (mysqli_affected_rows($conn) === 1) {
         $output['success'] = true;
+        $output['sesh_id'] = session_id();
     } else {
-        $output["errors"] = 'insert error';
+        array_push($output["errors"], 'insert error');
+        array_push($output['errors'], mysqli_error($conn));
     }
 
     $_SESSION['user']=mysqli_stmt_insert_id($stmt);
