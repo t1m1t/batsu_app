@@ -1,33 +1,22 @@
 import React, { Component } from 'react';
 import ListThree from './listThree';
+import axios from 'axios';
+import './app.css';
 
-
-const BASE_URL = '';
+const BASE_URL = 'http://api.reactprototypes.com';
+const API_KEY = '?key=hellotim123';
 //url from backend
 
 class CreatedEvent extends Component{
-    constructor(props){
-        super(props);
-
-        this.state = {
-            form:{
-                event_name:'',
-                dateTime:'',
-                invitee:'',
-                punishment:''
-            }
-        }
-    }
-
     componentWillMount(){
         this.handleAxios();
     }
 
     handleAxios(){
-        axios.get(`${BASE_URL}`).then((resp) => {
+        axios.get(`${BASE_URL}/todos${API_KEY}`).then((resp) => {
             console.log('this is the response:', resp);
             this.setState({
-                form: resp.data
+                list: resp.data
                 //this needs to be based from backend
             })
         });
@@ -40,7 +29,7 @@ class CreatedEvent extends Component{
     render(){
         return (
             <form className="after_creating_event" onSubmit={(e) => this.handleCheckIn(e)}>
-               <ListThree />
+                <ListThree />
                 <div className="line_space"></div>
                 <div>list of invitee</div>
                 <div className="friends_picture_container">

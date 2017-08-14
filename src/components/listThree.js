@@ -1,23 +1,22 @@
 import React from 'react';
 
 
-const ListThree = (props) => {
+export default props => {
 
-    const list = props.form.map((item, index) => {
-        return (
+    console.log('todo list : ',props.list);
+    const listThree = props.list.map((item,index) => {
+        return(
             <li className="list-group-item" key={index}>
-                <span className="col-2">{item.title}</span>
+                <span className="col-10">{item.title}</span>
             </li>
         )
     });
 
-    return(
+    return (
         <div>
             <ul className="list-group">
-                {list}
+                {listThree}
             </ul>
         </div>
     )
-};
-
-export default ListThree;
+}

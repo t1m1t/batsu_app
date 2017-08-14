@@ -1,52 +1,51 @@
 import React, { Component } from 'react';
 import './app.css';
+import ListThree from './listThree';
+import axios from 'axios';
 
-
-class AcceptEvent extends Component {
+class CreatedEvent extends Component{
     constructor(props){
         super(props);
 
         this.state = {
-            message:''
+            form:{
+                event_name:'',
+                dateTime:'',
+                invitee:'',
+                punishment:''
+            }
         }
     }
-    handleMessageSubmit(e){
+
+    componentWillMount(){
+        this.handleAxios();
+    }
+
+    handleAxios(){
+        axios.get(`${BASE_URL}`).then((resp) => {
+            console.log('this is the response:', resp);
+            this.setState({
+                form:{
+                    event_name:'d',
+                    dateTime:'i',
+                    invitee:'c',
+                    punishment:'e'
+                }
+                //this needs to be based from backend
+            })
+        });
+    }
+
+    handleCheckIn(e){
         e.preventDefault();
-        const { message } = this.state;
-        console.log("Message submitted", message);
-
-        this.setState({ //resetting form to blank
-            message:''
-        });
-    }
-    handleMessageChange(e){
-        console.log('event',e.target);
-        const { value, name } = e.target;
-        const {message}  = this.state; //this changed from {form} to form
-        message[name] = value;
-
-        this.setState({
-            message: {...message}
-        });
-
-    }
-    handleAccept(){
-        console.log("event accepted");
     }
 
     render(){
-        const {message} = this.state;
         return (
-            <div className="container">
-                <h1>Title goes here</h1>
-                <h3>date goes here</h3>
-                <h3>Time of the event</h3>
-                <h5>location of the meeting place</h5>
-                <div className="punishment_div">
-                    <h5><span>punishment: </span>pushup 100 times</h5>
-                </div>
-                <div>list of invitees</div>
+            <form className="after_creating_event" onSubmit={(e) => this.handleCheckIn(e)}>
+                <ListThree />
                 <div className="line_space"></div>
+                <div>list of invitee</div>
                 <div className="friends_picture_container">
                     <img src="http://www.tippanii.com/images/noprofile.png" alt=""/>
                     <img src="http://www.tippanii.com/images/noprofile.png" alt=""/>
@@ -61,32 +60,13 @@ class AcceptEvent extends Component {
                     <img src="http://www.tippanii.com/images/noprofile.png" alt=""/>
                     <img src="http://www.tippanii.com/images/noprofile.png" alt=""/>
                 </div>
-                <div className="msg_container">
-                    <p><span>user1: </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    <p><span>user2: </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.2</p>
-                    <p><span>user3: </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.3</p>
-                    <p><span>user4: </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.2</p>
-                    <p><span>user5: </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.2</p>
-                    <p><span>user6: </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.2</p>
-                    <p><span>user7: </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.2</p>
-                    <p><span>user8: </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.2</p>
-                    <p><span>user9: </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.2</p>
-                    <p><span>user10: </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.2</p>
-                    <p><span>user11: </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.2</p>
-                    <p><span>user12: </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.2</p>
-                    <p><span>user13: </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.2</p>
-
-                </div>
-                <form onSubmit={(e)=>this.handleMessageSubmit(e)} className="form">
-                    <input onChange={(e)=>this.handleMessageChange(e)} value={message} placeholder="message here" type="text"/>
-                    <button type="submit" className="btn btn-info">send</button>
-                </form>
-                <div className="bottom mt-5">
-                    <button type="submit" className="btn btn-success" onClick={(e)=>this.handleAccept()}>Accept</button>
-                </div>
-            </div>
+                <div className="line_space"></div>
+                <div className="punishment_div">Punishment</div>
+                <div>pushups 100 times</div>
+                <button className="btn">Check-In</button>
+            </form>
         )
     }
 }
 
-export default AcceptEvent;
+export default CreatedEvent;
