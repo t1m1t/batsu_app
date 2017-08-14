@@ -43,6 +43,12 @@ if($_GET['operation'] === "profile"){
 //    echo("inside operation");
     include("./getProfile.php");
 }
+elseif($_GET['operation'] === 'eventinfo'){
+    include("./getEventInfo.php");
+}
+elseif($_GET['operation'] === 'eventlist'){
+    include("./getEventList.php");
+}
 
 if($output['success'] === false){
     array_push($output['errors'], mysqli_error($conn));

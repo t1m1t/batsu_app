@@ -11,7 +11,7 @@ class Events extends Component {
         this.state = {
             form: {
                 event_name: 'event nameu',
-                invitee: '1, 2, 3, 4',
+                invitee: 'test_email1@gmail.com, test_email2@gmail.com, test_email4@gmail.com, kelsey1@gmail.com',
                 time: '',
                 date: '',
                 address: '',
@@ -77,19 +77,12 @@ class Events extends Component {
 // <<<<<<< bk_branch
         console.log('Data to send:', sendData);
         axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent`, sendData).then((resp) => {
-// =======
-//     handleAxios(){
-//         //use session id
-//         var x = document.cookie;
-//         const {form} = this.state;
-//         axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent`, form).then((resp) => {
-// >>>>>>> master
             console.log('this is the response:', resp);
             if(resp.data.success === true){
-                //to go home page
+                //trigger axios call to the map
             }
             else{
-                //stay at log in page
+                //w/e error msg is
             }
         });
     };
