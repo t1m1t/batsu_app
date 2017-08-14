@@ -62,15 +62,21 @@ class CreatedEvent extends Component{
         super(props);
 
         this.state = {
-            eventID: 4,
+            eventID: 30,
             list: {
                 eventName: '',
                 eventDateTime: '',
-                eventinvitees: {
+                eventinvitees: [{
                     isCreator: false,
-                    Name: '',
+                    fName: '',
+                    lName: '',
                     account_ID: ''
-                },
+                },{
+                    isCreator: false,
+                    fName: '',
+                    lName: '',
+                    account_ID: ''
+                },],
                 eventAddress: "",
                 eventDescription: "",
                 eventLat: "",
