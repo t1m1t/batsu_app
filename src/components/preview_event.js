@@ -5,7 +5,6 @@ import './app.css';
 
 
 const BASE_URL = 'http://api.reactprototypes.com';
-const API_KEY = '?key=hellotim123';
 //url from backend
 
 class CreatedEvent extends Component{
@@ -13,7 +12,13 @@ class CreatedEvent extends Component{
         super(props);
 
         this.state = {
-            list: []
+            list: {
+                event_name: '',
+                event_creator: '',
+                dateTime: '',
+                invitee: '',
+                punishment: ''
+            }
         }
     }
     
@@ -23,10 +28,10 @@ class CreatedEvent extends Component{
     }
 
     handleAxios(){
-        axios.get(`${BASE_URL}/todos${API_KEY}`).then((resp) => {
+        axios.get(`${BASE_URL}`).then((resp) => {
             console.log('this is the response:', resp);
             this.setState({
-                list: resp.data.todos
+                list: resp.data
                 //this needs to be based from backend
             })
         });
