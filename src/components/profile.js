@@ -9,7 +9,6 @@ class Profile extends Component {
 
         this.state = {
             canEdit:false,
-
             userData:{
                 file:'',
                 profile_pic:'',
@@ -33,6 +32,13 @@ class Profile extends Component {
 
     componentWillMount(){
         this.handleAxios();
+    }
+
+    handleChange(event){
+        const{name, value} = event.target;
+        const{userData} = this.state;
+        userData[name] = value;
+        this.setState({userData:{...userData}});
     }
 
     handleImageChange(e) {
@@ -61,9 +67,10 @@ class Profile extends Component {
                         </div>
                         <div className="card-block">
                             <ul className="list-group list-group-flush container">
-                                <li className="list-group-item">Email: jaydie@gmail.com</li>
-                                <li className="list-group-item">Name: Jay homeless</li>
-                                <li className="list-group-item">Phone: 800-888-3333</li>
+                                <li className="list-group-item">Email: {this.state.userData.email}</li>
+                                <li className="list-group-item">FName: {this.state.userData.fname}</li>
+                                <li className="list-group-item">LName: {this.state.userData.lname}</li>
+                                <li className="list-group-item">Phone: {this.state.userData.phone}</li>
                             </ul>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         </div>
@@ -94,9 +101,10 @@ class Profile extends Component {
                         </form>
                         <div className="card-block">
                             <ul className="list-group list-group-flush container">
-                                <li className="list-group-item">Email: <input type="text" value={this.state.userData.email}/></li>
-                                <li className="list-group-item">Name: <input type="text" value={this.state.userData.fname.concat(" ").concat(this.state.userData.lname)}/></li>
-                                <li className="list-group-item">Phone: <input type="text" value={this.state.userData.phone}/></li>
+                                <li className="list-group-item">Email: <input type="text" name="email" onChange={(event)=>this.handleChange(event)} value={this.state.userData.email}/></li>
+                                <li className="list-group-item">First Name: <input type="text" name="fname" onChange={(event)=>this.handleChange(event)} value={this.state.userData.fname}/></li>
+                                <li className="list-group-item">Last Name: <input type="text" name="lname" onChange={(event)=>this.handleChange(event)} value={this.state.userData.lname}/></li>
+                                <li className="list-group-item">Phone: <input type="text" name="phone" onChange={(event)=>this.handleChange(event)} value={this.state.userData.phone}/></li>
                             </ul>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         </div>
