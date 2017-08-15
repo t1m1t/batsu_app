@@ -20,6 +20,7 @@
     "react": "^15.6.1",
     "react-burger-menu": "^2.1.4",
     "react-component": "0.0.0",
+    "react-countdown-clock": "^2.0.0",
     "react-dom": "^15.6.1",
     "react-facebook-login": "^3.6.2",
     "react-google-autocomplete": "^1.0.13",

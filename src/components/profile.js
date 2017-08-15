@@ -102,8 +102,8 @@ class Profile extends Component {
                         </div>
                         <form>
                             Select image to upload:
-                            <input className="fileInput" type="file" name="myFile" onChange={(e)=>this.handleImageChange(e)}/>
-                            {/*<button className="fileButton" type="submit">Upload</button>*/}
+                            <input className="fileInput" type="file" name="myFile" onChange={(event)=>this.handleImageChange(event)}/>
+                            <button className="fileButton" type="submit">Upload</button>
                         </form>
                         <div className="card-block">
                             <ul className="list-group list-group-flush container">

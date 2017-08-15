@@ -53,6 +53,10 @@ class CreatedEvent extends Component{
         });
     }
 
+    countDown(){
+        setTimeout(() => alert('timer is working'), this.list.eventDateTime)
+    }
+
     render(){
         return (
             <form className="after_creating_event" onSubmit={(event) => this.handleCheckIn(event)}>

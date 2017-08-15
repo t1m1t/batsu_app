@@ -1,6 +1,8 @@
 import React from 'react';
 import './app.css';
 import GroupPic from './imgs/group_photo.png';
+import Display from './display';
+import ReactCountdownClock from 'react-countdown-clock';
 
 
 const HowTo = () => {
@@ -8,7 +10,10 @@ const HowTo = () => {
         <div>
             <h1 className="howto_title_top">What is Batsu?</h1>
             <h3 className="howto_title_bottom">¯\_(ಠ_ಠ)_/¯</h3>
-            <img className="howto_group_pic" src={GroupPic} />
+            {/* <img className="howto_group_pic" src={GroupPic} /> */}
+            <div>
+                <ReactCountdownClock timeFormat={dd:hh:mm:ss} seconds={60} color="#000" alpha={0.9} size={100} />
+            </div>
             <div className="howto_inner_text">
                 What is Batsu?  Good question!  Batsu is an application that was created from 
                 the great mind of Elias Martinez.  After attending multiple events where friends
