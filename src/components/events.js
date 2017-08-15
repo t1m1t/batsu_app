@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 import './app.css'
 // import NavBar from './nav_bar';
@@ -17,8 +18,7 @@ class Events extends Component {
                 address: '',
                 location:'',
                 description: 'descriptionnnnn',
-                punishment: 'profile_doodle',
-                session_id: document.cookie
+                punishment: 'profile_doodle'
             }
         };
 
@@ -68,13 +68,11 @@ class Events extends Component {
                 date: '',
                 address: '',
                 description: '',
-                punishment: '',
-                session_id: document.cookie
+                punishment: ''
             }
         };
         this.setState(newState);
 
-// <<<<<<< bk_branch
         console.log('Data to send:', sendData);
         axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent`, sendData).then((resp) => {
             console.log('this is the response:', resp);
@@ -94,16 +92,19 @@ class Events extends Component {
         };
         const {event_name, invitee, time, date, description, punishment} = this.state.form;
         return (
-                <div className="event_modal container">
-                    <h1 className="event_title">Event</h1>
-                    <div className="modal-body">
-                        <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
-                            <div className="form-group row">
-                                <input placeholder="name" name="event_name" value={event_name}
-                                   onChange={(event) => this.handleChange(event)} maxLength={25} type="text" className="form-control"/>
-                            </div>
-                            <div className="form-group row">
-                                <input placeholder="invite people" name="invitee" value={invitee}
+            <div className="event_modal container">
+                <h1>Event</h1>
+                <div className="modal-body">
+                    <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
+                        <div className="form-group row">
+                            <label>Event Name</label>
+                            <input placeholder="name" name="name" value={event_name}
+                                   onChange={(event) => this.handleChange(event)} maxLength={25} type="text"
+                                   className="form-control"/>
+                        </div>
+                        <div className="form-group row">
+                            <label>Invite Poeple</label>
+                            <input placeholder="invite people" name="invitee" value={invitee}
                                    onChange={(event) => this.handleChange(event)} type="text" className="form-control"/>
                         </div>
                         <div className="form-group row">
@@ -118,8 +119,7 @@ class Events extends Component {
                         </div>
                         <div className="form-group row">
                             <label>Location</label>
-                            <PlacesAutocomplete
-                                inputProps={inputProps}/>
+                            <PlacesAutocomplete inputProps={inputProps}/>
                         </div>
                         <div className="form-group row">
                             <label>description</label>
@@ -135,13 +135,13 @@ class Events extends Component {
                                 <option value="No Punishment">No Punishment</option>
                             </select>
                         </div>
-                        <button type="submit" className="btn btn-outline-success">Confirm</button>
+                        <Link to="./after_event_creation"><button className="btn btn-outline-success">Confirm</button></Link>
                         <button type="button" className="btn btn-outline-danger mr-2" onClick={this.props.onCancel}>
                             Cancel
                         </button>
-                        </form>
-                    </div>
+                    </form>
                 </div>
+            </div>
         )
     }
 }

@@ -10,7 +10,6 @@ const ListThree = (props) => {
             </li>
         )
     });
-
     return(
         <div>
             <ul className="list-group">
@@ -19,5 +18,4 @@ const ListThree = (props) => {
         </div>
     )
 };
-
 export default ListThree;

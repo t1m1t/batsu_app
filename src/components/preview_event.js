@@ -1,9 +1,7 @@
-
 import React, { Component } from 'react';
 import ListThree from './listThree';
 import axios from 'axios';
 import './app.css';
-
 
 class CreatedEvent extends Component{
     constructor(props){
@@ -27,7 +25,6 @@ class CreatedEvent extends Component{
             }
         }
     }
-
 
     componentWillMount(){
         this.handleAxios();

@@ -3,10 +3,6 @@ import axios from 'axios';
 import List from './list';
 import './app.css';
 
-
-//const BASE_URL = 'http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent';
-
-
 class MyEvents extends Component {
     constructor(props){
         super(props);
@@ -34,6 +30,7 @@ class MyEvents extends Component {
 
     getData(){
         axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=eventinfo&session='+document.cookie).then((resp) => {
+
             //will change based on server database
             console.log('this is the response:', resp);
             this.setState({
