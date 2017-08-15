@@ -13,10 +13,10 @@ class Profile extends Component {
             userData:{
                 file:'',
                 profile_pic:'',
-                fname: '',
-                lname: '',
-                phone: '',
-                email: ''
+                fname: 'jay',
+                lname: 'die',
+                phone: '714-234-2333',
+                email: 'jaydie@gmail.com'
             }
         }
     }
@@ -61,9 +61,9 @@ class Profile extends Component {
                         </div>
                         <div className="card-block">
                             <ul className="list-group list-group-flush container">
-                                <li className="list-group-item">Email: {this.state.userData.email}</li>
-                                <li className="list-group-item">Name: {this.state.userData.fname.concat(" ").concat(this.state.userData.lname)}</li>
-                                <li className="list-group-item">Phone: {this.state.userData.phone}</li>
+                                <li className="list-group-item">Email: jaydie@gmail.com</li>
+                                <li className="list-group-item">Name: Jay homeless</li>
+                                <li className="list-group-item">Phone: 800-888-3333</li>
                             </ul>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         </div>
@@ -94,9 +94,9 @@ class Profile extends Component {
                         </form>
                         <div className="card-block">
                             <ul className="list-group list-group-flush container">
-                                <li className="list-group-item">Email: <input type="text" placeholder="email"/></li>
-                                <li className="list-group-item">Name: <input type="text" placeholder="name"/></li>
-                                <li className="list-group-item">Phone: <input type="text" placeholder="phone number"/></li>
+                                <li className="list-group-item">Email: <input type="text" value={this.state.userData.email}/></li>
+                                <li className="list-group-item">Name: <input type="text" value={this.state.userData.fname.concat(" ").concat(this.state.userData.lname)}/></li>
+                                <li className="list-group-item">Phone: <input type="text" value={this.state.userData.phone}/></li>
                             </ul>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         </div>
