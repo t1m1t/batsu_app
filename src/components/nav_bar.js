@@ -31,7 +31,6 @@ class NavBar extends Component {
                     <a className="menu-item" href="/my_events">My Events</a>
                     <a className="menu-item" href="/what_is_batsu">What's Batsu?</a>
                     <a className="menu-item" onClick={this.logOut} href="/">Log Off</a>
-
                 </Menu>
             </div>
         );
