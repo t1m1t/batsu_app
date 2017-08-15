@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import './app.css';
 import axios from 'axios';
+import { reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { signin } from '../actions';
 
 
 class LogInForm extends Component {
@@ -41,21 +44,17 @@ class LogInForm extends Component {
         })
     }
 
-    
-    
     render(){
         const {email, password} = this.state.form;
+        const {handleSubmit, signinError} = this.props
         return(
             <div className="login_page">
-                <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
-                    <div>
-                        <h6 className="login-subtitles">E-mail</h6>
-                        <input name="email" type="email" value={email} onChange={ (event) => this.handleChange(event) } />
-                    </div>
-                    <div>
-                        <h6 className="login-subtitles">Password</h6>
-                        <input name="password" type="password" value={password} onChange={ (event) => this.handleChange(event) } />
-                    </div>
+                <form onSubmit={(event) => {this.handleFormSubmit(event); handleSubmit(vals => this.handleSignIn(vals))}}>
+                    <h6 className="login-subtitles">E-mail</h6>
+                    <input name="email" type="email" value={email} onChange={ (event) => this.handleChange(event) } />
+                    <h6 className="login-subtitles">Password</h6>
+                    <input name="password" type="password" value={password} onChange={ (event) => this.handleChange(event) } />
+                    <p className="text-danger">{signinError}</p>
                     <button type="submit" className="login-button">Log In</button>
                 </form>
             </div>
@@ -63,4 +62,15 @@ class LogInForm extends Component {
     }
 }
 
-export default LogInForm;
+LogInForm = reduxForm({
+    form: 'signin'
+})(LogInForm)
+
+function mapStateToProps(state){
+    return{
+        signinError: state.auth.error,
+        auth: state.auth.authorized
+    }
+}
+
+export default connect(mapStateToProps, {signin})(LogInForm);

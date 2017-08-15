@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import axios from 'axios';
 import './app.css';
+import { signup } from '../actions';
+import { reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 
 
 class Sign_Up extends Component {
@@ -55,31 +58,37 @@ class Sign_Up extends Component {
         this.setState({form: {...form}});
     }
 
+    handleSignup(vals){
+        console.log('Form values:', vals);
+        this.props.signup(vals);
+    }
+
     render() {
         const {fname, lname, phone, email, password, password_conf, dob} = this.state.form;
+        const {handleSignup, signupError} = this.props;
         return (
             <div className="signup-page">
                 <h1 className="batsu-title-signup">Sign-Up</h1>
-                <form onSubmit={(event) => {this.handleFormSubmit(event)}} >
+                <form onSubmit={(event) => {this.handleFormSubmit(event); handleSubmit(vals => this.handleSignIn(vals))}}>
                     <div>
                         <h6 className="signin-subtitles">First Name</h6>
-                        <input className="signup_info" name="fname" value={fname} onChange={(event) => this.handleChange(event)}/>
+                        <input className="signup_info" name="fname" value={fname} onChange={(event) => this.handleChange(event)} />
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Last Name</h6>
-                        <input className="signup_info" name="lname" value={lname} onChange={(event) => this.handleChange(event)}/>
+                        <input className="signup_info" name="lname" value={lname} onChange={(event) => this.handleChange(event)} />
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Phone Number</h6>
-                        <input className="signup_info" name="phone" type="number" value={phone} onChange={(event) => this.handleChange(event)}/>
+                        <input className="signup_info" name="phone" type="number" value={phone} onChange={(event) => this.handleChange(event)} />
                     </div>
                     <div>
                         <h6 className="signin-subtitles">E-mail Address</h6>
-                        <input className="signup_info" name="email" value={email} onChange={(event) => this.handleChange(event)}/>
+                        <input className="signup_info" name="email" value={email} onChange={(event) => this.handleChange(event)} />
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Password</h6>
-                        <input className="signup_info" name="password" type="password" value={password} onChange={(event) => this.handleChange(event)}/>
+                        <input className="signup_info" name="password" type="password" value={password} onChange={(event) => this.handleChange(event)} />
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Re-enter Password</h6>
@@ -87,8 +96,9 @@ class Sign_Up extends Component {
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Date of Birth</h6>
-                        <input className="signup_info" name="dob" type="date" value={dob} onChange={(event) => this.handleChange(event)}/>
+                        <input className="signup_info" name="dob" type="date" value={dob} onChange={(event) => this.handleChange(event)} />
                     </div>
+                    <p className="text-danger">{signupError}</p>
                     <Link to="/" className="signup-button">Back</Link>
                     <button className="submit-signup-button" type="submit">Submit</button>
                 </form>
@@ -97,4 +107,43 @@ class Sign_Up extends Component {
     }
 }
 
-export default Sign_Up;
+function validate(vals){
+    const error = {};
+
+    if (!vals.fname){
+        error.fname = "Please enter a first name";
+    }
+    if (!vals.lname){
+        error.lname = "Please enter a last name";
+    }
+    if (!vals.phone){
+        error.phone = "Please enter a phone number";
+    }
+    if (!vals.email){
+        error.email = "Please enter an e-mail";
+    }
+    if (!vals.password){
+        error.password = "Please enter a password";
+    }
+    if (vals.password !== vals.confirmPassword){
+        error.confirmPassword = "Passwords must match";
+    }
+    if (!vals.dob){
+        error.dob = "Please enter a date of birth";
+    }
+    
+    return error;
+}
+
+SignUp = reduxForm({
+    form: 'signup',
+    validate
+})(SignUp);
+
+function mapStateToProps(state){
+    return{
+        signupError: state.auth.error
+    }
+}
+
+export default connect(mapStateToProps, {signup})(Sign_Up);
