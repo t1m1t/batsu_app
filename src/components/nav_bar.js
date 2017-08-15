@@ -7,7 +7,7 @@ import MyEvents from './my_events';
 import HowTo from './how_to';
 import CreatedEvent from './preview_event';
 import './app.css';
-// import {Link} from 'react-router-dom';
+
 
 class NavBar extends Component {
     showSettings(event) {
@@ -29,7 +29,7 @@ class NavBar extends Component {
                     <a className="menu-item" href="/map">Map</a>
                     <a className="menu-item" href="/my_events">My Events</a>
                     <a className="menu-item" href="/how_to">How To</a>
-                    <a className="menu-item" href="/about">About</a>
+                    <a className="menu-item" href="/about_us">About Us</a>
                     <a className="menu-item" href="/preview_event">Created Event</a>
                     <a className="menu-item" onClick={this.logOut} href="/">Log Off</a>
 

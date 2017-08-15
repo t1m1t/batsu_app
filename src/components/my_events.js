@@ -15,20 +15,18 @@ class MyEvents extends Component {
         super(props);
 
         this.state = {
-            createdEventsList: {
+            createdEventsList: [{
                 event_name: '',
                 creator_id:'',
                 event_id:'',
                 event_dateTime:''
-
-            },
-            invitedEventsList: {
+            }],
+            invitedEventsList: [{
                 event_name:'',
                 creator_id:'',
                 event_id:'',
                 event_dateTime:''
-
-            }
+            }]
             //will change based on server database
         }
     }
