@@ -1,34 +1,29 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import List from './list';
-import ListTwo from './list_two';
 import './app.css';
 
 
 //const BASE_URL = 'http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent';
-const BASE_URL = 'http://api.reactprototypes.com';
-//will change based on server database
-const API_KEY = '?key=hellotim123';
+
 
 class MyEvents extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            createdEventsList: {
+            createdEventsList: [{
                 event_name: '',
                 creator_id:'',
                 event_id:'',
                 event_dateTime:''
-
-            },
-            invitedEventsList: {
+            }],
+            invitedEventsList: [{
                 event_name:'',
                 creator_id:'',
                 event_id:'',
                 event_dateTime:''
-
-            }
+            }]
             //will change based on server database
         }
     }
@@ -38,7 +33,7 @@ class MyEvents extends Component {
     }
 
     getData(){
-        axios.get(`${BASE_URL}/todos${API_KEY}`).then((resp) => {
+        axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=eventinfo&session='+document.cookie).then((resp) => {
             //will change based on server database
             console.log('this is the response:', resp);
             this.setState({
@@ -61,7 +56,7 @@ class MyEvents extends Component {
                 </div>
                 <h4 className="events_box_title">Other Created Events</h4>
                 <div className="other_created_events_box">
-                    <ListTwo className="list_info" invitedEventsList={this.state.invitedEventsList} />
+                    <List className="list_info" invitedEventsList={this.state.invitedEventsList} />
                     {/* //will change based on server database */}
                 </div>
             </div>
