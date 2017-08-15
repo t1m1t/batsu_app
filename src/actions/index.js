@@ -22,9 +22,9 @@ export function signin(email, password){
     };
 };
 
-export function signup({email, password}){
+export function signup({fname, lname, phone, email, password, password_conf, dob}){
     return (dispatch) => {
-        axios.post(`${BASE_URL}/sign_up`, {email, password}).then((resp) => {
+        axios.post(`${BASE_URL}/sign_up`, {fname, lname, phone, email, password, password_conf, dob}).then((resp) => {
             console.log("Sign Up resp", resp);
 
             localStorage.setItem('token', resp.data.token);
