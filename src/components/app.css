@@ -583,7 +583,7 @@ div.bm-menu{
     height: 30vh;
     width: 60vw;
 }
-.profile_picture_preview > img{
+.profile_picture_preview > img {
     height:200px;
     border:1px solid black;
     box-shadow:
