@@ -125,8 +125,8 @@ function validate(vals){
     if (!vals.password){
         error.password = "Please enter a password";
     }
-    if (vals.password !== vals.confirmPassword){
-        error.confirmPassword = "Passwords must match";
+    if (vals.password !== vals.password_conf){
+        error.password_conf = "Passwords must match";
     }
     if (!vals.dob){
         error.dob = "Please enter a date of birth";
