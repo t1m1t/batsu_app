@@ -52,6 +52,7 @@ class Events extends Component {
             })
             .catch(error => console.error('what is Error', error));
     };
+
     handleAxios(latLong) {
         console.log("Handle axios latLong:", latLong);
 
@@ -74,7 +75,6 @@ class Events extends Component {
         };
         this.setState(newState);
 
-// <<<<<<< bk_branch
         console.log('Data to send:', sendData);
         axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent`, sendData).then((resp) => {
             console.log('this is the response:', resp);
@@ -118,8 +118,7 @@ class Events extends Component {
                         </div>
                         <div className="form-group row">
                             <label>Location</label>
-                            <PlacesAutocomplete
-                                inputProps={inputProps}/>
+                            <PlacesAutocomplete inputProps={inputProps}/>
                         </div>
                         <div className="form-group row">
                             <label>description</label>

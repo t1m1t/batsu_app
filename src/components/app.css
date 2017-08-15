@@ -344,8 +344,8 @@ button:hover, button:visited, button:link, button:active{
 a.menu-item{
     font-family: crowbar;
     color: white;
-    font-size: 25px;
-    padding: 10px 0;
+    font-size: 30px;
+    padding: 15px 0;
     text-shadow:
             2px 2px 0 black,
             2px 2px 0 black,
@@ -437,7 +437,7 @@ div.bm-menu{
 /* How To Page */
 
 .howto_title_top{
-    margin: 30px 0 0;
+    margin: 30px 0 0px;
     font-size: 50px;
     color: red;
     text-shadow:
@@ -449,10 +449,21 @@ div.bm-menu{
 }
 
 .howto_title_bottom{
-    margin: 0 0 20px;
-    font-size: 50px;
+    margin: 5px 0 10px;
+    font-size: 20px;
     color: red;
     text-shadow:
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 0 black,
+            2px 2px 6px black;
+}
+
+.howto_group_pic{
+    margin: 10px 0;
+    border: 2px solid black;
+    box-shadow:
             2px 2px 0 black,
             2px 2px 0 black,
             2px 2px 0 black,
@@ -463,8 +474,10 @@ div.bm-menu{
 .howto_inner_text{
     margin: 0 auto;
     border: 2px solid black;
+    font-size: 23px;
+    padding: 5px;
     width: 300px;
-    height: 400px;
+    height: 250px;
     border-radius: 5px;
     overflow: scroll;
     box-shadow:
@@ -481,57 +494,7 @@ div.bm-menu{
 }
 
 
-/* About Us Page */
 
-.aboutUs_title{
-    margin: 30px 0 30px;
-    font-size: 50px;
-    color: red;
-    text-shadow:
-            2px 2px 0 black,
-            2px 2px 0 black,
-            2px 2px 0 black,
-            2px 2px 0 black,
-            2px 2px 6px black;
-}
-
-.aboutUs_inner_text{
-    margin: 0 auto;
-    border: 2px solid black;
-    width: 300px;
-    height: 200px;
-    border-radius: 5px;
-    overflow: scroll;
-    box-shadow:
-            2px 2px 0 black,
-            2px 2px 0 black,
-            2px 2px 0 black,
-            2px 2px 0 black,
-            2px 2px 6px black;
-}
-
-.group_pic{
-    margin: 0 auto;
-    margin-bottom: 20px;
-    border: 2px solid black;
-    width: 249px;
-    height: auto;
-    box-shadow:
-            2px 2px 0 black,
-            2px 2px 0 black,
-            2px 2px 0 black,
-            2px 2px 0 black,
-            2px 2px 6px black;
-}
-
-friends_picture_container{
-    overflow: auto;
-    white-space: nowrap;
-}
-
-.bk_image{
-    height: 100px;
-}
 /*@media screen and (min-width: 700px) {*/
 /*.batsu-app{*/
 /*font-family: Arial;*/
