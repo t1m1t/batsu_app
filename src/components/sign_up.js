@@ -84,7 +84,7 @@ class SignUp extends Component {
                     </div>
                     <div>
                         <h6 className="signin-subtitles">E-mail Address</h6>
-                        <Field className="signup_info" name="email" component={renderInput}/>
+                        <Field className="signup_info" name="email" type="email" component={renderInput}/>
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Password</h6>
