@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './app.css';
-import ListThree from './listThree';
+// import ListThree from './listThree';
 import axios from 'axios';
 
 class CreatedEvent extends Component{
@@ -43,7 +43,7 @@ class CreatedEvent extends Component{
     render(){
         return (
             <form className="after_creating_event" onSubmit={(e) => this.handleCheckIn(e)}>
-                <ListThree />
+                {/*<ListThree />*/}
                 <div className="line_space"></div>
                 <div>list of invitee</div>
                 <div className="friends_picture_container">

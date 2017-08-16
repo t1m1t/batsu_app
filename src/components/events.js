@@ -10,6 +10,7 @@ class Events extends Component {
         super(props);
 
         this.state = {
+            token: document.cookie.split("=")[1],
             form: {
                 event_name: 'event nameu',
                 invitee: 'test_email1@gmail.com, test_email2@gmail.com, test_email4@gmail.com, kelsey1@gmail.com',
@@ -56,12 +57,10 @@ class Events extends Component {
         console.log("Handle axios latLong:", latLong);
 
         const {form} = this.state;
-
-        const sendData = {...form, location: latLong};
+        const sendData = {...form, location: latLong, token: this.state.token};
 
         const newState = {
             form: {
-                name: '',
                 event_name: '',
                 invitee: '',
                 time: '',
@@ -86,6 +85,7 @@ class Events extends Component {
     };
 
     render() {
+
         const inputProps = {
             value: this.state.form.address,
             onChange: this.handleChange
@@ -98,7 +98,7 @@ class Events extends Component {
                     <form onSubmit={(event) => {this.handleFormSubmit(event)}}>
                         <div className="form-group row">
                             <label>Event Name</label>
-                            <input placeholder="name" name="name" value={event_name}
+                            <input placeholder="name" name="event_name" value={event_name}
                                    onChange={(event) => this.handleChange(event)} maxLength={25} type="text"
                                    className="form-control"/>
                         </div>
@@ -135,7 +135,7 @@ class Events extends Component {
                                 <option value="No Punishment">No Punishment</option>
                             </select>
                         </div>
-                        <Link to="./after_event_creation"><button className="btn btn-outline-success">Confirm</button></Link>
+                        <button className="btn btn-outline-success">Confirm</button>
                         <button type="button" className="btn btn-outline-danger mr-2" onClick={this.props.onCancel}>
                             Cancel
                         </button>
@@ -147,3 +147,5 @@ class Events extends Component {
 }
 
 export default Events;
+
+{/*<Link to="./after_event_creation"><button className="btn btn-outline-success">Confirm</button></Link>*/}

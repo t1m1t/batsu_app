@@ -44,7 +44,17 @@ class Sign_Up extends Component {
         console.log(form);
         axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertUser`, form).then((resp) => {
             console.log('this is the response from insert:', resp);
-            document.cookie = resp.data.sesh_id;
+            if(resp.data.success === true){
+                var now = new Date();
+                var time = now.getTime();
+                var expireTime = time + 86400000;   //24 hours
+                now.setTime(expireTime);
+                document.cookie = "token="+resp.data.token+";expires="+now.toUTCString()+";path=/";
+                //go to home page
+            }
+            else{
+                //stay on sign up page
+            }
         })
     }
 

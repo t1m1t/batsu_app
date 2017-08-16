@@ -21,10 +21,10 @@ class Profile extends Component {
     }
 
     handleAxios(){
-        // const {form} = this.state;
-        // console.log(form);
         console.log(this.state);
-        axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=profile&session='+document.cookie).then((resp) => {
+        // console.log("0: "+ document.cookie.split('=')[0]);
+        // console.log("1: "+ document.cookie.split('=')[1]);
+        axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=profile&token='+document.cookie.split('=')[1]).then((resp) => {
             console.log(resp);
             this.setState({userData: resp.data.data});
         })
@@ -101,10 +101,10 @@ class Profile extends Component {
                         </form>
                         <div className="card-block">
                             <ul className="list-group list-group-flush container">
-                                <li className="list-group-item">Email: <input type="text" name="email" onChange={(event)=>this.handleChange(event)} value={this.state.userData.email}/></li>
+                                <li className="list-group-item">Email: <input type="text" name="email" value={this.state.userData.email}/></li>
                                 <li className="list-group-item">First Name: <input type="text" name="fname" onChange={(event)=>this.handleChange(event)} value={this.state.userData.fname}/></li>
                                 <li className="list-group-item">Last Name: <input type="text" name="lname" onChange={(event)=>this.handleChange(event)} value={this.state.userData.lname}/></li>
-                                <li className="list-group-item">Phone: <input type="text" name="phone" onChange={(event)=>this.handleChange(event)} value={this.state.userData.phone}/></li>
+                                <li className="list-group-item">Phone: <input type="text" name="phone" value={this.state.userData.phone}/></li>
                             </ul>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         </div>

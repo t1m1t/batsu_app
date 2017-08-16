@@ -8,8 +8,8 @@ class LogInForm extends Component {
         super(props);
         this.state = {
             form: {
-                email: '',
-                password: ''
+                email: 'usethis@gmail.com',
+                password: 'passW0rdhaHAA'
             }
         }
     }
@@ -36,8 +36,20 @@ class LogInForm extends Component {
 
     handleAxios(){
         const {form} = this.state;
-        axios.post(`http://localhost:8888/form.php?operation=insertUser`, form).then((resp) => {
+        console.log(form);
+        axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=signin`, form).then((resp) => {
             console.log('this is the response: ', resp);
+            if(resp.data.success === true){
+                var now = new Date();
+                var time = now.getTime();
+                var expireTime = time + 86400000;   //24 hours
+                now.setTime(expireTime);
+                document.cookie = "token="+resp.data.token+";expires="+now.toUTCString()+";path=/";
+                //go to home page
+            }
+            else{
+                //stay on log in page
+            }
         })
     }
     
