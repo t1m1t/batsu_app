@@ -4,16 +4,10 @@ import CreatedEventsData from './list';
 import InvitedEventsData from './list_two';
 import './app.css';
 
-
-//const BASE_URL = 'http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent';
-const BASE_URL = 'http://api.reactprototypes.com';
-//will change based on server database
-const API_KEY = '?key=hellotim123';
-
 class MyEvents extends Component {
     constructor(props){
         super(props);
-
+        this.Loaded = false;
         this.state = {
             createdEventsList: [{
                 event_name: '',
@@ -36,17 +30,28 @@ class MyEvents extends Component {
     }
 
     getData(){
-        axios.get(`${BASE_URL}/todos${API_KEY}`).then((resp) => {
+        axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=eventlist&token='+document.cookie.split('=')[1]).then((resp) => {
             //will change based on server database
             console.log('this is the response:', resp);
+            this.Loaded = true;
             this.setState({
-                createdEventsList: resp.data.todos,
-                invitedEventslist: resp.data.todos
+                createdEventsList: resp.data.data.createdEventList,
+                invitedEventslist: resp.data.data.invitedEventList
             })
+
         });
     };
 
     render(){
+        if(this.Loaded === false) {
+            return (
+                <div> Loading....</div>
+            )
+        }
+        else{
+
+        }
+
         return (
             <div>
                 <h1 className="myEvents_title">My Events</h1>

@@ -15,7 +15,7 @@ class NavBar extends Component {
 
     logOut() {
         console.log("~log out~");
-        document.cookie = ";" + new Date(0);
+        document.cookie = "token=" + ";expires=" + new Date(0);
     }
 
     render() {

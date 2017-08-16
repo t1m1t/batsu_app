@@ -20,10 +20,10 @@ class Profile extends Component {
     }
 
     handleAxios(){
-        // const {form} = this.state;
-        // console.log(form);
         console.log(this.state);
-        axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=profile&session='+document.cookie).then((resp) => {
+        // console.log("0: "+ document.cookie.split('=')[0]);
+        // console.log("1: "+ document.cookie.split('=')[1]);
+        axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=profile&token='+document.cookie.split('=')[1]).then((resp) => {
             console.log(resp);
             this.setState({userData: resp.data.data});
         })
