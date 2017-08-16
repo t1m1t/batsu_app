@@ -8,6 +8,7 @@ const HowTo = () => {
         <div>
             <h1 className="howto_title_top">What is Batsu?</h1>
             <h3 className="howto_title_bottom">¯\_(ಠ_ಠ)_/¯</h3>
+            <img src={GroupPic} className="howto_group_pic" />
             <div className="howto_inner_text">
                 What is Batsu?  Good question!  Batsu is an application that was created from 
                 the great mind of Elias Martinez.  After attending multiple events where friends

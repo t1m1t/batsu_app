@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import List from './list';
-import ListTwo from './list_two';
+import CreatedEventsData from './list';
+import InvitedEventsData from './list_two';
 import './app.css';
 
 
@@ -54,12 +54,12 @@ class MyEvents extends Component {
 
                 <h4 className="events_box_title">My Created Events</h4>
                 <div className="my_created_events_box">
-                    <List className="list_info"  createdEventsList={this.state.createdEventsList} />
+                    <CreatedEventsData className="list_info" createdEventsList={this.state.createdEventsList} />
                     {/* //will change based on server database */}
                 </div>
                 <h4 className="events_box_title">Other Created Events</h4>
                 <div className="other_created_events_box">
-                    <ListTwo className="list_info" invitedEventsList={this.state.invitedEventsList} />
+                    <InvitedEventsData className="list_info" invitedEventsList={this.state.invitedEventsList} />
                     {/* //will change based on server database */}
                 </div>
             </div>

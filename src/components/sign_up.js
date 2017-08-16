@@ -69,6 +69,7 @@ class SignUp extends Component {
         return (
             <div className="signup-page">
                 <h1 className="batsu-title-signup">Sign-Up</h1>
+                <div className="signup-main">
                 <form onSubmit={handleSubmit(vals => this.handleSignUp(vals))}>
                     <div>
                         <h6 className="signin-subtitles">First Name</h6>
@@ -102,6 +103,7 @@ class SignUp extends Component {
                     <button className="back-signup-button" type="button"><Link to="/">Back</Link></button>
                     <button className="submit-signup-button" type="submit">Submit</button>
                 </form>
+                </div>
             </div>
         )
     }
