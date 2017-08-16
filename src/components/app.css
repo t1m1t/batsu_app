@@ -5,11 +5,11 @@
 }
 
 .signup-main{
-    width: 100%;
+    width: 350px;
     margin: 0 auto;
-    height: 100%;
-    border: 2px black solid; 
-    overflow: scroll;
+    height: 430px;
+    /* border: 2px black solid;  */
+    overflow-y: auto;
 }
 
 .topHeader{
@@ -77,7 +77,7 @@ div.card{
     color: red;
     font-style: oblique;
     font-size: 50px;
-    margin: 10px 0;
+    margin: 10px 0 20pxƒ;
     text-shadow:
             2px 2px 0 black,
             2px 2px 0 black,
@@ -413,7 +413,7 @@ div.bm-menu{
     width: 300px;
     height: 150px;
     border-radius: 5px;
-    overflow: scroll;
+    overflow-y: scroll;
     box-shadow:
             1px 1px 0 black,
             1px 1px 0 black,
@@ -428,7 +428,7 @@ div.bm-menu{
     width: 300px;
     height: 150px;
     border-radius: 5px;
-    overflow: scroll;
+    overflow-y: scroll;
     box-shadow:
             1px 1px 0 black,
             1px 1px 0 black,
@@ -490,7 +490,7 @@ div.bm-menu{
     width: 300px;
     height: 250px;
     border-radius: 5px;
-    overflow: scroll;
+    overflow-y: scroll;
     box-shadow:
             2px 2px 0 black,
             2px 2px 0 black,

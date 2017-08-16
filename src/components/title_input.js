@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { renderInput } from './helper_functions';
 import { connect } from 'react-redux';
 import { signin } from '../actions/index';
-import { renderInput } from './helper_functions';
 import './app.css';
-// import axios from 'axios';
 
 
 class SignIn extends Component {
@@ -61,11 +60,11 @@ class SignIn extends Component {
         return(
             <div className="login_page">
                 <form onSubmit={handleSubmit(vals => this.handleSignIn(vals))}> 
-                    {/* ask Scott about this!!!!! */}
                     <h6 className="login-subtitles">E-mail</h6>
                     <Field name="email" type="email" component={renderInput} />
                     <h6 className="login-subtitles">Password</h6>
                     <Field name="password" type="password" component={renderInput} />
+                    
                     <p className="text-danger">{signinError}</p>
                     <button type="submit" className="login-button">Log In</button>
                 </form>
