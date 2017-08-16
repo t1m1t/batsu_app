@@ -2,11 +2,11 @@ import types from './types';
 import axios from 'axios';
 
 
-const BASE_URL = '';
+const BASE_URL = 'http://api.reactprototypes.com';
 
-export function signin(email, password){
+export function signin(userInfo){
     return dispatch => {
-        axios.post(`${BASE_URL}`, {email, password}).then((resp) => {
+        axios.post(`${BASE_URL}/signin`, userInfo).then((resp) => {
             console.log("Sign In resp:", resp);
 
             localStorage.setItem('token', resp.data.token)

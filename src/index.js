@@ -2,15 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app';
 import { BrowserRouter as Router } from 'react-router-dom';
-import NavBar from './components/nav_bar';
+import rootReducer from './reducers/index';
+import types from './actions/types';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
+
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+
+const store = createStoreWithMiddleware(rootReducer);
+if (localStorage.getItem('token')){
+    store.dispatch({ type: types.SIGNIN});
+}
 
 ReactDOM.render(
-    <div>
-        <NavBar /> 
+    <Provider store={store}>
         <Router>
             <App />
         </Router> 
-    </div>,
+    </Provider>,
     document.getElementById('root')
 );

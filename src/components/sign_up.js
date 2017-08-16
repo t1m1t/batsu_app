@@ -3,11 +3,12 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import axios from 'axios';
 import './app.css';
 import { signup } from '../actions';
-import { reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
+import { renderInput } from './helper_functions';
 
 
-class Sign_Up extends Component {
+class SignUp extends Component {
     constructor(props) {
         super(props);
 
@@ -69,34 +70,34 @@ class Sign_Up extends Component {
         return (
             <div className="signup-page">
                 <h1 className="batsu-title-signup">Sign-Up</h1>
-                <form onSubmit={(event) => {this.handleFormSubmit(event); handleSubmit(vals => this.handleSignIn(vals))}}>
+                <form onSubmit={(event) => {this.handleFormSubmit(event); handleSubmit(vals => this.handleSignUp(vals))}}>
                     <div>
                         <h6 className="signin-subtitles">First Name</h6>
-                        <input className="signup_info" name="fname" value={fname} onChange={(event) => this.handleChange(event)} />
+                        <Field className="signup_info" name="fname" value={fname} onChange={(event) => this.handleChange(event)} component={renderInput}/>
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Last Name</h6>
-                        <input className="signup_info" name="lname" value={lname} onChange={(event) => this.handleChange(event)} />
+                        <Field className="signup_info" name="lname" value={lname} onChange={(event) => this.handleChange(event)} component={renderInput}/>
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Phone Number</h6>
-                        <input className="signup_info" name="phone" type="number" value={phone} onChange={(event) => this.handleChange(event)} />
+                        <Field className="signup_info" name="phone" type="number" value={phone} onChange={(event) => this.handleChange(event)} component={renderInput}/>
                     </div>
                     <div>
                         <h6 className="signin-subtitles">E-mail Address</h6>
-                        <input className="signup_info" name="email" value={email} onChange={(event) => this.handleChange(event)} />
+                        <Field className="signup_info" name="email" value={email} onChange={(event) => this.handleChange(event)} component={renderInput}/>
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Password</h6>
-                        <input className="signup_info" name="password" type="password" value={password} onChange={(event) => this.handleChange(event)} />
+                        <Field className="signup_info" name="password" type="password" value={password} onChange={(event) => this.handleChange(event)} component={renderInput}/>
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Re-enter Password</h6>
-                        <input className="signup_info" name="password_conf" type="password" value={password_conf} onChange={(event) => this.handleChange(event)} />
+                        <Field className="signup_info" name="password_conf" type="password" value={password_conf} onChange={(event) => this.handleChange(event)} component={renderInput}/>
                     </div>
                     <div>
                         <h6 className="signin-subtitles">Date of Birth</h6>
-                        <input className="signup_info" name="dob" type="date" value={dob} onChange={(event) => this.handleChange(event)} />
+                        <Field className="signup_info" name="dob" type="date" value={dob} onChange={(event) => this.handleChange(event)} component={renderInput}/>
                     </div>
                     <p className="text-danger">{signupError}</p>
                     <Link to="/" className="signup-button">Back</Link>
@@ -146,4 +147,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {signup})(Sign_Up);
+export default connect(mapStateToProps, {signup})(SignUp);

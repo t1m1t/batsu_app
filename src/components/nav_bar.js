@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { slide as Menu } from 'react-burger-menu'
 import Home from './home';
-import Sign_Up from './sign_up';
 import Events from './events';
 import MyEvents from './my_events';
 import WhatIsBatsu from './what_is_batsu';

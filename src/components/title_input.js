@@ -1,12 +1,13 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { signin } from '../actions/index';
+import { renderInput } from './helper_functions';
 import './app.css';
 import axios from 'axios';
-import { reduxForm } from 'redux-form';
-import { connect } from 'react-redux';
-import { signin } from '../actions';
 
 
-class LogInForm extends Component {
+class SignIn extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -44,16 +45,27 @@ class LogInForm extends Component {
         })
     }
 
+    handleSignIn(vals){
+        console.log("Sign In vals:", vals);
+        this.props.signin(vals);
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.auth){
+            this.props.history.push('/map');
+        }
+    }
+
     render(){
         const {email, password} = this.state.form;
-        const {handleSubmit, signinError} = this.props
+        const {handleSubmit, signinError} = this.props;
         return(
             <div className="login_page">
                 <form onSubmit={(event) => {this.handleFormSubmit(event); handleSubmit(vals => this.handleSignIn(vals))}}>
                     <h6 className="login-subtitles">E-mail</h6>
-                    <input name="email" type="email" value={email} onChange={ (event) => this.handleChange(event) } />
+                    <Field name="email" type="email" value={email} onChange={(event) => this.handleChange(event)} component={renderInput} />
                     <h6 className="login-subtitles">Password</h6>
-                    <input name="password" type="password" value={password} onChange={ (event) => this.handleChange(event) } />
+                    <Field name="password" type="password" value={password} onChange={(event) => this.handleChange(event)} component={renderInput} />
                     <p className="text-danger">{signinError}</p>
                     <button type="submit" className="login-button">Log In</button>
                 </form>
@@ -62,9 +74,23 @@ class LogInForm extends Component {
     }
 }
 
-LogInForm = reduxForm({
-    form: 'signin'
-})(LogInForm)
+function validate(vals){
+    const error = {};
+
+    if (!vals.email){
+        error.email = "Please enter an e-mail";
+    }
+    if (!vals.password){
+        error.password = "Please enter a password";
+    }
+
+    return error;
+}
+
+SignIn = reduxForm({
+    form: 'signin',
+    validate
+})(SignIn);
 
 function mapStateToProps(state){
     return{
@@ -73,4 +99,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {signin})(LogInForm);
+export default connect(mapStateToProps, {signin})(SignIn);
