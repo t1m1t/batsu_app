@@ -8,7 +8,6 @@ import './app.css';
 
 const Home = () => {
     return (
-        
         <div className="batsu-app">
             <h1 className="batsu-title">_Batsu</h1>
             <div>

@@ -152,6 +152,8 @@ input, select{
 }
 
 .form-control{
+    width: 230px;
+    display: inline-block;
     box-shadow:
             1px 1px 0 black,
             1px 1px 0 black,
