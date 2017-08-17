@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Home from './home';
+import Map from './map';
 // import axios from 'axios';
 import { signup } from '../actions';
 import { Field, reduxForm } from 'redux-form';
@@ -103,7 +105,9 @@ class SignUp extends Component {
                     </form>
                 </div>
                 <button className="back-signup-button" type="button"><Link to="/">Back</Link></button>
-                <button className="submit-signup-button" type="submit">Submit</button>
+                <button className="submit-signup-button" type="submit"><Link to="/map">Submit</Link></button>
+                <Route path="/" component={Home} />
+                <Route path="/map" component={Map} />
             </div>
         )
     }

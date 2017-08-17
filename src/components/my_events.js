@@ -7,20 +7,20 @@ import './app.css';
 class MyEvents extends Component {
     constructor(props){
         super(props);
-        this.Loaded = false;
+        this.Loaded = true;
         this.state = {
             createdEventsList: [{
-                event_name: '',
-                creator_id:'',
-                event_id:'',
-                event_dateTime:''
-            }],
-            invitedEventsList: [{
-                event_name:'',
-                creator_id:'',
-                event_id:'',
-                event_dateTime:''
-            }]
+                    event_name: '123',
+                    creator_id: '',
+                    event_id: 123,
+                    event_dateTime: ''
+                }],
+                invitedEventsList: [{
+                    event_name:'',
+                    creator_id:'',
+                    event_id: '',
+                    event_dateTime:''
+                }]
             //will change based on server database
         }
     }
@@ -33,42 +33,48 @@ class MyEvents extends Component {
         axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=eventlist&token='+document.cookie.split('=')[1]).then((resp) => {
             //will change based on server database
             console.log('this is the response:', resp);
-            this.Loaded = true;
+            // this.Loaded = true;
             this.setState({
-                createdEventsList: resp.data.data.createdEventList,
-                invitedEventslist: resp.data.data.invitedEventList
+                createdEventsList: [{
+                    event_name: '123',
+                    creator_id: '',
+                    event_id: 123,
+                    event_dateTime: ''
+                }],
+                invitedEventsList: [{
+                    event_name:'',
+                    creator_id:'',
+                    event_id: '',
+                    event_dateTime:''
+                }]
             })
-
         });
-    };
+    }
 
     render(){
         if(this.Loaded === false) {
             return (
                 <div> Loading....</div>
             )
-        }
-        else{
+        } else {
+            return (
+                <div>
+                    <h1 className="myEvents_title">My Events</h1>
+                    <h3 className="myEvents_subtitle">All of Your Events in One Place!</h3>
 
-        }
-
-        return (
-            <div>
-                <h1 className="myEvents_title">My Events</h1>
-                <h3 className="myEvents_subtitle">All of Your Events in One Place!</h3>
-
-                <h4 className="events_box_title">My Created Events</h4>
-                <div className="my_created_events_box">
-                    <CreatedEventsData className="list_info" createdEventsList={this.state.createdEventsList} />
-                    {/* //will change based on server database */}
+                    <h4 className="events_box_title">My Created Events</h4>
+                    <div className="my_created_events_box">
+                        <CreatedEventsData className="list_info" createdEventsList={this.state.createdEventsList} />
+                        {/* //will change based on server database */}
+                    </div>
+                    <h4 className="events_box_title">Other Created Events</h4>
+                    <div className="other_created_events_box">
+                        <InvitedEventsData className="list_info" invitedEventsList={this.state.invitedEventsList} />
+                        {/* //will change based on server database */}
+                    </div>
                 </div>
-                <h4 className="events_box_title">Other Created Events</h4>
-                <div className="other_created_events_box">
-                    <InvitedEventsData className="list_info" invitedEventsList={this.state.invitedEventsList} />
-                    {/* //will change based on server database */}
-                </div>
-            </div>
-        )
+            )
+        }  
     }
 }
 

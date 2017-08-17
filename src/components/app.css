@@ -505,19 +505,11 @@ div.bm-menu{
     font-size: 20px;
     color: red;
     text-shadow:
-<<<<<<< HEAD
             1px 1px 0 black,
             1px 1px 0 black,
             1px 1px 0 black,
             1px 1px 0 black,
             1px 1px 3px black;
-=======
-        2px 2px 0 black,
-        2px 2px 0 black,
-        2px 2px 0 black,
-        2px 2px 0 black,
-        2px 2px 6px black;
->>>>>>> c3426bd52a2c8ad49b60ceb7c3991ca30112c6b7
 }
 
 .howto_group_pic{
@@ -533,31 +525,7 @@ div.bm-menu{
             2px 2px 6px black;
 }
 
-<<<<<<< HEAD
 .howto_inner_text{
-=======
-.howto_subtitle{
-    margin: 20px 0 0;
-    font-size: 25px;
-}
-
-
-/* About Us Page */
-
-.aboutUs_title{
-    margin: 30px 0 30px;
-    font-size: 50px;
-    color: red;
-    text-shadow:
-        2px 2px 0 black,
-        2px 2px 0 black,
-        2px 2px 0 black,
-        2px 2px 0 black,
-        2px 2px 6px black;
-}
-
-.aboutUs_inner_text{
->>>>>>> c3426bd52a2c8ad49b60ceb7c3991ca30112c6b7
     margin: 0 auto;
     border: 2px solid black;
     font-size: 23px;
@@ -582,32 +550,6 @@ div.bm-menu{
     margin: 20px 0 20px !important;
 }
 
-<<<<<<< HEAD
-=======
-.profile_parent {
-    align-items:center!important;
-}
-
-.friends_picture_container{
-    overflow: auto;
-    white-space: nowrap;
-}
-.profile_picture_preview{
-    padding: 0 0 20px;
-    height: 30vh;
-    width: 60vw;
-}
-.profile_picture_preview > img {
-    height:200px;
-    border:1px solid black;
-    box-shadow:
-            0 0 0 black,
-            0 0 0 black,
-            0 0 0 black,
-            0 0 0 black,
-            1px 1px 20px black;
-}
->>>>>>> c3426bd52a2c8ad49b60ceb7c3991ca30112c6b7
 
 /*@media screen and (min-width: 700px) {*/
 /*.batsu-app{*/

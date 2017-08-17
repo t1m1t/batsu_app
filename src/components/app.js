@@ -31,7 +31,7 @@ const App = () => (
         <Route path="/profile" component={Profile} />
         <Route path="/my_events" component={MyEvents} />
         <Route path="/what_is_batsu" component={WhatIsBatsu} />
-        <Route path="/preview_event" component={CreatedEvent} />
+        <Route path="/preview_event/:id" component={CreatedEvent} />
         <Route path="/map" component={Map} /> 
     </div>
 )

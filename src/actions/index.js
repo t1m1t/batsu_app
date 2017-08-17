@@ -32,9 +32,20 @@ export function signup({fname, lname, phone, email, password, password_conf, dob
     };
 };
 
+// export function getDataEvents(id){
+//     const request = axios.get(`${BASE_URL}/preview_event/${id}`);
+//     return {
+//         type: types.GETEVENT,
+//         payload: request
+//     }
+// }
+
+
+
 function sendError(msg){
     return{
         type: types.ERROR,
         error: msg
     }
 }
+
