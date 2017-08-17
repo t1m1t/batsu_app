@@ -38,9 +38,10 @@ else if($_GET['operation'] === "profilePic"){
 }
 
 
-if($output['success'] === false){
-    array_push($output['errors'], mysqli_error($conn));
-}
+//if(count($output['errors'])===0){
+//    $output['errors'] = false;
+//}
+
 
 $outputJSON = json_encode($output);
 echo($outputJSON);

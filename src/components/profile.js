@@ -6,16 +6,15 @@ import './app.css';
 class Profile extends Component {
     constructor(props){
         super(props);
-
         this.state = {
             canEdit:false,
             userData:{
                 file:'',
                 profile_pic:'',
-                fname: 'jay',
-                lname: 'die',
-                phone: '714-234-2333',
-                email: 'jaydie@gmail.com'
+                fname: '',
+                lname: '',
+                phone: '',
+                email: ''
             }
         }
     }
@@ -35,18 +34,27 @@ class Profile extends Component {
     }
 
     handleChange(event){
+    // handleChange(){
         const{name, value} = event.target;
         const{userData} = this.state;
         userData[name] = value;
         this.setState({userData:{...userData}});
     }
 
-    handleImageChange(e) {
-        e.preventDefault();
 
+    postProfAxios(){
+        const {userData} = this.userData.profile_pic
+        console.log(userData);
+
+        axios.post(`${BASE_URL}`, userData).then((resp) => {
+            console.log('Add resp:', resp)
+        })
+    }
+
+    handleImageChange(event) {
+        event.preventDefault();
         let reader = new FileReader();
-        let file = e.target.files[0];
-
+        let file = event.target.files[0];
         reader.onloadend = () => {
             this.setState({
                 file: file,
@@ -96,15 +104,15 @@ class Profile extends Component {
                         </div>
                         <form>
                             Select image to upload:
-                            <input className="fileInput" type="file" name="myFile" onChange={(e)=>this.handleImageChange(e)}/>
-                            {/*<button className="fileButton" type="submit">Upload</button>*/}
+                            <input className="fileInput" type="file" name="myFile" onChange={(event)=>this.handleImageChange(event)}/>
+                            <button className="fileButton" type="submit">Upload</button>
                         </form>
                         <div className="card-block">
                             <ul className="list-group list-group-flush container">
-                                <li className="list-group-item">Email: <input type="text" name="email" value={this.state.userData.email}/></li>
+                                <li className="list-group-item">Email: <input type="text" name="email" onChange={(event)=>this.handleChange(event)} value={this.state.userData.email}/></li>
                                 <li className="list-group-item">First Name: <input type="text" name="fname" onChange={(event)=>this.handleChange(event)} value={this.state.userData.fname}/></li>
                                 <li className="list-group-item">Last Name: <input type="text" name="lname" onChange={(event)=>this.handleChange(event)} value={this.state.userData.lname}/></li>
-                                <li className="list-group-item">Phone: <input type="text" name="phone" value={this.state.userData.phone}/></li>
+                                <li className="list-group-item">Phone: <input type="text" name="phone" onChange={(event)=>this.handleChange(event)} value={this.state.userData.phone}/></li>
                             </ul>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         </div>
@@ -112,10 +120,7 @@ class Profile extends Component {
                     </div>
                 </div>
             )
-
         }
     }
 }
-
-
 export default Profile;

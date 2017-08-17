@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import ListThree from './listThree';
 import Maps from './event_marker';
 import axios from 'axios';
 import './app.css';
@@ -76,13 +75,17 @@ class CreatedEvent extends Component{
         }
     }
 
-   deg2rad(deg) {
-    return deg * (Math.PI/180)
+    deg2rad(deg) {
+        return deg * (Math.PI/180)
     }
 
 
 
 
+
+    handleCheckIn(event){
+        event.preventDefault();
+    }
 
     handleAxios(){
         axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=eventinfo&eventID='+this.state.eventID).then((resp) => {
@@ -90,20 +93,17 @@ class CreatedEvent extends Component{
             this.pageLoaded = true;
             this.setState({
                 list: resp.data.data
-
-                //this needs to be based from backend
             })
             console.log("list: ", this.state.list);
 
         });
     }
 
-    handleCheckIn(e){
-        e.preventDefault();
+    countDown(){
+        setTimeout(() => alert('timer is working'), this.list.eventDateTime)
     }
 
     render(){
-
         if(this.pageLoaded === false){
             return(
                 <h1>Page Loading...</h1>

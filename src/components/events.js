@@ -53,6 +53,7 @@ class Events extends Component {
             })
             .catch(error => console.error('what is Error', error));
     };
+
     handleAxios(latLong) {
         console.log("Handle axios latLong:", latLong);
 
