@@ -10,9 +10,9 @@ class MyEvents extends Component {
         this.Loaded = true;
         this.state = {
             createdEventsList: [{
-                    event_name: '123',
+                    event_name: '',
                     creator_id: '',
-                    event_id: 123,
+                    event_id: '',
                     event_dateTime: ''
                 }],
                 invitedEventsList: [{
@@ -36,9 +36,9 @@ class MyEvents extends Component {
             // this.Loaded = true;
             this.setState({
                 createdEventsList: [{
-                    event_name: '123',
+                    event_name: '',
                     creator_id: '',
-                    event_id: 123,
+                    event_id: '',
                     event_dateTime: ''
                 }],
                 invitedEventsList: [{

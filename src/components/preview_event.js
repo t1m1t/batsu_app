@@ -37,9 +37,6 @@ class CreatedEvent extends Component{
     }
 
     componentWillMount(){
-        // const {id} = this.props.match.param;
-        // console.log(id);
-        // this.props.getDataEvents(id);
        this.getUrl(); 
        this.handleAxios();
        
