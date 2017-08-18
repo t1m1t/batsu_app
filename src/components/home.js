@@ -1,21 +1,51 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
-import SignIn from './title_input';
-import SignUp from './sign_up';
-import './app.css';
+import Event from './events';
+import Modal from 'react-modal';
+import Maps from './map_component';
 
 
-const Home = (props) => {
-    return (
-        <div className="batsu-app">
-            <h1 className="batsu-title">_Batsu</h1>
+class Home extends React.Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            modalIsOpen: false,
+            position: {}
+        };
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+    }
+
+    openModal() {
+        this.setState({modalIsOpen: true});
+    }
+
+    closeModal() {
+        this.setState({modalIsOpen: false});
+    }
+
+    render(){
+        return(
             <div>
-                <SignIn history={props.history} />
-                <div className="line_space"></div>
-                <div className="fb-login-button" data-button-type="login_with" data-size="large" scope="public_profile,email" data-onlogin="checkLoginState();"></div>
+                <Maps
+                    center={{lat:33.6904288, lng:-117.8330699}}
+                    containerElement={<div className='hi' style={{ height: `82vh` , width: `100vw`}} />}
+                    mapElement={<div style={{ height: `82vh` , width: `100vw`}} />}
+                    markers={[{
+                        position: {
+                            lat:33.6904288,
+                            lng:-117.8330699
+                        },
+                    }]} />
+
+                <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} contentLabel="Event Modal">
+                    <Event onCancel={(event)=>this.closeModal(event)} />
+                </Modal>
+
+                <button className="btn btn-default btn-circle create_event_button" onClick={this.openModal} >Create Event!</button>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default Home;

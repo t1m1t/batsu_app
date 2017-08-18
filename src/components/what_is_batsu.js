@@ -8,7 +8,7 @@ const HowTo = () => {
     return(
         <div>
             {/* <NavBar /> */}
-            <h1 className="howto_title_top">What is Batsu?</h1>
+            <h1 className="howto_title_top">What's Batsu?</h1>
             <h3 className="howto_title_bottom">¯\_(ಠ_ಠ)_/¯</h3>
             <img src={GroupPic} className="howto_group_pic" />
             <div className="howto_inner_text">
