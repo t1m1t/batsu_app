@@ -6,10 +6,14 @@ import { renderInput } from './helper_functions';
 import { connect } from 'react-redux';
 import { signin } from '../actions/index';
 import './app.css';
-
-
+// import withRouter;
+// import {Router} from 'react-router'
+// import {createBrowserHistory} from 'history';
 
 class SignIn extends Component {
+
+
+
     // constructor(props){
     //     super(props);
     //     this.state = {
@@ -48,8 +52,19 @@ class SignIn extends Component {
     // }
 
     handleSignIn(vals){
+        // const history = new createBrowserHistory();
         console.log("Sign In vals:", vals);
-        this.props.signin(vals, this.props.history);
+        this.props.signin(vals);
+    }
+
+
+    componentWillReceiveProps(nextProps){
+        console.log('The props are:', nextProps);
+
+        //const history = new createBrowserHistory();
+        if(nextProps.auth){
+            this.props.history.push('/map');
+        }
     }
 
 // <<<<<<< HEAD
@@ -79,7 +94,7 @@ class SignIn extends Component {
 //     }
 
     render(){
-        const {handleSubmit, signinError, reset} = this.props;
+        const {handleSubmit, signinError} = this.props;
         return(
             <div className="login_page">
                 <form onSubmit={handleSubmit(vals => this.handleSignIn(vals))}> 
@@ -92,10 +107,10 @@ class SignIn extends Component {
                     <button type="submit" className="login-button">Log In</button>
                 </form>
                 <div className="signup-top-div">
-                    <button className="signup-button" onClick={reset}>
-                        <Link to="/sign_up" onClick={reset} >Sign Up</Link>
+                    <button className="signup-button">
+                        <Link to="/sign_up">Sign Up</Link>
                     </button>
-                    {/*<Route path="/sign_up" component={SignUp} />*/}
+                    {/*<Route path="/signup_page" component={SignupPage} />*/}
                 </div>
             </div>
         )

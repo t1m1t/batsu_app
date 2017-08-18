@@ -8,9 +8,12 @@ class Profile extends Component {
         super(props);
         this.state = {
             canEdit:false,
+            file:{
+                name: 'blah'
+            },
+            imagePreviewUrl:'',
             userData:{
                 file:'',
-                profile_pic:'',
                 fname: '',
                 lname: '',
                 phone: '',
@@ -21,8 +24,6 @@ class Profile extends Component {
 
     handleAxios(){
         console.log(this.state);
-        // console.log("0: "+ document.cookie.split('=')[0]);
-        // console.log("1: "+ document.cookie.split('=')[1]);
         axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=profile&token='+document.cookie.split('=')[1]).then((resp) => {
             console.log(resp);
             this.setState({userData: resp.data.data});
@@ -33,20 +34,22 @@ class Profile extends Component {
         this.handleAxios();
     }
 
-    handleChange(event){
-    // handleChange(){
-        const{name, value} = event.target;
-        const{userData} = this.state;
-        userData[name] = value;
-        this.setState({userData:{...userData}});
-    }
+    // handleChange(event){
+    // // handleChange(){
+    //     const{name, value} = event.target;
+    //     const{userData} = this.state;
+    //     userData[name] = value;
+    //     this.setState({userData:{...userData}});
+    // }
 
 
-    postProfAxios(){
-        const {userData} = this.userData.profile_pic
-        console.log(userData);
-
-        axios.post(`${BASE_URL}`, userData).then((resp) => {
+    //axios call needed to upload image
+    postPic(){
+        let filepic = this.state.file;
+        const formData = new FormData();
+        formData.append('profile', filepic);
+        console.log(formData);
+        axios.post('http://localhost/Website/accountability_db/c5.17_accountability/php/form.php?operation=uploadImage', formData).then((resp) => {
             console.log('Add resp:', resp)
         })
     }
@@ -64,30 +67,42 @@ class Profile extends Component {
         reader.readAsDataURL(file)
     }
 
+    handleSubmit(e) {
+        e.preventDefault();
+        console.log('Uploading', this.state);
+        this.setState({
+            canEdit:false
+        })
+        this.postPic();
+    }
+
+
     render() {
+
         if(this.state.canEdit === false){
             return (
                 <div>
                     <h1 className="card-title">Profile</h1>
                     <div className="card profile_parent">
                         <div className="profile_picture_preview">
-                            <img src="https://www.biography.com/.image/t_share/MTQ3NjM5ODIyNjU0MTIxMDM0/snoop_dogg_photo_by_estevan_oriol_archive_photos_getty_455616412.jpg" alt=""/>
+
+                            <img src={this.state.imagePreviewUrl} alt=""/>
                         </div>
                         <div className="card-block">
                             <ul className="list-group list-group-flush container">
                                 <li className="list-group-item">Email: {this.state.userData.email}</li>
-                                <li className="list-group-item">FName: {this.state.userData.fname}</li>
-                                <li className="list-group-item">LName: {this.state.userData.lname}</li>
+                                <li className="list-group-item">Name: {this.state.userData.fname.concat(" ").concat(this.state.userData.lname)}</li>
                                 <li className="list-group-item">Phone: {this.state.userData.phone}</li>
                             </ul>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         </div>
                         <button onClick={() => this.setState({canEdit: true})} className="btn btn-outline-danger">Edit</button>
+
                     </div>
                 </div>
             )
         } else {
-            let {imagePreviewUrl} = this.state;
+            let {imagePreviewUrl, userData} = this.state;
             let profilePic = null;
             if (imagePreviewUrl) {
                 profilePic = (<img src={imagePreviewUrl}/>);
@@ -99,28 +114,27 @@ class Profile extends Component {
                     <h1 className="card-title">Profile</h1>
                     <div className="card profile_parent">
                         <div className="profile_picture_preview">
-                            {/*{this.state.userData.profile_pic}*/}
                             {profilePic}
                         </div>
-                        <form>
-                            Select image to upload:
-                            <input className="fileInput" type="file" name="myFile" onChange={(event)=>this.handleImageChange(event)}/>
-                            <button className="fileButton" type="submit">Upload</button>
+                        <form onSubmit={(e) => {this.handleSubmit(e)}}>
+                            <input id="file" className="profileInput" type="file" name="profile" onChange={(e)=>this.handleImageChange(e)}/>
+                            <div className="card-block">
+                                <ul className="list-group list-group-flush container">
+                                    <li className="list-group-item">Email: {userData.email}</li>
+                                    <li className="list-group-item">First Name: <input type="text" value={userData.fname} onChange={(e) => {this.handleInputChange(e)}}/></li>
+                                    <li className="list-group-item">Last Name: <input type="text" value={userData.lname} onChange={(e) => {this.handleInputChange(e)}}/></li>
+                                    <li className="list-group-item">Phone: <input type="text" value={userData.phone} onChange={(e) => {this.handleInputChange(e)}}/></li>
+                                </ul>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            </div>
+                            <button type="submit" onClick={(e) => this.handleSubmit(e)} className="btn btn-outline-info">Save</button>
                         </form>
-                        <div className="card-block">
-                            <ul className="list-group list-group-flush container">
-                                <li className="list-group-item">Email: <input type="text" name="email" onChange={(event)=>this.handleChange(event)} value={this.state.userData.email}/></li>
-                                <li className="list-group-item">First Name: <input type="text" name="fname" onChange={(event)=>this.handleChange(event)} value={this.state.userData.fname}/></li>
-                                <li className="list-group-item">Last Name: <input type="text" name="lname" onChange={(event)=>this.handleChange(event)} value={this.state.userData.lname}/></li>
-                                <li className="list-group-item">Phone: <input type="text" name="phone" onChange={(event)=>this.handleChange(event)} value={this.state.userData.phone}/></li>
-                            </ul>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </div>
-                        <button onClick={() => this.setState({canEdit: false})} className="btn btn-outline-info">Save</button>
                     </div>
                 </div>
             )
+
         }
     }
+
 }
 export default Profile;

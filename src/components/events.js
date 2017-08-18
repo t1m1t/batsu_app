@@ -74,7 +74,7 @@ class Events extends Component {
         this.setState(newState);
 
         console.log('Data to send:', sendData);
-        axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent`, sendData).then((resp) => {
+        axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/php/form.php?operation=insertEvent`, sendData).then((resp) => {
             console.log('this is the response:', resp);
             if(resp.data.success === true){
                 //trigger axios call to the map

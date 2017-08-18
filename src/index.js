@@ -12,7 +12,7 @@ import thunk from 'redux-thunk';
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 const store = createStoreWithMiddleware(rootReducer);
-if (localStorage.getItem('token')){
+if (document.cookie){
     store.dispatch({ type: types.SIGNIN});
 }
 

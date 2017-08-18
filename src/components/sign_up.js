@@ -42,25 +42,25 @@ class SignUp extends Component {
     //     this.setState(newState);
     //     this.handleAxios();
     // }
-
-    handleAxios(){
-        const {form} = this.state;
-        console.log(form);
-        axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertUser`, form).then((resp) => {
-            console.log('this is the response from insert:', resp);
-            if(resp.data.success === true){
-                var now = new Date();
-                var time = now.getTime();
-                var expireTime = time + 86400000;   //24 hours
-                now.setTime(expireTime);
-                document.cookie = "token="+resp.data.token+";expires="+now.toUTCString()+";path=/";
-                this.props.history.push('/map');
-            }
-            else{
-                //stay on sign up page
-            }
-        })
-    }
+    //
+    // handleAxios(){
+    //     const {form} = this.state;
+    //     console.log(form);
+    //     axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/php/form.php?operation=insertUser`, form).then((resp) => {
+    //         console.log('this is the response from insert:', resp);
+    //         if(resp.data.success === true){
+    //             var now = new Date();
+    //             var time = now.getTime();
+    //             var expireTime = time + 86400000;   //24 hours
+    //             now.setTime(expireTime);
+    //             document.cookie = "token="+resp.data.token+";expires="+now.toUTCString()+";path=/";
+    //             this.props.history.push('/map');
+    //         }
+    //         else{
+    //             //stay on sign up page
+    //         }
+    //     })
+    // }
 
     // handleAxios(){
     //     const {form} = this.state;
@@ -90,8 +90,17 @@ class SignUp extends Component {
         this.props.signup(vals, this.props.history);
     }
 
+    // componentWillReceiveProps(nextProps){
+    //     console.log('The props are:', nextProps);
+    //
+    //     //const history = new createBrowserHistory();
+    //     if(nextProps.auth){
+    //         this.props.history.push('/map');
+    //     }
+    // }
+
     render() {
-        const {handleSubmit, signupError, reset} = this.props;
+        const {handleSubmit, signupError} = this.props;
         return (
             <div className="signup-page">
                 <h1 className="batsu-title-signup">Sign-Up</h1>
@@ -125,8 +134,7 @@ class SignUp extends Component {
                             <h6 className="signin-subtitles">Date of Birth</h6>
                             <Field className="signup_info" name="dob" type="date" component={renderInput}>{signupError}</Field>
                         </div>
-                        <p className="text-danger">{signupError}</p>
-                        <button className="back-signup-button" type="button" onClick={reset} ><Link to="/" onClick={reset} >Back</Link></button>
+                        <button className="back-signup-button" type="button"><Link to="/" >Back</Link></button>
                         <button className="submit-signup-button" type="submit">Submit</button>
                     </form>
                 </div>
