@@ -19,7 +19,7 @@ class NavBar extends Component {
     }
 
     render() {
-        if (location.pathname === "/" || location.pathname === "/profile"){
+        if (location.pathname === "/" || location.pathname === "/sign_up"){
             return null;
         } else {
             return (

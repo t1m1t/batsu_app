@@ -2,7 +2,6 @@ import React from 'react';
 import Event from './events';
 import Modal from 'react-modal';
 import Maps from './map_component';
-// import NavBar from './nav_bar';
 
 
 class Map extends React.Component {
@@ -28,7 +27,6 @@ class Map extends React.Component {
     render(){
         return(
             <div>
-                {/* <NavBar/> */}
                 <Maps
                     center={{lat:33.6904288, lng:-117.8330699}}
                     containerElement={<div className='hi' style={{ height: `82vh` , width: `100vw`}} />}
@@ -41,9 +39,10 @@ class Map extends React.Component {
                     }]} />
 
                 <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} contentLabel="Event Modal">
-                    <Event onCancel={(e)=>this.closeModal(e)} />
+                    <Event onCancel={(event)=>this.closeModal(event)} />
                 </Modal>
-                <button className="btn btn-default btn-circle" onClick={this.openModal} >Create Event!</button>
+
+                <button className="btn btn-default btn-circle create_event_button" onClick={this.openModal} >Create Event!</button>
             </div>
         )
     }

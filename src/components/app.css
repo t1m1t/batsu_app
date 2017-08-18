@@ -291,6 +291,25 @@ button:hover, button:visited, button:link, button:active{
     margin:0 25px;
 }
 
+.create_event_button{
+    font-family: crowbar;
+    text-align: center;
+    width: 100px;
+    background-color: greenyellow;
+    color: black;
+    font-size: 15px;
+    padding: 10px;
+    margin: 10px 0 0;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow:
+            1px 1px 0 black,
+            1px 1px 0 black,
+            1px 1px 0 black,
+            1px 1px 0 black,
+            1px 1px 6px black;
+}
+
 .map_modal_button{
     font-family: crowbar;
     text-align: center;
