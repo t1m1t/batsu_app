@@ -10,11 +10,11 @@ class CreatedEvent extends Component{
     constructor(props){
         super(props);
 
-
+        this.checkedIn = false;
         this.pageLoaded = false;
         this.state = {
             token : document.cookie.split("=")[1],
-            eventID: 18,
+            eventID: 42,
             list: {
                 eventName: '',
                 eventDateTime: '',
@@ -39,8 +39,6 @@ class CreatedEvent extends Component{
         this.handleAxios();
     }
 
-
-
     grabUser() {
      if (navigator.geolocation) {
             navigator.geolocation.watchPosition(this.getUser.bind(this));
@@ -48,7 +46,6 @@ class CreatedEvent extends Component{
            console.log("Geolocation is not supported by this browser.");
         }
     }
-
 
     getUser(position) {
         console.log("Latitude: " + position.coords.latitude +
@@ -70,6 +67,7 @@ class CreatedEvent extends Component{
         if(d<200){
             console.log('you are within range');
             if(myStatus === "Checked In"){
+
                 console.log("you're already checked in");
             }
             else{
@@ -112,11 +110,19 @@ class CreatedEvent extends Component{
     handleAxios(){
         axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=eventinfo&eventID='+this.state.eventID+"&token="+this.state.token).then((resp) => {
             console.log('this is the response:', resp);
+
+
+            if(resp.data.data.myStatus === "Checked In"){
+                this.checkedIn = true;
+            }
             this.pageLoaded = true;
             this.setState({
                 list: resp.data.data
             })
             console.log("list: ", this.state.list);
+            // if(this.state.myStatus === "Checked In"){
+            //     abc = false;
+            // }
 
         });
     }
@@ -137,63 +143,72 @@ class CreatedEvent extends Component{
                 lng:parseFloat(this.state.list.eventLong)
             }
             const invitee = this.state.list.eventinvitees[0];
-            return (
-                <div>
-                    {this.state.list.eventName}
-                    <h6>Time Until Event</h6>
-                    {this.state.list.eventDateTime}
-                    <Timer eventID={this.state.eventID}/>
-                    <div className="line_space"></div>
-                    <div>list of invitees</div>
-                    <div className="friends_picture_container">
-                        <img src={this.getImage(invitee.path)}/>
-                        <p>{invitee.fName}</p>
+            if(this.state.list.myStatus){
+                return (
+                    <div>
+                        {this.state.list.eventName}
+                        <h6>Time Until Event</h6>
+                        {this.state.list.eventDateTime}
+                        <Timer eventID={this.state.eventID}/>
+                        <div className="line_space"></div>
+                        <div>list of invitees</div>
+                        <div className="friends_picture_container">
+                            <img src={this.getImage(invitee.path)}/>
+                            <p>{invitee.fName}</p>
+                        </div>
+                        <div className="line_space"></div>
+                        <div className="punishment_div">Punishment</div>
+                        <div>{this.state.list.eventPunishment}</div>
+                        <div id="eventmap">
+                            <Maps
+                                center={eventLocation}
+                                position = {eventLocation}
+                                containerElement={<div style={{ height: `24vh` , width: `90vw`,display:`inline-block`}} />}
+                                mapElement={<div style={{ height: `24vh` , width: `90vw`}} />}
+                                markers={[{
+                                    position: eventLocation,
+                                }]}
+                            />
+                        </div>
+                        <div>
+                            Checked-In
+                        </div>
                     </div>
-                    <div className="line_space"></div>
-                    <div className="punishment_div">Punishment</div>
-                    <div>{this.state.list.eventPunishment}</div>
-                    <div id="eventmap">
-                        <Maps
-                            center={eventLocation}
-                            position = {eventLocation}
-                            containerElement={<div style={{ height: `24vh` , width: `90vw`,display:`inline-block`}} />}
-                            mapElement={<div style={{ height: `24vh` , width: `90vw`}} />}
-                            markers={[{
-                                position: eventLocation,
-                            }]}
-                        />
+                )
+            }
+            else{
+                return (
+                    <div>
+                        {this.state.list.eventName}
+                        <h6>Time Until Event</h6>
+                        {this.state.list.eventDateTime}
+                        <Timer eventID={this.state.eventID}/>
+                        <div className="line_space"></div>
+                        <div>list of invitees</div>
+                        <div className="friends_picture_container">
+                            <img src={this.getImage(invitee.path)}/>
+                            <p>{invitee.fName}</p>
+                        </div>
+                        <div className="line_space"></div>
+                        <div className="punishment_div">Punishment</div>
+                        <div>{this.state.list.eventPunishment}</div>
+                        <div id="eventmap">
+                            <Maps
+                                center={eventLocation}
+                                position = {eventLocation}
+                                containerElement={<div style={{ height: `24vh` , width: `90vw`,display:`inline-block`}} />}
+                                mapElement={<div style={{ height: `24vh` , width: `90vw`}} />}
+                                markers={[{
+                                    position: eventLocation,
+                                }]}
+                            />
+                        </div>
+                        <button className="btn" onClick={()=>{this.grabUser()}}>Check-In</button>
                     </div>
-                    <button className="btn" onClick={()=>{this.grabUser()}}>Check-In</button>
-                </div>
-            )
-            // return (
-            //     <form className="after_creating_event" onSubmit={(event) => this.handleCheckIn(event)}>
-            //         {this.state.list.eventName}
-            //         <h6>Time Until Event</h6>
-            //         {this.state.list.eventDateTime}
-            //         <Timer eventID={this.state.eventID}/>
-            //         <div className="line_space"></div>
-            //         <div>list of invitees</div>
-            //         <div className="friends_picture_container">
-            //             {this.state.list.eventinvitees[0].fName.concat(" ").concat(this.state.list.eventinvitees[0].lName)},
-            //         </div>
-            //         <div className="line_space"></div>
-            //         <div className="punishment_div">Punishment</div>
-            //         <div>{this.state.list.eventPunishment}</div>
-            //         <div id="eventmap">
-            //             <Maps
-            //                 center={eventLocation}
-            //                 position = {eventLocation}
-            //                 containerElement={<div style={{ height: `24vh` , width: `90vw`,display:`inline-block`}} />}
-            //                 mapElement={<div style={{ height: `24vh` , width: `90vw`}} />}
-            //                 markers={[{
-            //                     position: eventLocation,
-            //                 }]}
-            //             />
-            //         </div>
-            //         <button className="btn" onClick={()=>{this.grabUser()}}>Check-In</button>
-            //     </form>
-            // )
+                )
+            }
+
+
         }
     }
 }

@@ -12,7 +12,7 @@
     $stmt1 = $conn->prepare("SELECT first_name, last_name, email, phone, path FROM accounts WHERE ID=?");
     $stmt1->bind_param("s", $id);
     $stmt1->execute();
-    $stmt1->bind_result($fname, $lname, $email, $phone);
+    $stmt1->bind_result($fname, $lname, $email, $phone, $path);
     $stmt1->fetch();
     if(empty($fname)){
         array_push($output["errors"], 'database error');
@@ -21,6 +21,7 @@
     else{
         $output['success'] = true;
         $output['data'] = (object)["fname" => $fname, "lname" => $lname, "email"=>$email, "phone"=>$phone];
+        $output['path'] = (object)["imagePreviewUrl"=>$path];
     }
 
     $stmt1->close();

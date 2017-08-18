@@ -18,11 +18,10 @@ class Events extends Component {
                 date: '',
                 address: '',
                 location:'',
-                description: 'descriptionnnnn',
-                punishment: 'profile_doodle'
+                description: '',
+                punishment: ''
             }
         };
-
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -78,6 +77,7 @@ class Events extends Component {
             console.log('this is the response:', resp);
             if(resp.data.success === true){
                 //trigger axios call to the map
+                this.props.onCancel();
             }
             else{
                 //w/e error msg is
@@ -136,7 +136,10 @@ class Events extends Component {
                                 <option value="No Punishment">No Punishment</option>
                             </select>
                         </div>
-                        <button className="btn btn-outline-success">Confirm</button>
+                        <button type="submit" className="btn btn-outline-success">
+                            Confirm
+                        </button>
+
                         <button type="button" className="btn btn-outline-danger mr-2" onClick={this.props.onCancel}>
                             Cancel
                         </button>

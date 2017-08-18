@@ -55,9 +55,5 @@ if(count($output['errors']) === 0 ){
         array_push($output['errors'], mysqli_error($conn));
     }
 
-//    $_SESSION['user']=mysqli_stmt_insert_id($stmt);
-    ///$id = session_id();
-
-//    $stmt->close();
 }
 ?>
