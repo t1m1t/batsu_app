@@ -5,21 +5,24 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { renderInput } from './helper_functions';
 import './app.css';
+// import NavBar from './nav_bar';
+
 
 
 class SignUp extends Component {
     handleSignup(vals){
         console.log('Form values:', vals);
-        this.props.signup(vals);
+        this.props.signup(vals, this.props.history);
     }
 
     render() {
         const {handleSubmit, signupError} = this.props;
         return (
             <div className="signup-page">
+                {/* <NavBar /> */}
                 <h1 className="batsu-title-signup">Sign-Up</h1>
                 <div className="signup-main">
-                    <form onSubmit={handleSubmit(vals => this.handleSignUp(vals))}>
+                    <form onSubmit={handleSubmit(vals => this.handleSignup(vals))}>
                         <div>
                             <h6 className="signin-subtitles">First Name</h6>
                             <Field className="signup_info" name="fname" component={renderInput}/>
@@ -48,11 +51,10 @@ class SignUp extends Component {
                             <h6 className="signin-subtitles">Date of Birth</h6>
                             <Field className="signup_info" name="dob" type="date" component={renderInput}>{signupError}</Field>
                         </div>
-
+                        <button className="back-signup-button" type="button"><Link to="/" >Back</Link></button>
+                        <button className="submit-signup-button" type="submit">Submit</button>
                     </form>
                 </div>
-                <button className="back-signup-button" type="button"><Link to="/">Back</Link></button>
-                <button className="submit-signup-button" type="submit"><Link to="/map">Submit</Link></button>
             </div>
         )
     }

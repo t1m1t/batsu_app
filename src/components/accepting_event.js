@@ -26,23 +26,23 @@ class CreatedEvent extends Component{
             console.log('this is the response:', resp);
             this.setState({
                 form:{
-                    event_name:'d',
-                    dateTime:'i',
-                    invitee:'c',
-                    punishment:'e'
+                    event_name:'',
+                    dateTime:'',
+                    invitee:'',
+                    punishment:''
                 }
                 //this needs to be based from backend
             })
         });
     }
 
-    handleCheckIn(e){
-        e.preventDefault();
+    handleCheckIn(event){
+        event.preventDefault();
     }
 
     render(){
         return (
-            <form className="after_creating_event" onSubmit={(e) => this.handleCheckIn(e)}>
+            <form className="after_creating_event" onSubmit={(event) => this.handleCheckIn(event)}>
                 {/*<ListThree />*/}
                 <div className="line_space"></div>
                 <div>list of invitee</div>

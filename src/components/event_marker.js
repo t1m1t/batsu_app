@@ -1,6 +1,7 @@
 import React ,{ Component } from 'react' ;
 import { withGoogleMap, GoogleMap, Marker, Circle} from "react-google-maps";
 
+
 class Maps extends Component {
     constructor(props){
         super(props);
@@ -12,8 +13,6 @@ class Maps extends Component {
 
     }
 
-
-
     componentWillMount() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.getUserPermision);
@@ -21,7 +20,6 @@ class Maps extends Component {
             console.log("Geolocation is not supported by this browser.");
         }
     }
-
 
     getUserPermision(position) {
         console.log("Latitude: " + position.coords.latitude +
@@ -32,8 +30,6 @@ class Maps extends Component {
         }});
 
     }
-
-
 
     render(){
         const radius = this.props.radius || {}
@@ -48,12 +44,10 @@ class Maps extends Component {
         return(
             <GoogleMap
                 defaultZoom={16}
-                defaultCenter={this.props.center}
-            >
+                defaultCenter={this.props.center}>
+                
                 <Marker
-                    position={this.props.position}
-
-                />
+                    position={this.props.position} />
 
                 <Circle
                     center={this.props.position}
@@ -64,12 +58,9 @@ class Maps extends Component {
                         strokeColor: `orange`,
                         strokeOpacity: 1,
                         strokeWeight: 1,
-                    }}
-                />
+                    }} />
             </GoogleMap>
-
         )
-
     }
 }
 

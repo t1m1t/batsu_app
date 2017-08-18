@@ -112,6 +112,7 @@ div.card{
     font-size:10px;
     line-height: normal;
 }
+
 .fileButton{
     font-size:10px;
     border-radius:0px;
@@ -119,10 +120,11 @@ div.card{
 /***changing CSS3 for google places module***/
 
 #PlacesAutocomplete__root {
-    width:100%!important;
+    width:100% !important;
 }
+
 #PlacesAutocomplete__root > input {
-    height:41px!important;
+    height:41px !important;
 }
 
 /********************************************/
@@ -546,10 +548,29 @@ div.bm-menu{
     margin: 20px 0 0;
     font-size: 25px;
 }
+
 .card-title {
     margin: 20px 0 20px !important;
 }
 
+
+#loading{
+    bottom: 20vh;
+    position:absolute;
+    width:100vw;
+}
+
+.hi div:nth-child(2){
+    position: absolute;
+}
+
+#eventmap{
+    border:2px solid black;
+    width:92vw;
+    height:24.7vh;
+    display: inline-block; 
+    margin-bottom:1vh;
+}
 
 /*@media screen and (min-width: 700px) {*/
 /*.batsu-app{*/

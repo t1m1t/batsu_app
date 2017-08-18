@@ -19,20 +19,24 @@ class NavBar extends Component {
     }
 
     render() {
-        return (
-            <div className="topHeader">
-                <h3 className="topHeaderTitle">_Batsu</h3>
-                <Menu width={'222px'} className="bm-menu">
-                    <a className="menu-item" href="/">Home</a>
-                    <a className="menu-item" href="/profile">Profile</a>
-                    <a className="menu-item" href="/preview_event">Event</a>
-                    <a className="menu-item" href="/map">Map</a>
-                    <a className="menu-item" href="/my_events">My Events</a>
-                    <a className="menu-item" href="/what_is_batsu">What's Batsu?</a>
-                    <a className="menu-item" onClick={this.logOut} href="/">Log Off</a>
-                </Menu>
-            </div>
-        );
+        if (location.pathname === "/" || location.pathname === "/profile"){
+            return null;
+        } else {
+            return (
+                <div className="topHeader">
+                    <h3 className="topHeaderTitle">_Batsu</h3>
+                    <Menu width={'222px'} className="bm-menu">
+                        <a className="menu-item" href="/">Home</a>
+                        <a className="menu-item" href="/profile">Profile</a>
+                        <a className="menu-item" to="/preview_event">Event</a>
+                        <a className="menu-item" href="/map">Map</a>
+                        <a className="menu-item" href="/my_events">My Events</a>
+                        <a className="menu-item" href="/what_is_batsu">What's Batsu?</a>
+                        <a className="menu-item" onClick={this.logOut} href="/">Log Off</a>
+                    </Menu>
+                </div>
+            );
+        }
     }
 }
 

@@ -1,6 +1,5 @@
 <?php
 
-//check with db for token
 
     $token = $_GET['token'];
     $stmt = $conn -> prepare("SELECT ID FROM accounts WHERE token=?");
@@ -10,7 +9,7 @@
     $stmt -> fetch();
     $stmt -> close();
 
-    $stmt1 = $conn->prepare("SELECT first_name, last_name, email, phone FROM accounts WHERE ID=?");
+    $stmt1 = $conn->prepare("SELECT first_name, last_name, email, phone, path FROM accounts WHERE ID=?");
     $stmt1->bind_param("s", $id);
     $stmt1->execute();
     $stmt1->bind_result($fname, $lname, $email, $phone);

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import CreatedEventsData from './list';
 import InvitedEventsData from './list_two';
+// import NavBar from './nav_bar';
 import './app.css';
+
 
 class MyEvents extends Component {
     constructor(props){
@@ -10,17 +12,19 @@ class MyEvents extends Component {
         this.Loaded = true;
         this.state = {
             createdEventsList: [{
-                    event_name: '',
-                    creator_id: '',
-                    event_id: '',
-                    event_dateTime: ''
-                }],
-                invitedEventsList: [{
-                    event_name:'',
-                    creator_id:'',
-                    event_id: '',
-                    event_dateTime:''
-                }]
+                event_name: '123',
+                creator_id:'',
+                event_id:3,
+                event_dateTime:'',
+                attendee_status:''
+            }],
+            invitedEventsList: [{
+                event_name:'asd',
+                creator_id:'',
+                event_id:4,
+                event_dateTime:'',
+                attendee_status:''
+            }]
             //will change based on server database
         }
     }
@@ -36,16 +40,18 @@ class MyEvents extends Component {
             // this.Loaded = true;
             this.setState({
                 createdEventsList: [{
-                    event_name: '',
-                    creator_id: '',
-                    event_id: '',
-                    event_dateTime: ''
+                    event_name:'123',
+                    creator_id:'',
+                    event_id:3,
+                    event_dateTime:'',
+                    attendee_status:''
                 }],
                 invitedEventsList: [{
-                    event_name:'',
+                    event_name:'asd',
                     creator_id:'',
-                    event_id: '',
-                    event_dateTime:''
+                    event_id:4,
+                    event_dateTime:'',
+                    attendee_status:''
                 }]
             })
         });
@@ -59,6 +65,7 @@ class MyEvents extends Component {
         } else {
             return (
                 <div>
+                    {/* <NavBar /> */}
                     <h1 className="myEvents_title">My Events</h1>
                     <h3 className="myEvents_subtitle">All of Your Events in One Place!</h3>
 

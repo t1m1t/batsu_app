@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 import './app.css'
-// import NavBar from './nav_bar';
 
 class Events extends Component {
     constructor(props) {
@@ -22,7 +21,6 @@ class Events extends Component {
                 punishment: 'profile_doodle'
             }
         };
-
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -74,19 +72,17 @@ class Events extends Component {
         this.setState(newState);
 
         console.log('Data to send:', sendData);
-        axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertEvent`, sendData).then((resp) => {
+        axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/php/form.php?operation=insertEvent`, sendData).then((resp) => {
             console.log('this is the response:', resp);
             if(resp.data.success === true){
                 //trigger axios call to the map
-            }
-            else{
+            } else {
                 //w/e error msg is
             }
         });
     };
 
     render() {
-
         const inputProps = {
             value: this.state.form.address,
             onChange: this.handleChange

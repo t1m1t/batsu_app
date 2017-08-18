@@ -1,5 +1,6 @@
 import types from '../actions/types';
 
+
 const DEFAULT_STATE = { authorized: false, error: null, msg: '' };
 
 export default function(state = DEFAULT_STATE, action){
