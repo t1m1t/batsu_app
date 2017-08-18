@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Home from './home';
-import Map from './map';
-// import axios from 'axios';
+import {  Link } from 'react-router-dom';
 import { signup } from '../actions';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
@@ -11,56 +8,6 @@ import './app.css';
 
 
 class SignUp extends Component {
-    // constructor(props) {
-    //     super(props);
-
-    //     this.state = {
-    //         form: {
-    //             fname: 'test',
-    //             lname: 'user',
-    //             phone: '7142323333',
-    //             email: 'kelsey@gmail.com',
-    //             password: 'passW0rdhaHAA',
-    //             password_conf: 'passW0rdhaHAA',
-    //             dob: ''
-    //         }
-    //     }
-    // }
-
-    // handleFormSubmit(event) {
-    //     event.preventDefault();
-    //     console.log('Called handleFormSubmit', this.state.form);
-    //     const newState = {
-    //         form: {
-    //             fname: '',
-    //             lname: '',
-    //             phone: '',
-    //             email: '',
-    //             password: '',
-    //             password_conf: '',
-    //             dob: ''
-    //         }
-    //     }
-    //     this.setState(newState);
-    //     this.handleAxios();
-    // }
-
-    // handleAxios(){
-    //     const {form} = this.state;
-    //     console.log(form);
-    //     axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/form.php?operation=insertUser`, form).then((resp) => {
-    //         console.log('this is the response from insert:', resp);
-    //         document.cookie = resp.data.sesh_id;
-    //     })
-    // }
-
-    // handleChange(event){
-    //     const {name, value} = event.target;
-    //     const {form} = this.state;
-    //     form[name] = value;
-    //     this.setState({form: {...form}});
-    // }
-
     handleSignup(vals){
         console.log('Form values:', vals);
         this.props.signup(vals);
@@ -101,13 +48,11 @@ class SignUp extends Component {
                             <h6 className="signin-subtitles">Date of Birth</h6>
                             <Field className="signup_info" name="dob" type="date" component={renderInput}>{signupError}</Field>
                         </div>
-                        <p className="text-danger">{signupError}</p>  
+
                     </form>
                 </div>
                 <button className="back-signup-button" type="button"><Link to="/">Back</Link></button>
                 <button className="submit-signup-button" type="submit"><Link to="/map">Submit</Link></button>
-                <Route path="/" component={Home} />
-                <Route path="/map" component={Map} />
             </div>
         )
     }

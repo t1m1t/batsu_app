@@ -18,6 +18,7 @@ export function signin({email, password}){
     };
 };
 
+
 export function signup({fname, lname, phone, email, password, password_conf, dob}){
     return (dispatch) => {
         axios.post(`${BASE_URL}/sign_up`, {fname, lname, phone, email, password, password_conf, dob}).then((resp) => {
@@ -31,6 +32,9 @@ export function signup({fname, lname, phone, email, password, password_conf, dob
         });
     };
 };
+export function clearError(){
+    return {type:types.clearError};
+}
 
 function sendError(msg){
     return{

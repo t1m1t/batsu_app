@@ -7,43 +7,6 @@ import './app.css';
 
 
 class SignIn extends Component {
-    // constructor(props){
-    //     super(props);
-    //     this.state = {
-    //         form: {
-    //             email: '',
-    //             password: ''
-    //         }
-    //     }
-    // }
-
-    // handleFormSubmit(event){
-    //     event.preventDefault();
-    //     console.log('Called handleFormSubmit', this.state.form);
-    //     const newState = {
-    //         form: {
-    //             email: '',
-    //             password: ''
-    //         }
-    //     }
-    //     this.setState(newState);
-    //     this.handleAxios();
-    // }
-
-    // handleChange(event){
-    //     const { name, value } = event.target;
-    //     const { form } = this.state;
-    //     form[name] = value;
-    //     this.setState({form: {...form}});
-    // }
-
-    // handleAxios(){
-    //     const {form} = this.state;
-    //     axios.post(`http://localhost/form.php?operation=insertUser`, form).then((resp) => {
-    //         console.log('this is the response: ', resp);
-    //     })
-    // }
-
     handleSignIn(vals){
         console.log("Sign In vals:", vals);
         this.props.signin(vals);
@@ -65,8 +28,8 @@ class SignIn extends Component {
                     <h6 className="login-subtitles">Password</h6>
                     <Field name="password" type="password" component={renderInput} />
                     
-                    <p className="text-danger">{signinError}</p>
-                    <button type="submit" className="login-button">Log In</button>
+                     <p className="text-danger">{signinError}</p> 
+                    <button type="submit" className="login-button" >Log In</button>
                 </form>
             </div>
         )
