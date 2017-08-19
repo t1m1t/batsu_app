@@ -5,8 +5,6 @@ import { connect } from 'react-redux';
 export default function(ComposedComponent) {
     class Auth extends Component {
 
-
-
         componentWillMount() {
             console.log(this.props);
             if(!this.props.authenticated){

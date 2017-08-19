@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import CreatedEventsData from './list';
 import InvitedEventsData from './list_two';
+// import NavBar from './nav_bar';
 import './app.css';
+
 
 class MyEvents extends Component {
     constructor(props){
@@ -12,7 +14,7 @@ class MyEvents extends Component {
             createdEventsList: [{
                 event_name: '',
                 creator_id:'',
-                event_id:'',
+                event_id: '',
                 event_dateTime:'',
                 attendee_status:''
             }],
@@ -38,19 +40,18 @@ class MyEvents extends Component {
                 createdEventsList: resp.data.data.createdEventList,
                 invitedEventsList: resp.data.data.invitedEventList
             })
-
         });
-    };
+    }
 
     render(){
         if(this.Loaded === false) {
             return (
                 <div> Loading....</div>
             )
-        }
-        else{
+        } else {
             return (
                 <div>
+                    {/* <NavBar /> */}
                     <h1 className="myEvents_title">My Events</h1>
                     <h3 className="myEvents_subtitle">All of Your Events in One Place!</h3>
 
@@ -64,9 +65,7 @@ class MyEvents extends Component {
                     </div>
                 </div>
             )
-        }
-
-
+        }  
     }
 }
 

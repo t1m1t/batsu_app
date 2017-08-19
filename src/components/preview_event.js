@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import Maps from './event_marker';
 import axios from 'axios';
-import './app.css';
 import Timer from './timer';
+import EventsListItems from './list_item';
+import { connect } from 'react-redux';
+import Maps from './event_marker';
+import './app.css';
 import images from './rendering_profile';
+// import NavBar from './nav_bar';
+import listofInvitees from './listofInvitees';
 
 
 class CreatedEvent extends Component{
@@ -14,7 +18,7 @@ class CreatedEvent extends Component{
         this.pageLoaded = false;
         this.state = {
             token : document.cookie.split("=")[1],
-            eventID: 42,
+            eventID: '', //42
             list: {
                 eventName: '',
                 eventDateTime: '',
@@ -23,7 +27,8 @@ class CreatedEvent extends Component{
                     fName: '',
                     lName: '',
                     account_ID: '',
-                    status: ''
+                    status: '',
+                    path: ''
                 }],
                 myStatus: "",
                 eventPunishment: "",
@@ -36,8 +41,14 @@ class CreatedEvent extends Component{
     }
 
     componentWillMount(){
-        this.handleAxios();
+       this.getUrl(); 
+
     }
+
+
+    // listofInvitees(){
+    //
+    // }
 
     grabUser() {
      if (navigator.geolocation) {
@@ -63,17 +74,19 @@ class CreatedEvent extends Component{
         let a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
         let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         let d = (R * c)/0.0003048; // Distance in km
-        const {something} = this.state;
         if(d<200){
             console.log('you are within range');
-            if(myStatus === "Checked In"){
-
+            if(this.state.myStatus === "Checked In"){
                 console.log("you're already checked in");
             }
             else{
-                const object = {"token": something.token, "eventID": something.eventID, "myStatus": something.list.myStatus};
+                const object = {"token": this.state.token, "eventID": this.state.eventID, "myStatus": this.state.list.myStatus};
                 axios.post('http://localhost/Website/accountability_db/c5.17_accountability/php/form.php?operation=checkIn', object).then((resp) => {
-                    console.log("resp: ",resp);
+                    if(resp.data.success === true){
+                        this.setState({myStatus: 'Checked In'});
+                        console.log("You Checked in");
+                        console.log("resp: ",resp);
+                    }
                 })
             }
         }else if(d>=200){
@@ -85,32 +98,32 @@ class CreatedEvent extends Component{
         return deg * (Math.PI/180)
     }
 
+    Invitees(){
+        let l = "";
+        for(i=0; i<this.state.list.eventinvitees.length; i++){
+            l += this.state.list.eventinvitees[i].fName + " ";
+        }
+        return l;
+    }
+
     getImage(path) {
         let imagesKeys = Object.keys(images);
-        let imageUrl = images['example_profile.png'];
+        let imageUrl = images['example_profile.png']; //
         if(!path) {return imageUrl;}
         for(let i = 0; i < imagesKeys.length; i++) {
-            // console.log("path",path)
-            // console.log("imagesKeys",imagesKeys[i]);
-            // console.log("imagelength: ",imagesKeys.length);
             if(`upload_images/${imagesKeys[i]}` === path) {
                 imageUrl = images[imagesKeys[i]];
                 // console.log("imageUrl is",imageUrl);
             }
         }
+        console.log(imageUrl);
         return imageUrl;
     }
 
-
-
-    handleCheckIn(event){
-        event.preventDefault();
-    }
-
     handleAxios(){
+        console.log("this.state: ",this.state);
         axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=eventinfo&eventID='+this.state.eventID+"&token="+this.state.token).then((resp) => {
             console.log('this is the response:', resp);
-
 
             if(resp.data.data.myStatus === "Checked In"){
                 this.checkedIn = true;
@@ -120,11 +133,18 @@ class CreatedEvent extends Component{
                 list: resp.data.data
             })
             console.log("list: ", this.state.list);
-            // if(this.state.myStatus === "Checked In"){
-            //     abc = false;
-            // }
-
         });
+    }
+
+    getUrl(){
+        let url = location.pathname;
+        let fields = url.split('/');
+        let id = parseInt(fields[2]);
+        console.log('id', id);
+        this.setState({
+            eventID:id
+        }, this.handleAxios);
+        // this.handleAxios();
     }
 
     countDown(){
@@ -132,18 +152,20 @@ class CreatedEvent extends Component{
     }
 
     render(){
+        console.log(this.state);
         if(this.pageLoaded === false){
             return(
                 <h1>Page Loading...</h1>
             )
         }
         else{
+            let x = Invitees();
             const eventLocation ={
                 lat:parseFloat(this.state.list.eventLat),
                 lng:parseFloat(this.state.list.eventLong)
             }
             const invitee = this.state.list.eventinvitees[0];
-            if(this.state.list.myStatus){
+            if(this.state.list.myStatus === 'Checked In'){
                 return (
                     <div>
                         {this.state.list.eventName}
@@ -153,8 +175,7 @@ class CreatedEvent extends Component{
                         <div className="line_space"></div>
                         <div>list of invitees</div>
                         <div className="friends_picture_container">
-                            <img src={this.getImage(invitee.path)}/>
-                            <p>{invitee.fName}</p>
+                            <p>{x}</p>
                         </div>
                         <div className="line_space"></div>
                         <div className="punishment_div">Punishment</div>
@@ -186,8 +207,7 @@ class CreatedEvent extends Component{
                         <div className="line_space"></div>
                         <div>list of invitees</div>
                         <div className="friends_picture_container">
-                            <img src={this.getImage(invitee.path)}/>
-                            <p>{invitee.fName}</p>
+
                         </div>
                         <div className="line_space"></div>
                         <div className="punishment_div">Punishment</div>
@@ -207,13 +227,15 @@ class CreatedEvent extends Component{
                     </div>
                 )
             }
-
-
         }
     }
 }
 
 export default CreatedEvent;
 
-
-{/*<button className="btn">Arrived</button>*/}
+{/*<listofInvitees list={this.state.list}/>*/}
+{/*<img src='http://localhost/Website/accountability_db/c5.17_accountability/php/upload_images/default.png'/>*/}
+{/*<p>{invitee.fName}</p>*/}
+//
+// <img src={this.getImage(invitee.path)}/>
+// <p>{invitee.fName}</p>

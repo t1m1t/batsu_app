@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 function importAll(r) {
     let images = {};
     r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
@@ -9,3 +10,4 @@ function importAll(r) {
 const images = importAll(require.context('../../php/upload_images/', true, /\.(gif|png|jpe?g|svg)$/));
 
 export default images;
+

@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 import './app.css'
-// import NavBar from './nav_bar';
 
 class Events extends Component {
     constructor(props) {
@@ -19,7 +18,7 @@ class Events extends Component {
                 address: '',
                 location:'',
                 description: '',
-                punishment: ''
+                punishment: '50 Push-ups'
             }
         };
         this.handleChange = this.handleChange.bind(this);
@@ -86,7 +85,6 @@ class Events extends Component {
     };
 
     render() {
-
         const inputProps = {
             value: this.state.form.address,
             onChange: this.handleChange
@@ -131,8 +129,9 @@ class Events extends Component {
                             <label>Punishment</label>
                             <select className="form-control" name="punishment" value={punishment}
                                     onChange={(e) => this.handleChange(e)}>
-                                <option value="profile_doodle">Doodle on Profile Pic</option>
-                                <option value="facebook_post">Facebook Post</option>
+                                <option value="50 Push-ups">50 Push-ups</option>
+                                <option value="Buy Winners Lunch">Buy Winners Lunch</option>
+                                <option value="Eat a Jar of Mayo">Eat a Jar of Mayo</option>
                                 <option value="No Punishment">No Punishment</option>
                             </select>
                         </div>

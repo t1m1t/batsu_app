@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './app.css';
+// import NavBar from './nav_bar';
+
 
 
 class Profile extends Component {
@@ -10,7 +12,7 @@ class Profile extends Component {
             canEdit:false,
             token: document.cookie.split("=")[1],
             file:{
-                name: 'blah'
+                name: ''
             },
             imagePreviewUrl:'',
             userData:{
@@ -46,8 +48,8 @@ class Profile extends Component {
 
 
     //axios call needed to upload image
-    postPic(e){
-        e.preventDefault();
+    postPic(event){
+        event.preventDefault();
         let filepic = this.state.file;
         const formData = new FormData();
         formData.append('profile', filepic);
@@ -73,13 +75,13 @@ class Profile extends Component {
         reader.readAsDataURL(file)
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
+    handleSubmit(event) {
+        event.preventDefault();
         console.log('Uploading', this.state);
         this.setState({
             canEdit:false
         })
-        this.postPic(e);
+        this.postPic(event);
     }
 
 
@@ -88,6 +90,7 @@ class Profile extends Component {
         if(this.state.canEdit === false){
             return (
                 <div>
+                    {/* <NavBar/> */}
                     <h1 className="card-title">Profile</h1>
                     <div className="card profile_parent">
                         <div className="profile_picture_preview">
@@ -136,9 +139,8 @@ class Profile extends Component {
                     </div>
                 </div>
             )
-
         }
     }
-
 }
+
 export default Profile;

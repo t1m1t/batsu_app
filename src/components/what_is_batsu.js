@@ -1,12 +1,14 @@
 import React from 'react';
 import './app.css';
 import GroupPic from './imgs/group_photo.png';
+// import NavBar from './nav_bar';
 
 
 const HowTo = () => {
     return(
         <div>
-            <h1 className="howto_title_top">What is Batsu?</h1>
+            {/* <NavBar /> */}
+            <h1 className="howto_title_top">What's Batsu?</h1>
             <h3 className="howto_title_bottom">¯\_(ಠ_ಠ)_/¯</h3>
             <img src={GroupPic} className="howto_group_pic" />
             <div className="howto_inner_text">

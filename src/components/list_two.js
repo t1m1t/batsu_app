@@ -5,7 +5,7 @@ import EventsListItems from './list_item';
 const InvitedEventsData = (props) => {
     const listtwo = props.invitedEventsList.map((item, index) => {
         return (
-           <EventsListItems item={item} key={index}/>
+            <EventsListItems item={item} key={index}/>
         )
     })
 

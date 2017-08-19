@@ -7,9 +7,7 @@ class Maps extends Component {
         this.state = {
             position: {}
         };
-
         this.getUserPermision = this.getUserPermision.bind(this);
-
     }
 
     componentWillMount() {
@@ -21,7 +19,6 @@ class Maps extends Component {
         }
     }
 
-
     getUserPermision(position) {
         console.log("Latitude: " + position.coords.latitude +
             " Longitude: " + position.coords.longitude);
@@ -29,11 +26,7 @@ class Maps extends Component {
             lat:position.coords.latitude,
             lng:position.coords.longitude
         }});
-
     }
-
-
-
 
     render(){
         const image = {
@@ -45,9 +38,7 @@ class Maps extends Component {
         console.log(this.props.markers[0].position);
         console.log("State in render:", this.state.position);
 
-
         const { lat, lng } = this.state.position;
-
         console.log('lat:', lat, 'lng:', lng);
 
         if (!lat){
@@ -57,19 +48,12 @@ class Maps extends Component {
         return(
             <GoogleMap
                 defaultZoom={15}
-                defaultCenter={{lat, lng}}
-            >
+                defaultCenter={{lat, lng}}>
                 <Marker
                     position={{lat, lng}}
-                    icon={image}
-                />
-
-
-
+                    icon={image}/>
             </GoogleMap>
-
         )
-
     }
 }
 
