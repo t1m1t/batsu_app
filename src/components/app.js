@@ -29,11 +29,11 @@ const App = () => (
         <NavBar /> 
         <Route exact path="/" component={Login_Page} />
         <Route path="/sign_up" component={SignUp} />
-        <Route path="/home" component={Home} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/my_events" component={MyEvents} />
-        <Route path="/what_is_batsu" component={WhatIsBatsu} />
-        <Route path="/preview_event" component={CreatedEvent} />
+        <Route path="/home" component={authUser(Home)} />
+        <Route path="/profile" component={authUser(Profile)} />
+        <Route path="/my_events" component={authUser(MyEvents)} />
+        <Route path="/what_is_batsu" component={authUser(WhatIsBatsu)} />
+        <Route path="/preview_event" component={authUser(CreatedEvent)} />
     </div>
 )
 

@@ -8,7 +8,6 @@
     width: 350px;
     margin: 0 auto;
     height: 430px;
-    /* border: 2px black solid;  */
     overflow-y: auto;
 }
 
@@ -58,11 +57,11 @@ div.card{
 
 .batsu-title{
     text-align: center;
-    font-family: BarleyScript;
+    font-family: rocks_rg;
     color: red;
     font-style: oblique;
     font-size: 100px;
-    margin: 50px 0 20px;
+    margin: 70px 0 20px;
     text-shadow:
             2px 2px 0 black,
             2px 2px 0 black,
@@ -73,11 +72,11 @@ div.card{
 
 .batsu-title-signup{
     text-align: center;
-    font-family: crowbar;
+    font-family: rocks_rg;
     color: red;
     font-style: oblique;
-    font-size: 50px;
-    margin: 10px 0 20px;
+    font-size: 70px;
+    margin: 70px 0 20px;
     text-shadow:
             2px 2px 0 black,
             2px 2px 0 black,
@@ -127,7 +126,8 @@ div.card{
     height:41px !important;
 }
 
-/********************************************/
+
+
 .login-button{
     font-family: crowbar;
     width: 100px;
@@ -148,11 +148,11 @@ div.card{
 
 .topHeaderTitle{
     text-align: center;
-    font-size: 30px;
-    font-family: BarleyScript;
+    font-size: 39px;
+    font-family: rocks_rg;
     color: red;
     font-style: oblique;
-    margin: 0 0 16px;
+    margin-bottom: 6=2px;
     padding-top: 6px;
     text-shadow:
             1px 1px 0 black,
@@ -329,8 +329,8 @@ button:hover, button:visited, button:link, button:active{
             1px 1px 6px black;
 }
 
-/* burger menu  */
 
+/* burger menu  */
 /* Position and sizing of burger button */
 .bm-burger-button {
     position: fixed;
@@ -414,34 +414,7 @@ div.bm-menu{
     box-shadow: inset -8px 0 18px -7px #000000, inset 0 20px 20px -20px #000000;
 }
 
-
 /* my_events page css */
-
-.myEvents_title{
-    margin: 30px 0 5px;
-    font-size: 50px;
-    color: red;
-    text-shadow:
-            2px 2px 0 black,
-            2px 2px 0 black,
-            2px 2px 0 black,
-            2px 2px 0 black,
-            2px 2px 6px black;
-}
-
-.myEvents_subtitle{
-    color: orange;
-    font-size: 20px;
-    margin: 5px 0 30px;
-    text-shadow:
-            2px 2px 0 black,
-            2px 2px 0 black,
-            2px 2px 0 black,
-            2px 2px 0 black,
-            2px 2px 3px black;
-}
-            /* my_events page css */
-
 .myEvents_title{
     margin: 30px 0 5px;
     font-size: 50px;
@@ -506,9 +479,7 @@ div.bm-menu{
     height: 80vh;
 }
 
-
 /* How To Page */
-
 .howto_title_top{
     margin: 30px 0 0px;
     font-size: 50px;
@@ -572,7 +543,6 @@ div.bm-menu{
     margin: 20px 0 20px !important;
 }
 
-
 #loading{
     bottom: 20vh;
     position:absolute;
@@ -591,120 +561,4 @@ div.bm-menu{
     margin-bottom:1vh;
 }
 
-/*@media screen and (min-width: 700px) {*/
-/*.batsu-app{*/
-/*font-family: Arial;*/
-/*width: 750px;*/
-/*margin: 0 auto;*/
-/*height: auto;*/
-/*}*/
-
-/*.batsu-title{*/
-/*font-family: kidzone;*/
-/*font-size: 85px;*/
-/*margin-top: 0;*/
-/*text-shadow:*/
-/*3px 3px 0 black,*/
-/*2px 2px 0 black,*/
-/*2px 2px 0 black,*/
-/*2px 2px 0 black,*/
-/*2px 2px 10px black;*/
-/*}*/
-
-/*.login_page {*/
-/*color: black;*/
-/*text-align: center;*/
-/*padding: 20px;*/
-/*}*/
-
-/*.title_img {*/
-/*text-align: center;*/
-/*margin-top: 120px;*/
-/*}*/
-
-/*.homer{*/
-/*display: inline-block;*/
-/*width: 300px;*/
-/*border: 2px solid black;*/
-/*}*/
-
-/*.login-subtitles{*/
-/*margin: 10px 0 0;*/
-/*font-size: 30px;*/
-/*}*/
-
-/*input{*/
-/*border: 1px solid black;*/
-/*border-radius: 5px;*/
-/*margin: 0;*/
-/*font-size: 30px;*/
-/*}*/
-
-/*.input-button{*/
-/*font-size: 25px;*/
-/*margin: 40px 0;*/
-/*padding: 5px 15px;*/
-/*border: 1px solid black;*/
-/*border-radius: 5px;*/
-/*}*/
-/*}*/
-
-
-
-/*@media screen and (min-width: 1000px) {*/
-/*.batsu-app{*/
-/*font-family: Arial;*/
-/*width: 100%;*/
-/*margin: 0 auto;*/
-/*height: 100%;*/
-/*}*/
-
-/*.batsu-title{*/
-/*font-family: kidzone;*/
-/*font-size: 120px;*/
-/*margin-top: 20px;*/
-/*text-shadow:*/
-/*3px 3px 0 black,*/
-/*2px 2px 0 black,*/
-/*2px 2px 0 black,*/
-/*2px 2px 0 black,*/
-/*2px 2px 10px black;*/
-/*}*/
-
-/*.login_page {*/
-/*color: black;*/
-/*text-align: center;*/
-/*padding: 20px;*/
-/*}*/
-
-/*.title_img {*/
-/*text-align: center;*/
-/*margin-top: 120px;*/
-/*}*/
-
-/*.homer{*/
-/*display: inline-block;*/
-/*width: 400px;*/
-/*border: 2px solid black;*/
-/*}*/
-
-/*.login-subtitles{*/
-/*margin: 10px 0 0;*/
-/*font-size: 40px;*/
-/*}*/
-
-/*input{*/
-/*border: 1px solid black;*/
-/*border-radius: 5px;*/
-/*margin: 0;*/
-/*font-size: 40px;*/
-/*}*/
-
-/*.input-button{*/
-/*font-size: 35px;*/
-/*margin: 40px 0;*/
-/*padding: 5px 15px;*/
-/*border: 1px solid black;*/
-/*border-radius: 5px;*/
-/*}*/
-/*}*/
+/*@media screen and (min-width: 700px)*/

@@ -43,7 +43,7 @@ class Maps extends Component {
 
         if (!lat){
             console.log("This is the current directory", __dirname);
-            return     <img id="loading" src="http://blog.teamtreehouse.com/wp-content/uploads/2015/05/InternetSlowdown_Day.gif" alt=""/>
+            return     <img id="loading" src="./imgs" alt=""/>
         }
         return(
             <GoogleMap

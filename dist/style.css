@@ -12,3 +12,13 @@
     font-family: Gloss_And_Bloom;
     src: url(fonts/Gloss_And_Bloom.ttf);
 }
+
+@font-face{
+    font-family: rocks_rg;
+    src: url(fonts/rocks_rg.ttf);
+}
+
+@font-face{
+    font-family: Toony;
+    src: url(fonts/Toony.ttf);
+}

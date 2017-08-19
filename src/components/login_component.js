@@ -20,7 +20,7 @@ class SignIn extends Component {
 
         //const history = new createBrowserHistory();
         if(nextProps.auth){
-            this.props.history.push('/map');
+            this.props.history.push('/');
         }
     }
 
