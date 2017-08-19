@@ -10,6 +10,7 @@ class Profile extends Component {
         super(props);
         this.state = {
             canEdit:false,
+            token: document.cookie.split("=")[1],
             file:{
                 name: ''
             },
@@ -29,6 +30,7 @@ class Profile extends Component {
         axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=profile&token='+document.cookie.split('=')[1]).then((resp) => {
             console.log(resp);
             this.setState({userData: resp.data.data});
+            this.setState({imagePreviewUrl: 'http://localhost/Website/accountability_db/c5.17_accountability/php/' + resp.data.path.imagePreviewUrl});
         })
     }
 
@@ -36,13 +38,27 @@ class Profile extends Component {
         this.handleAxios();
     }
 
-    postPic(){
+    // handleChange(event){
+    // // handleChange(){
+    //     const{name, value} = event.target;
+    //     const{userData} = this.state;
+    //     userData[name] = value;
+    //     this.setState({userData:{...userData}});
+    // }
+
+
+    //axios call needed to upload image
+    postPic(event){
+        event.preventDefault();
         let filepic = this.state.file;
         const formData = new FormData();
         formData.append('profile', filepic);
+        formData.append('token', this.state.token);
+        // const sendThisShit = {"formData": formData, "token" : this.state.token};
         console.log(formData);
-        axios.post('http://localhost/Website/accountability_db/c5.17_accountability/php/form.php?operation=uploadImage', formData).then((resp) => {
-            console.log('Add resp:', resp)
+        axios.post('http://localhost/Website/accountability_db/c5.17_accountability/php/form.php?operation=uploadImage&token='+ this.state.token, formData).then((resp) => {
+            console.log('Axios call update profile resp: ', resp)
+
         })
     }
 
@@ -65,7 +81,7 @@ class Profile extends Component {
         this.setState({
             canEdit:false
         })
-        this.postPic();
+        this.postPic(event);
     }
 
 
@@ -87,7 +103,6 @@ class Profile extends Component {
                                 <li className="list-group-item">Name: {this.state.userData.fname.concat(" ").concat(this.state.userData.lname)}</li>
                                 <li className="list-group-item">Phone: {this.state.userData.phone}</li>
                             </ul>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         </div>
                         <button onClick={() => this.setState({canEdit: true})} className="btn btn-outline-danger">Edit</button>
 
@@ -114,13 +129,12 @@ class Profile extends Component {
                             <div className="card-block">
                                 <ul className="list-group list-group-flush container">
                                     <li className="list-group-item">Email: {userData.email}</li>
-                                    <li className="list-group-item">First Name: <input type="text" value={userData.fname} onChange={(e) => {this.handleInputChange(e)}}/></li>
-                                    <li className="list-group-item">Last Name: <input type="text" value={userData.lname} onChange={(e) => {this.handleInputChange(e)}}/></li>
-                                    <li className="list-group-item">Phone: <input type="text" value={userData.phone} onChange={(e) => {this.handleInputChange(e)}}/></li>
+                                    <li className="list-group-item">Email: {this.state.userData.email}</li>
+                                    <li className="list-group-item">Name: {this.state.userData.fname.concat(" ").concat(this.state.userData.lname)}</li>
+                                    <li className="list-group-item">Phone: {this.state.userData.phone}</li>
                                 </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                             </div>
-                            <button type="submit" onClick={(e) => this.handleSubmit(e)} className="btn btn-outline-info">Save</button>
+                            <button type="button" onClick={(e) => this.handleSubmit(e)} className="btn btn-outline-info">Save</button>
                         </form>
                     </div>
                 </div>

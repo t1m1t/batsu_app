@@ -20,7 +20,11 @@ class SignIn extends Component {
 
         //const history = new createBrowserHistory();
         if(nextProps.auth){
+<<<<<<< HEAD
             this.props.history.push('/');
+=======
+            this.props.history.push('/home');
+>>>>>>> d48294654d40a0fd4f7ed9ce3f6eaa987e3d4542
         }
     }
 

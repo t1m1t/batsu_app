@@ -10,3 +10,4 @@ function importAll(r) {
 const images = importAll(require.context('../../php/upload_images/', true, /\.(gif|png|jpe?g|svg)$/));
 
 export default images;
+

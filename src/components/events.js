@@ -17,8 +17,8 @@ class Events extends Component {
                 date: '',
                 address: '',
                 location:'',
-                description: 'descriptionnnnn',
-                punishment: 'profile_doodle'
+                description: '',
+                punishment: '50 Push-ups'
             }
         };
         this.handleChange = this.handleChange.bind(this);
@@ -76,7 +76,9 @@ class Events extends Component {
             console.log('this is the response:', resp);
             if(resp.data.success === true){
                 //trigger axios call to the map
-            } else {
+                this.props.onCancel();
+            }
+            else{
                 //w/e error msg is
             }
         });
@@ -127,12 +129,16 @@ class Events extends Component {
                             <label>Punishment</label>
                             <select className="form-control" name="punishment" value={punishment}
                                     onChange={(e) => this.handleChange(e)}>
-                                <option value="profile_doodle">Doodle on Profile Pic</option>
-                                <option value="facebook_post">Facebook Post</option>
+                                <option value="50 Push-ups">50 Push-ups</option>
+                                <option value="Buy Winners Lunch">Buy Winners Lunch</option>
+                                <option value="Eat a Jar of Mayo">Eat a Jar of Mayo</option>
                                 <option value="No Punishment">No Punishment</option>
                             </select>
                         </div>
-                        <button className="btn btn-outline-success">Confirm</button>
+                        <button type="submit" className="btn btn-outline-success">
+                            Confirm
+                        </button>
+
                         <button type="button" className="btn btn-outline-danger mr-2" onClick={this.props.onCancel}>
                             Cancel
                         </button>

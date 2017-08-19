@@ -12,5 +12,7 @@ $stmt -> fetch();
 $output["data"] = (object)["dateTime" => $dateTime];
 $stmt -> close();
 
+$output['success'] = true;
+
 
 ?>

@@ -13,12 +13,17 @@ $output['data'] = [];
 
 $date = $_POST['date'];
 $time = $_POST['time'];
+
+$datetime = strtotime($date.$time);
+
 $attending = 'Attending';
 $pending = 'Pending';
 $true = 1;
 $false = 0;
 
-$combinedDT = date('Y-m-d H:i:s');
+
+
+$combinedDT = date('Y-m-d H:i:s', $datetime);
 
 $stmt1 = $conn->prepare("INSERT INTO events (Creator_ID, Event_Name, Event_DateTime, Event_Latitude, Event_Longitude, Event_Address, Event_Description) VALUES (?,?,?,?,?,?,?)");
 $stmt1->bind_param("sssssss", $id, $_POST["event_name"], $combinedDT, $_POST["location"]["lat"], $_POST["location"]["lng"], $_POST["address"], $_POST["description"]);

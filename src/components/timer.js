@@ -8,7 +8,7 @@ class Timer extends Component {
 
         this.state = {
             eventID: props.eventID,
-            eventTime: new Date("Aug 15, 2017 15:27:00").getTime(),
+            eventTime:null,
             days: null,
             hours: null,
             minutes: null,

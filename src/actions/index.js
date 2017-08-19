@@ -44,7 +44,7 @@ export function signup({fname, lname, phone, email, password, password_conf, dob
                 var expireTime = time + 86400000;   //24 hours
                 now.setTime(expireTime);
                 document.cookie = "token="+resp.data.token+";expires="+now.toUTCString()+";path=/";
-                history.push('/map');
+                history.push('/home');
             }
             else{
                 let message = "";
