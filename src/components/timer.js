@@ -19,13 +19,13 @@ class Timer extends Component {
 
     componentWillMount() {
         this.handleAxios();
-        console.log(this.state);
+        // console.log(this.state);
     }
 
 //finish axios call
     handleAxios(){
         axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/form.php?operation=getTime&event='+this.state.eventID).then((resp) => {
-            console.log('this is the response:', resp);
+            // console.log('this is the response:', resp);
             this.setState({
                 eventTime: new Date(resp.data.data.dateTime).getTime()
             })

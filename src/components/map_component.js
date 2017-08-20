@@ -15,13 +15,12 @@ class Maps extends Component {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.getUserPermision);
         } else {
-            console.log("Geolocation is not supported by this browser.");
+            // console.log("Geolocation is not supported by this browser.");
         }
     }
 
     getUserPermision(position) {
-        console.log("Latitude: " + position.coords.latitude +
-            " Longitude: " + position.coords.longitude);
+        // console.log("Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude);
         this.setState({position:{
             lat:position.coords.latitude,
             lng:position.coords.longitude
@@ -35,14 +34,14 @@ class Maps extends Component {
         };
         const markers = this.props.markers[0].position || []
         const radius = this.props.radius || {}
-        console.log(this.props.markers[0].position);
-        console.log("State in render:", this.state.position);
+        // console.log(this.props.markers[0].position);
+        // console.log("State in render:", this.state.position);
 
         const { lat, lng } = this.state.position;
-        console.log('lat:', lat, 'lng:', lng);
+        // console.log('lat:', lat, 'lng:', lng);
 
         if (!lat){
-            console.log("This is the current directory", __dirname);
+            // console.log("This is the current directory", __dirname);
             return     <img id="loading" src="http://blog.teamtreehouse.com/wp-content/uploads/2015/05/InternetSlowdown_Day.gif" alt=""/>
         }
         return(

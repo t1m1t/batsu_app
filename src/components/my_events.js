@@ -34,7 +34,7 @@ class MyEvents extends Component {
 
     getData(){
         axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=eventlist&token='+document.cookie.split('=')[1]).then((resp) => {
-            console.log('this is the response:', resp);
+            // console.log('this is the response:', resp);
             this.Loaded = true;
             this.setState({
                 createdEventsList: resp.data.data.createdEventList,
