@@ -1,5 +1,6 @@
 import React ,{ Component } from 'react' ;
 import { withGoogleMap, GoogleMap, Marker, Circle} from "react-google-maps";
+import LoadingImg from './imgs/loading2.gif';
 
 class Maps extends Component {
     constructor(props){
@@ -43,7 +44,8 @@ class Maps extends Component {
 
         if (!lat){
             console.log("This is the current directory", __dirname);
-            return     <img id="loading" src="./imgs" alt=""/>
+            return <img id="loading" src={LoadingImg} alt=""/>
+            
         }
         return(
             <GoogleMap
