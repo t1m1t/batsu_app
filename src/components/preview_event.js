@@ -4,10 +4,10 @@ import Timer from './timer';
 import EventsListItems from './list_item';
 import { connect } from 'react-redux';
 import Maps from './event_marker';
+import ListOfAttendees from './listOfAttendees';
 import './app.css';
 import images from './rendering_profile';
 // import NavBar from './nav_bar';
-import listofInvitees from './listofInvitees';
 
 
 class CreatedEvent extends Component{
@@ -46,9 +46,6 @@ class CreatedEvent extends Component{
     }
 
 
-    // listofInvitees(){
-    //
-    // }
 
     grabUser() {
      if (navigator.geolocation) {
@@ -98,13 +95,13 @@ class CreatedEvent extends Component{
         return deg * (Math.PI/180)
     }
 
-    Invitees(){
-        let l = "";
-        for(i=0; i<this.state.list.eventinvitees.length; i++){
-            l += this.state.list.eventinvitees[i].fName + " ";
-        }
-        return l;
-    }
+    // Invitees(){
+    //     let l = "";
+    //     for(i=0; i<this.state.list.eventinvitees.length; i++){
+    //         l += this.state.list.eventinvitees[i].fName + " ";
+    //     }
+    //     return l;
+    // }
 
     getImage(path) {
         let imagesKeys = Object.keys(images);
@@ -159,7 +156,7 @@ class CreatedEvent extends Component{
             )
         }
         else{
-            let x = Invitees();
+            // let x = Invitees();
             const eventLocation ={
                 lat:parseFloat(this.state.list.eventLat),
                 lng:parseFloat(this.state.list.eventLong)
@@ -175,7 +172,7 @@ class CreatedEvent extends Component{
                         <div className="line_space"></div>
                         <div>list of invitees</div>
                         <div className="friends_picture_container">
-                            <p>{x}</p>
+                            <ListOfAttendees eventinvitees={this.state.list.eventinvitees} />
                         </div>
                         <div className="line_space"></div>
                         <div className="punishment_div">Punishment</div>
@@ -207,7 +204,7 @@ class CreatedEvent extends Component{
                         <div className="line_space"></div>
                         <div>list of invitees</div>
                         <div className="friends_picture_container">
-
+                            <ListOfAttendees eventinvitees={this.state.list.eventinvitees} />
                         </div>
                         <div className="line_space"></div>
                         <div className="punishment_div">Punishment</div>
@@ -233,7 +230,6 @@ class CreatedEvent extends Component{
 
 export default CreatedEvent;
 
-{/*<listofInvitees list={this.state.list}/>*/}
 {/*<img src='http://localhost/Website/accountability_db/c5.17_accountability/php/upload_images/default.png'/>*/}
 {/*<p>{invitee.fName}</p>*/}
 //

@@ -12,10 +12,10 @@ const Login_Page = (props) => {
             <div>
                 <SignIn history={props.history} />
                 <div className="line_space"></div>
-                <div className="fb-login-button" data-button-type="login_with" data-size="large" scope="public_profile,email" data-onlogin="checkLoginState();"></div>
             </div>
         </div>
     )
 }
 
 export default Login_Page;
+{/*<div className="fb-login-button" data-button-type="login_with" data-size="large" scope="public_profile,email" data-onlogin="checkLoginState();"></div>*/}
