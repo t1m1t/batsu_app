@@ -7,7 +7,7 @@ const EventsListItems = (props) => {
     const id = props.item.event_id;
 
     return (
-        <li onClick={() => {console.log(props.item.event_id)}} className="list-group-item">
+        <li className="list-group-item">
             <Link to={`/preview_event/${id}`}>
                 <span className="col-2">{item.event_name}</span>
                 <span className="col-2">{item.creator_id}</span>

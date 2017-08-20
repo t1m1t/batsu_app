@@ -11,7 +11,7 @@ import './app.css';
 
 class SignUp extends Component {
     handleSignup(vals){
-        console.log('Form values:', vals);
+        // console.log('Form values:', vals);
         this.props.signup(vals, this.props.history);
     }
 

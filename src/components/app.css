@@ -561,4 +561,24 @@ div.bm-menu{
     margin-bottom:1vh;
 }
 
+<<<<<<< HEAD
 /*@media screen and (min-width: 700px)*/
+=======
+.attendee_pic{
+    height: 80px;
+    width: 80px;
+}
+.attendee_img_contain{
+    display: inline-block;
+    width: 25vw;
+    list-style-type: none;
+}
+.attendee_list{
+    list-style-type: none;
+}
+
+.friends_picture_container{
+    overflow: auto;
+    white-space: nowrap;
+}
+>>>>>>> 690c2c5980e410d286382756695a1d3636bf82d5

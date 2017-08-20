@@ -11,12 +11,12 @@ import './app.css';
 class SignIn extends Component {
     handleSignIn(vals){
         // const history = new createBrowserHistory();
-        console.log("Sign In vals:", vals);
+        // console.log("Sign In vals:", vals);
         this.props.signin(vals);
     }
 
     componentWillReceiveProps(nextProps){
-        console.log('The props are:', nextProps);
+        // console.log('The props are:', nextProps);
 
         //const history = new createBrowserHistory();
         if(nextProps.auth){
