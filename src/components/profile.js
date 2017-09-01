@@ -4,7 +4,6 @@ import './app.css';
 // import NavBar from './nav_bar';
 
 
-
 class Profile extends Component {
     constructor(props){
         super(props);
@@ -94,7 +93,6 @@ class Profile extends Component {
                     <h1 className="card-title">Profile</h1>
                     <div className="card profile_parent">
                         <div className="profile_picture_preview">
-
                             <img src={this.state.imagePreviewUrl} alt=""/>
                         </div>
                         <div className="card-block">
@@ -105,7 +103,6 @@ class Profile extends Component {
                             </ul>
                         </div>
                         <button onClick={() => this.setState({canEdit: true})} className="btn btn-danger profile_button">Edit</button>
-
                     </div>
                 </div>
             )
@@ -113,7 +110,7 @@ class Profile extends Component {
             let {imagePreviewUrl, userData} = this.state;
             let profilePic = null;
             if (imagePreviewUrl) {
-                profilePic = (<img src={imagePreviewUrl}/>);
+                profilePic = (<img className="profile_pic" src={imagePreviewUrl}/>);
             } else {
                 profilePic = (<div className="previewText">Please select an Image for Preview</div>);
             }

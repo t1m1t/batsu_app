@@ -615,14 +615,16 @@ div.bm-menu{
 }
 
 .attendee_pic{
-    height: 80px;
-    width: 80px;
+    height: 180px;
+    width: 180px;
 }
+
 .attendee_img_contain{
     display: inline-block;
     width: 25vw;
     list-style-type: none;
 }
+
 .attendee_list{
     list-style-type: none;
 }
@@ -630,6 +632,11 @@ div.bm-menu{
 .friends_picture_container{
     overflow: auto;
     white-space: nowrap;
+}
+
+.profile_pic {
+    height: 180px;
+    width: 180px;
 }
 
 /*@media screen and (min-width: 700px)*/
