@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './app.css';
+// import NavBar from './nav_bar';
 
 
 class Profile extends Component {
@@ -8,24 +9,27 @@ class Profile extends Component {
         super(props);
         this.state = {
             canEdit:false,
+            token: document.cookie.split("=")[1],
+            file:{
+                name: ''
+            },
+            imagePreviewUrl:'',
             userData:{
                 file:'',
-                profile_pic:'',
-                fname: 'jay',
-                lname: 'die',
-                phone: '714-234-2333',
-                email: 'jaydie@gmail.com'
+                fname: '',
+                lname: '',
+                phone: '',
+                email: ''
             }
         }
     }
 
     handleAxios(){
-        // const {form} = this.state;
-        // console.log(form);
-        console.log(this.state);
-        axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=profile&session='+document.cookie).then((resp) => {
-            console.log(resp);
+        // console.log(this.state);
+        axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=profile&token='+document.cookie.split('=')[1]).then((resp) => {
+            // console.log(resp);
             this.setState({userData: resp.data.data});
+            this.setState({imagePreviewUrl: 'http://localhost/Website/accountability_db/c5.17_accountability/php/' + resp.data.path.imagePreviewUrl});
         })
     }
 
@@ -33,19 +37,27 @@ class Profile extends Component {
         this.handleAxios();
     }
 
-    handleChange(){
-        const{name, value} = event.target;
-        const{userData} = this.state;
-        userData[name] = value;
-        this.setState({userData:{...userData}});
-    }
+    // handleChange(event){
+    // // handleChange(){
+    //     const{name, value} = event.target;
+    //     const{userData} = this.state;
+    //     userData[name] = value;
+    //     this.setState({userData:{...userData}});
+    // }
 
-    postProfAxios(){
-        const {userData} = this.userData.profile_pic
-        console.log(userData);
 
-        axios.post(`${BASE_URL}`, userData).then((resp) => {
-            console.log('Add resp:', resp)
+    //axios call needed to upload image
+    postPic(event){
+        event.preventDefault();
+        let filepic = this.state.file;
+        const formData = new FormData();
+        formData.append('profile', filepic);
+        formData.append('token', this.state.token);
+        // const sendThisShit = {"formData": formData, "token" : this.state.token};
+        // console.log(formData);
+        axios.post('http://localhost/Website/accountability_db/c5.17_accountability/php/form.php?operation=uploadImage&token='+ this.state.token, formData).then((resp) => {
+            // console.log('Axios call update profile resp: ', resp)
+
         })
     }
 
@@ -62,33 +74,43 @@ class Profile extends Component {
         reader.readAsDataURL(file)
     }
 
+    handleSubmit(event) {
+        event.preventDefault();
+        // console.log('Uploading', this.state);
+        this.setState({
+            canEdit:false
+        })
+        this.postPic(event);
+    }
+
+
     render() {
+
         if(this.state.canEdit === false){
             return (
                 <div>
+                    {/* <NavBar/> */}
                     <h1 className="card-title">Profile</h1>
                     <div className="card profile_parent">
                         <div className="profile_picture_preview">
-                            <img src="https://www.biography.com/.image/t_share/MTQ3NjM5ODIyNjU0MTIxMDM0/snoop_dogg_photo_by_estevan_oriol_archive_photos_getty_455616412.jpg" alt=""/>
+                            <img src={this.state.imagePreviewUrl} alt=""/>
                         </div>
                         <div className="card-block">
                             <ul className="list-group list-group-flush container">
                                 <li className="list-group-item">Email: {this.state.userData.email}</li>
-                                <li className="list-group-item">FName: {this.state.userData.fname}</li>
-                                <li className="list-group-item">LName: {this.state.userData.lname}</li>
+                                <li className="list-group-item">Name: {this.state.userData.fname.concat(" ").concat(this.state.userData.lname)}</li>
                                 <li className="list-group-item">Phone: {this.state.userData.phone}</li>
                             </ul>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         </div>
-                        <button onClick={() => this.setState({canEdit: true})} className="btn btn-outline-danger">Edit</button>
+                        <button onClick={() => this.setState({canEdit: true})} className="btn btn-danger profile_button">Edit</button>
                     </div>
                 </div>
             )
         } else {
-            let {imagePreviewUrl} = this.state;
+            let {imagePreviewUrl, userData} = this.state;
             let profilePic = null;
             if (imagePreviewUrl) {
-                profilePic = (<img src={imagePreviewUrl}/>);
+                profilePic = (<img className="profile_pic" src={imagePreviewUrl}/>);
             } else {
                 profilePic = (<div className="previewText">Please select an Image for Preview</div>);
             }
@@ -97,28 +119,25 @@ class Profile extends Component {
                     <h1 className="card-title">Profile</h1>
                     <div className="card profile_parent">
                         <div className="profile_picture_preview">
-                            {/*{this.state.userData.profile_pic}*/}
                             {profilePic}
                         </div>
-                        <form>
-                            Select image to upload:
-                            <input className="fileInput" type="file" name="myFile" onChange={(e)=>this.handleImageChange(e)}/>
-                            {/*<button className="fileButton" type="submit">Upload</button>*/}
+                        <form onSubmit={(e) => {this.handleSubmit(e)}}>
+                            <input id="file" className="profileInput" type="file" name="profile" onChange={(e)=>this.handleImageChange(e)}/>
+                            <div className="card-block">
+                                <ul className="list-group list-group-flush container">
+                                    {/* <li className="list-group-item">Email: {userData.email}</li> */}
+                                    <li className="list-group-item">Email: {this.state.userData.email}</li>
+                                    <li className="list-group-item">Name: {this.state.userData.fname.concat(" ").concat(this.state.userData.lname)}</li>
+                                    <li className="list-group-item">Phone: {this.state.userData.phone}</li>
+                                </ul>
+                            </div>
+                            <button type="button" onClick={(e) => this.handleSubmit(e)} className="btn btn-info profile_button">Save</button>
                         </form>
-                        <div className="card-block">
-                            <ul className="list-group list-group-flush container">
-                                <li className="list-group-item">Email: <input type="text" name="email" onChange={(event)=>this.handleChange(event)} value={this.state.userData.email}/></li>
-                                <li className="list-group-item">First Name: <input type="text" name="fname" onChange={(event)=>this.handleChange(event)} value={this.state.userData.fname}/></li>
-                                <li className="list-group-item">Last Name: <input type="text" name="lname" onChange={(event)=>this.handleChange(event)} value={this.state.userData.lname}/></li>
-                                <li className="list-group-item">Phone: <input type="text" name="phone" onChange={(event)=>this.handleChange(event)} value={this.state.userData.phone}/></li>
-                            </ul>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </div>
-                        <button onClick={() => this.setState({canEdit: false})} className="btn btn-outline-info">Save</button>
                     </div>
                 </div>
             )
         }
     }
 }
+
 export default Profile;
