@@ -1,5 +1,10 @@
 
-# c5.17_accountability
+# Batsu!
+
+Batsu! is an application designed to help people keep accountable when meeting with others at created events.  
+Within the application, users are able to create an event, invite other users, and track who arrives and who does not.  
+Those that are late or do not show up will receive a punishment that is set within the application.  The application
+uses GoogleMaps API to geo-locate the event's position, React.js and Redux for the logical application, and CSS3 for styling.
 
 ### Producer
 - Eric
@@ -7,36 +12,14 @@
 ### Project Manager
 - Collette
 
-### SR Devs
+### Developers
 - Tim
 - Brian
 - Jay
 - Eli
 - Kelsey
-
-### Jr Devs
-- Soren
-- Chris
-- James
-- Matt
-- Soy
-
-Week 10 To Do List: 
-
-1. set up alerts for account creation(display information from the backend) ✔
-
-2. Wireframes by monday(earlier the better) ✔
-
-3. Three prototypes due: 
-
-    Enable Facebook log-in ✔ 
-
-    Map displaying location of input location ✔
-    
-    Make Event Creation fully functional (Modal)
     
     
-
 Prototype Instructions:
 
 A. Prerequisite: 
@@ -74,7 +57,5 @@ D. Login Authentication
 
 E. Event Creation
     
-
-F. 
 
 

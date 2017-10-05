@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import CreatedEventsData from './list';
 import InvitedEventsData from './list_two';
-// import NavBar from './nav_bar';
 import './app.css';
 
 
@@ -34,7 +33,6 @@ class MyEvents extends Component {
 
     getData(){
         axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=eventlist&token='+document.cookie.split('=')[1]).then((resp) => {
-            // console.log('this is the response:', resp);
             this.Loaded = true;
             this.setState({
                 createdEventsList: resp.data.data.createdEventList,
@@ -51,7 +49,6 @@ class MyEvents extends Component {
         } else {
             return (
                 <div>
-                    {/* <NavBar /> */}
                     <h1 className="myEvents_title">My Events</h1>
                     <h3 className="myEvents_subtitle">All of Your Events in One Place!</h3>
 

@@ -7,7 +7,6 @@ import Maps from './event_marker';
 import ListOfAttendees from './listOfAttendees';
 import './app.css';
 import images from './rendering_profile';
-// import NavBar from './nav_bar';
 
 
 class CreatedEvent extends Component{
@@ -56,9 +55,6 @@ class CreatedEvent extends Component{
     }
 
     getUser(position) {
-        // console.log("Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude);
-        // console.log("This is the state lat/lon", this.state.list);
-
         let lat1=parseFloat(this.state.list.eventLat);
         let lon1=parseFloat(this.state.list.eventLong);
         let lat2=position.coords.latitude;
@@ -71,17 +67,13 @@ class CreatedEvent extends Component{
         let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         let d = (R * c)/0.0003048; // Distance in km
         if(d<200){
-            console.log('you are within range');
             if(this.state.myStatus === "Checked In"){
-                console.log("you're already checked in");
             }
             else{
                 const object = {"token": this.state.token, "eventID": this.state.eventID, "myStatus": this.state.list.myStatus};
                 axios.post('http://localhost/Website/accountability_db/c5.17_accountability/php/form.php?operation=checkIn', object).then((resp) => {
                     if(resp.data.success === true){
                         this.setState({myStatus: 'Checked In'});
-                        console.log("You Checked in");
-                        // console.log("resp: ",resp);
                     }
                 })
             }
@@ -94,14 +86,6 @@ class CreatedEvent extends Component{
         return deg * (Math.PI/180)
     }
 
-    // Invitees(){
-    //     let l = "";
-    //     for(i=0; i<this.state.list.eventinvitees.length; i++){
-    //         l += this.state.list.eventinvitees[i].fName + " ";
-    //     }
-    //     return l;
-    // }
-
     getImage(path) {
         let imagesKeys = Object.keys(images);
         let imageUrl = images['example_profile.png']; //
@@ -109,18 +93,13 @@ class CreatedEvent extends Component{
         for(let i = 0; i < imagesKeys.length; i++) {
             if(`upload_images/${imagesKeys[i]}` === path) {
                 imageUrl = images[imagesKeys[i]];
-                // console.log("imageUrl is",imageUrl);
             }
         }
-        // console.log(imageUrl);
         return imageUrl;
     }
 
     handleAxios(){
-        // console.log("this.state: ",this.state);
         axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=eventinfo&eventID='+this.state.eventID+"&token="+this.state.token).then((resp) => {
-            // console.log('this is the response:', resp);
-
             if(resp.data.data.myStatus === "Checked In"){
                 this.checkedIn = true;
             }
@@ -128,7 +107,6 @@ class CreatedEvent extends Component{
             this.setState({
                 list: resp.data.data
             })
-            // console.log("list: ", this.state.list);
         });
     }
 
@@ -136,11 +114,9 @@ class CreatedEvent extends Component{
         let url = location.pathname;
         let fields = url.split('/');
         let id = parseInt(fields[2]);
-        // console.log('id', id);
         this.setState({
             eventID:id
         }, this.handleAxios);
-        // this.handleAxios();
     }
 
     countDown(){
@@ -148,7 +124,6 @@ class CreatedEvent extends Component{
     }
 
     render(){
-        // console.log(this.state);
         if(this.pageLoaded === false){
             return(
                 <h1 className="preview_loading">Page Loading...</h1>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './app.css';
-// import NavBar from './nav_bar';
 
 
 class Profile extends Component {
@@ -25,9 +24,7 @@ class Profile extends Component {
     }
 
     handleAxios(){
-        // console.log(this.state);
         axios.get('http://localhost/Website/accountability_db/c5.17_accountability/php/getData.php?operation=profile&token='+document.cookie.split('=')[1]).then((resp) => {
-            // console.log(resp);
             this.setState({userData: resp.data.data});
             this.setState({imagePreviewUrl: 'http://localhost/Website/accountability_db/c5.17_accountability/php/' + resp.data.path.imagePreviewUrl});
         })

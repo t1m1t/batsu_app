@@ -22,7 +22,6 @@ class Maps extends Component {
     }
 
     getUserPermision(position) {
-        // console.log("Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude);
         this.setState({position:{
             lat:position.coords.latitude,
             lng:position.coords.longitude
@@ -32,13 +31,12 @@ class Maps extends Component {
 
     render(){
         const radius = this.props.radius || {}
-        // console.log("State in render:", this.state.position);
         const { lat, lng } = this.state.position;
-        // console.log('lat:', lat, 'lng:', lng);
 
         if (!lat){
-            // console.log("This is the current directory", __dirname);
-            return     <h4>LOADING ...</h4>
+            return(
+                <h4>LOADING ...</h4>
+            )
         }
         return(
             <GoogleMap

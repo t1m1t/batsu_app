@@ -43,7 +43,6 @@ class Events extends Component {
 
     handleFormSubmit(event) {
         event.preventDefault();
-        // console.log('Called handleFormSubmit', this.state.form);
         geocodeByAddress(this.state.form.address)
             .then(results => getLatLng(results[0]))
             .then(latLng => {
@@ -53,8 +52,6 @@ class Events extends Component {
     };
 
     handleAxios(latLong) {
-        // console.log("Handle axios latLong:", latLong);
-
         const {form} = this.state;
         const sendData = {...form, location: latLong, token: this.state.token};
 
@@ -71,15 +68,11 @@ class Events extends Component {
         };
         this.setState(newState);
 
-        // console.log('Data to send:', sendData);
         axios.post(`http://localhost/Website/accountability_db/c5.17_accountability/php/form.php?operation=insertEvent`, sendData).then((resp) => {
-            // console.log('this is the response:', resp);
             if(resp.data.success === true){
-                //trigger axios call to the map
                 this.props.onCancel();
             }
             else{
-                //w/e error msg is
             }
         });
     };

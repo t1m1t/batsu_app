@@ -9,7 +9,6 @@ class NavBar extends Component {
     }
 
     logOut() {
-        // console.log("~log out~");
         document.cookie = "token=" + ";expires=" + new Date(0);
     }
 
@@ -21,7 +20,6 @@ class NavBar extends Component {
                 <div className="topHeader">
                     <h3 className="topHeaderTitle">Batsu</h3>
                     <Menu width={'222px'} className="bm-menu">
-                        {/* <a className="menu-item" href="/">Home</a> */}
                         <a className="menu-item" href="/home">Home</a>
                         <a className="menu-item" href="/profile">Profile</a>
                         <a className="menu-item" href="/my_events">My Events</a>
