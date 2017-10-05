@@ -4,7 +4,7 @@
 Batsu! is an application designed to help people keep accountable when meeting with others at created events.  
 Within the application, users are able to create an event, invite other users, and track who arrives and who does not.  
 Those that are late or do not show up will receive a punishment that is set within the application.  The application
-uses GoogleMaps API to geo-locate the event's position, React.js and Redux for the logical application, and CSS3 for styling.
+uses GoogleMaps API to geo-locate the event's position, React.js and Redux for the logical application, and CSS3 and Bootstrap4 for styling.
 
 ### Producer
 - Eric
@@ -13,14 +13,13 @@ uses GoogleMaps API to geo-locate the event's position, React.js and Redux for t
 - Collette
 
 ### Developers
-- Tim
-- Brian
-- Jay
-- Eli
-- Kelsey
+- Timothy - Front End, Visual Design, Wire-framing
+- Brian - Front End, Modal control
+- Jay - Back End / Front End - PHP, Database creation
+- Eli - Back End - PHP
+- Kelsey - Front End - API Integration
     
-    
-Prototype Instructions:
+
 
 A. Prerequisite: 
 
@@ -35,27 +34,6 @@ A. Prerequisite:
 
 
    The prototypes also require a LAMP/MAMP stack. Rename "mysql_connect.php.config" to "mysql_connect.php" and fill out your MySQL username and password credentials. 
-
-_________________________________________________________________
-
-B. Account Creation  
-
-   Update the axios call on src/components/sign_up.js within handleAxios() function with the correct file path for your local machine.
-   
-   Features for this prototype include: Input Validation(email validation, phone validation, password validation, password check, and an age requirement).
-   
-   Future versions will include: instructions for password(include 1 capital case, 1 lower case, 1 number, and between 8-32 characters) and age requirements(10+ years). 
-
-C. Account Creation with Facebook
-
-   Click on "Continue with Facebook". Adds the user onto the database if the user doesn't have an account within our database(check their email address)
-
-D. Login Authentication
-   
-   Requires database connect file
-        
-
-E. Event Creation
     
 
 
